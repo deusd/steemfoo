@@ -2,7 +2,11 @@
   "main": "node_modules/expo/AppEntry.js",
   "private": true,
   "scripts": {
-    "test": "node ./node_modules/jest/bin/jest.js --watch"
+    "test": "node ./node_modules/jest/bin/jest.js --watch",
+    "flow start": "flow start",
+    "flow stop": "flow stop",
+    "flow status": "flow status",
+    "flow coverage": "flow coverage"
   },
   "jest": {
     "preset": "jest-expo"
@@ -11,10 +15,15 @@
     "@expo/samples": "2.1.1",
     "expo": "^23.0.0",
     "react": "16.0.0",
-    "react-native": "https://github.com/expo/react-native/archive/sdk-23.0.0.tar.gz",
+    "react-native":
+      "https://github.com/expo/react-native/archive/sdk-23.0.0.tar.gz",
     "react-navigation": "^1.0.0-beta.19"
   },
   "devDependencies": {
-    "jest-expo": "^23.0.0"
+    "babel-eslint": "^8.0.3",
+    "babel-preset-flow": "^6.23.0",
+    "flow-bin": "^0.56.0",
+    "jest-expo": "^23.0.0",
+    "prettier-eslint": "^8.2.5"
   }
 }
