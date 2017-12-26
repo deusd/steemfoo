@@ -3,6 +3,18 @@ import { Platform, StatusBar, StyleSheet, View } from "react-native"
 import { AppLoading, Asset, Font } from "expo"
 import { Ionicons } from "@expo/vector-icons"
 import RootNavigation from "./navigation/RootNavigation"
+import firebase from "firebase"
+
+// Initialize Firebase
+const firebaseConfig = {
+  apiKey: "AIzaSyCGeL64abqmp1XqwPPPmPb_e07Liw4AlfI",
+  authDomain: "vybe-6b570.firebaseapp.com",
+  databaseURL: "https://vybe-6b570.firebaseio.com",
+  projectId: "vybe-6b570",
+  storageBucket: "vybe-6b570.appspot.com",
+  messagingSenderId: "420950808481",
+}
+firebase.initializeApp(firebaseConfig)
 
 export default class App extends React.Component {
   state = {
