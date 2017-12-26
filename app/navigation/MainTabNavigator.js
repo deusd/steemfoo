@@ -8,12 +8,12 @@ import Colors from "../constants/Colors"
 import HomeScreen from "../screens/HomeScreen"
 import LinksScreen from "../screens/LinksScreen"
 import SettingsScreen from "../screens/SettingsScreen"
-// import CameraScreen from "../screens/CameraScreen"
+import CameraScreen from "../screens/CameraScreen"
 
 export default TabNavigator(
   {
     Camera: {
-      screen: SettingsScreen,
+      screen: CameraScreen,
     },
     Home: {
       screen: HomeScreen,

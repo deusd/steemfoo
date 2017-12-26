@@ -4,7 +4,7 @@ import { Container, Card, Content, CardItem, Text, Button } from "native-base"
 import { ImagePicker } from "expo"
 import { observable } from "mobx"
 import { observer } from "mobx-react/native"
-import { Image } from "react-native"
+import { Image, Dimensions } from "react-native"
 
 @observer
 export default class CameraScreen extends React.Component {
@@ -12,6 +12,7 @@ export default class CameraScreen extends React.Component {
   imageOptions = {
     mediaTypes: "Images",
   }
+  deviceWidth = Dimensions.get("window").width
 
   static navigationOptions = {
     title: "Camera View",
@@ -28,7 +29,7 @@ export default class CameraScreen extends React.Component {
   }
 
   render() {
-    const { image } = this
+    const { image, deviceWidth } = this
 
     return (
       <Container>
@@ -36,7 +37,8 @@ export default class CameraScreen extends React.Component {
           {this.image && (
             <Image
               source={{ uri: image }}
-              style={{ width: 200, height: 200 }}
+              style={{ width: deviceWidth, height: deviceWidth }}
+              resizeMode="contain"
             />
           )}
           <Button block onPress={this.getImage}>
