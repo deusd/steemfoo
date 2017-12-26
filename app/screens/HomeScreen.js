@@ -58,16 +58,16 @@ export default class HomeScreen extends React.Component {
 
   componentDidMount() {
     console.log("test")
-    steem.api.getDiscussionsByTrending(
-      { limit: 20, tag: "photography" },
-      (err, result) => {
-        if (!err) {
-          this.updatePosts(result)
-        } else {
-          console.log(err)
-        }
-      }
-    )
+    // steem.api.getDiscussionsByTrending(
+    //   { limit: 20, tag: "photography" },
+    //   (err, result) => {
+    //     if (!err) {
+    //       this.updatePosts(result)
+    //     } else {
+    //       console.log(err)
+    //     }
+    //   }
+    // )
   }
 
   render() {
