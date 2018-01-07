@@ -2,14 +2,16 @@ import React from "react"
 import { ExpoConfigView } from "@expo/samples"
 import { Container, Card, Content, CardItem, Text, Button } from "native-base"
 import { ImagePicker } from "expo"
-import { observable } from "mobx"
+import { observable, runInAction } from "mobx"
 import { observer } from "mobx-react/native"
 import { Image, Dimensions } from "react-native"
 import firebase from "firebase"
+import convertToByteArray from "../utils/convertToByteArray"
 
 @observer
 export default class CameraScreen extends React.Component {
-  @observable image = {}
+  @observable image
+  @observable firebaseImage
   @observable submitting = false
 
   imageOptions = {
@@ -23,30 +25,45 @@ export default class CameraScreen extends React.Component {
   }
 
   getImage = async () => {
+    console.log("getting image")
     result = await ImagePicker.launchImageLibraryAsync(this.imageOptions)
 
-    console.log(result)
-
     if (!result.cancelled) {
-      this.image = result
+      console.log("got image", result)
+
+      runInAction(() => {
+        this.image = result.uri
+        this.firebaseImage = convertToByteArray(result.base64)
+        console.log("image uri", this.image.uri)
+        console.log("firebase image", this.firebaseImage)
+      })
+      // console.log(result.base64)
     }
   }
 
   submitImage = async () => {
     this.submitting = true
-    const ref = firebase.storage().ref()
+
+    const ref = firebase
+      .storage()
+      .ref()
+      .child("images/test.jpg")
+    const metadata = {
+      contentType: "image/jpeg",
+    }
 
     try {
-      await ref.putString(this.image.base64, "base64")
+      const returnVal = await ref.put(this.firebaseImage, metadata)
+      console.log("success!!!", returnVal)
     } catch (e) {
-      console.log(e)
+      console.log("failure", e)
     }
 
     this.submitting = false
   }
 
   render() {
-    const { image: { uri: image }, deviceWidth, submitImage, submitting } = this
+    const { image, deviceWidth, submitImage, submitting } = this
 
     return (
       <Container>
