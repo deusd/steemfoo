@@ -17,6 +17,8 @@ export default class CameraScreen extends React.Component {
   imageOptions = {
     mediaTypes: "Images",
     base64: true,
+    allowsEditing: true,
+    aspect: [1, 1],
   }
   deviceWidth = Dimensions.get("window").width
 
@@ -32,8 +34,7 @@ export default class CameraScreen extends React.Component {
       console.log("got image", result)
 
       runInAction(() => {
-        this.image = result.uri
-        this.firebaseImage = convertToByteArray(result.base64)
+        this.image = `data:image/jpeg;base64,${result.base64}`
         console.log("image uri", this.image.uri)
         console.log("firebase image", this.firebaseImage)
       })
@@ -53,7 +54,7 @@ export default class CameraScreen extends React.Component {
     }
 
     try {
-      const returnVal = await ref.put(this.firebaseImage, metadata)
+      const returnVal = await ref.putString(this.image, "base64url")
       console.log("success!!!", returnVal)
     } catch (e) {
       console.log("failure", e)
