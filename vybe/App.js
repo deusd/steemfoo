@@ -5,7 +5,7 @@
  */
 
 import React, { Component } from "react"
-import { Platform, StyleSheet, Text, View } from "react-native"
+import { Platform, StyleSheet, Text, View, Button, Alert } from "react-native"
 
 import { Provider } from "react-redux"
 import store from "./state/store"
@@ -18,6 +18,9 @@ const instructions = Platform.select({
 })
 
 export default class App extends Component<{}> {
+  onLoadImage = () => {
+    Alert.alert("Wow", "stuff happened yo")
+  }
   render() {
     return (
       <Provider store={store}>
@@ -25,6 +28,7 @@ export default class App extends Component<{}> {
           <Text style={styles.welcome}>Welcome to React Native!</Text>
           <Text style={styles.instructions}>To get started, edit App.js</Text>
           <Text style={styles.instructions}>{instructions}</Text>
+          <Button title="Load Image" onPress={this.onLoadImage} />
         </View>
       </Provider>
     )
