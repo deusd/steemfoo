@@ -5,7 +5,22 @@
  */
 
 import React, { Component } from "react"
-import { Platform, StyleSheet, Text, View, Button, Alert } from "react-native"
+import { Platform, StyleSheet, Alert } from "react-native"
+import {
+  ActionSheet,
+  Container,
+  Header,
+  Body,
+  Title,
+  Button,
+  Content,
+  Text,
+  Footer,
+  FooterTab,
+  Icon,
+} from "native-base"
+const options = ["Cancel", "Apple", "Banana", "Watermelon", "Durian"]
+const title = "Load an image or take a picture?"
 
 import { Provider } from "react-redux"
 import store from "./state/store"
@@ -24,12 +39,23 @@ export default class App extends Component<{}> {
   render() {
     return (
       <Provider store={store}>
-        <View style={styles.container}>
-          <Text style={styles.welcome}>Welcome to React Native!</Text>
-          <Text style={styles.instructions}>To get started, edit App.js</Text>
-          <Text style={styles.instructions}>{instructions}</Text>
-          <Button title="Load Image" onPress={this.onLoadImage} />
-        </View>
+        <Container>
+          <Header>
+            <Body>
+              <Title>VYBE</Title>
+            </Body>
+          </Header>
+          <Content>
+            <Text>Welcome to VYBE!!!</Text>
+          </Content>
+          <Footer>
+            <FooterTab>
+              <Button>
+                <Icon name="camera" />
+              </Button>
+            </FooterTab>
+          </Footer>
+        </Container>
       </Provider>
     )
   }
