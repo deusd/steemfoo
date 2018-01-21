@@ -5,7 +5,13 @@
  */
 
 import React, { Component } from "react"
-import { Platform, StyleSheet, Alert } from "react-native"
+import {
+  Platform,
+  StyleSheet,
+  Alert,
+  CameraRoll,
+  ActivityIndicator,
+} from "react-native"
 import {
   ActionSheet,
   Container,
@@ -19,11 +25,14 @@ import {
   FooterTab,
   Icon,
 } from "native-base"
-const options = ["Cancel", "Apple", "Banana", "Watermelon", "Durian"]
-const title = "Load an image or take a picture?"
 
 import { Provider } from "react-redux"
 import store from "./state/store"
+import * as _ from "lodash"
+import ImageGrid from "./components/ImageGrid"
+
+const options = ["Cancel", "Apple", "Banana", "Watermelon", "Durian"]
+const title = "Load an image or take a picture?"
 
 const instructions = Platform.select({
   ios: "Press Cmd+R to reload,\n" + "Cmd+D or shake for dev menu",
@@ -33,6 +42,49 @@ const instructions = Platform.select({
 })
 
 export default class App extends Component<{}> {
+  state = {
+    images: [],
+  }
+
+  componentDidMount() {
+    this.loadCameraRollPhotos()
+  }
+
+  loadCameraRollPhotos(cursor, next) {
+    this.setState({ loadingImages: true })
+    CameraRoll.getPhotos({ first: 20 })
+      .then(result => {
+        newImages = []
+        result.edges.map(e => {
+          if (e.node && e.node.image) {
+            const {
+              image: { filename, height, uri, width },
+              location,
+              timestamp,
+            } = e.node
+            newImages.push({
+              filename,
+              height,
+              width,
+              uri,
+              location,
+              timestamp,
+            })
+          }
+        })
+
+        console.log(newImages)
+        this.setState({
+          images: _.concat(this.state.images, newImages),
+          loadingImages: false,
+        })
+      })
+      .catch(reason => {
+        console.log(reason)
+        this.setState({ loadingImages: false })
+      })
+  }
+
   onLoadImage = () => {
     Alert.alert("Wow", "stuff happened yo")
   }
@@ -43,11 +95,14 @@ export default class App extends Component<{}> {
           <Header>
             <Body>
               <Title>VYBE</Title>
+              {this.state.loadingImages ? (
+                <ActivityIndicator size="large" />
+              ) : null}
+
+              <ImageGrid images={this.state.images} imagesAcross={5} />
             </Body>
           </Header>
-          <Content>
-            <Text>Welcome to VYBE!!!</Text>
-          </Content>
+          <Content />
           <Footer>
             <FooterTab>
               <Button>
