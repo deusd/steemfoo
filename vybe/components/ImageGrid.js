@@ -1,21 +1,34 @@
 //@flow
 
 import React from "react"
-import { FlatList, Image, Dimensions, StyleSheet } from "react-native"
+import {
+  FlatList,
+  Image,
+  Dimensions,
+  StyleSheet,
+  TouchableWithoutFeedback,
+} from "react-native"
 import PropTypes from "prop-types"
 import { ImageType } from "../types"
-
-let size
 
 export default class ImageGrid extends React.Component<{
   images: ImageType[],
   imagesAcross: number,
   imageSize: number,
 }> {
-  renderImage = ({ item, key }, index) => {
+  state = {
+    selectedIndex: 0,
+  }
+
+  imageSelected = selectedIndex => () => {
+    this.setState({ selectedIndex })
+  }
+
+  renderImage = ({ item, key, index }) => {
     console.log(item)
     const { uri } = item
     const { imageSize: size, imagesAcross } = this.props
+    const { selectedIndex } = this.state
 
     const customStyles = StyleSheet.create({
       image: {
@@ -24,18 +37,20 @@ export default class ImageGrid extends React.Component<{
         borderColor: "white",
         width: size,
         height: size,
+        opacity: selectedIndex == index ? 0.25 : 1,
       },
     })
 
-    return <Image key={key} source={{ uri }} style={customStyles.image} />
+    return (
+      <TouchableWithoutFeedback onPress={this.imageSelected(index)}>
+        <Image source={{ uri }} style={customStyles.image} />
+      </TouchableWithoutFeedback>
+    )
   }
 
   render() {
     const { images, imagesAcross, imageSize } = this.props
     const hasImages = images && images.length > 0
-
-    // update image size for styling
-    size = imageSize
 
     return hasImages ? (
       <FlatList
@@ -44,6 +59,7 @@ export default class ImageGrid extends React.Component<{
         renderItem={this.renderImage}
         keyExtractor={image => image.uri}
         style={styles.grid}
+        extraData={this.state.selectedIndex}
       />
     ) : null
   }

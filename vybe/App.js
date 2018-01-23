@@ -100,16 +100,10 @@ export default class App extends Component<{}> {
     const { width, height } = Dimensions.get("window")
     const size = width / 5
 
-    return (
-      <React.Fragment>
-        <Image style={{ width: width, height: width }} />
-        <ImageGrid
-          images={this.state.images}
-          imagesAcross={5}
-          imageSize={size}
-        />
+    return <React.Fragment>
+        <Image source={{ uri: _.get(this.state, 'images[0].uri') }} style={{ width: width, height: width }} />
+        <ImageGrid images={this.state.images} imagesAcross={5} imageSize={size} />
       </React.Fragment>
-    )
   }
 
   render() {
