@@ -25,7 +25,6 @@ export default class ImageGrid extends React.Component<{
   }
 
   renderImage = ({ item, key, index }) => {
-    console.log(item)
     const { uri } = item
     const { imageSize: size, imagesAcross } = this.props
     const { selectedIndex } = this.state

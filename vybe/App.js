@@ -29,10 +29,11 @@ import {
   Icon,
 } from "native-base"
 
-import { Provider } from "react-redux"
+import { Provider, connect } from "react-redux"
 import store from "./state/store"
 import * as _ from "lodash"
 import ImageGrid from "./components/ImageGrid"
+import { loadCameraRollImages } from "./state/device"
 
 const options = ["Cancel", "Apple", "Banana", "Watermelon", "Durian"]
 const title = "Load an image or take a picture?"
@@ -44,7 +45,7 @@ const instructions = Platform.select({
     "Shake or press menu button for dev menu",
 })
 
-export default class App extends Component<{}> {
+class App extends Component<{}> {
   state = {
     images: [],
   }
@@ -100,10 +101,19 @@ export default class App extends Component<{}> {
     const { width, height } = Dimensions.get("window")
     const size = width / 5
 
-    return <React.Fragment>
-        <Image source={{ uri: _.get(this.state, 'images[0].uri') }} style={{ width: width, height: width }} />
-        <ImageGrid images={this.state.images} imagesAcross={5} imageSize={size} />
+    return (
+      <React.Fragment>
+        <Image
+          source={{ uri: _.get(this.state, "images[0].uri") }}
+          style={{ width: width, height: width }}
+        />
+        <ImageGrid
+          images={this.state.images}
+          imagesAcross={5}
+          imageSize={size}
+        />
       </React.Fragment>
+    )
   }
 
   render() {
@@ -152,3 +162,15 @@ const styles = StyleSheet.create({
     marginBottom: 5,
   },
 })
+
+const mapStateToProps = state => {
+  const { loadingImages, images } = state.device
+  return { loadingImages, images }
+}
+const mapDispatchToProps = dispatch => {
+  return {
+    loadImage: cursor => dispatch(loadCameraRollImages(cursor)),
+  }
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)

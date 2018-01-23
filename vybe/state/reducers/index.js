@@ -1,7 +1,6 @@
 import { combineReducers } from "redux"
+import deviceReducer from "./device"
 
 const initialState = {}
 
-export default (state = initialState, action) => {
-  return state
-}
+export default combineReducers(deviceReducer)
