@@ -35,7 +35,8 @@ class PickImageScreen extends React.Component {
   }
 
   componentDidMount() {
-    this.loadCameraRollPhotos()
+    // this.loadCameraRollPhotos()
+    this.props.loadCameraRollImages()
   }
 
   loadCameraRollPhotos(cursor, next) {
@@ -130,10 +131,8 @@ const mapStateToProps = state => {
   const { loadingImages, images } = state.device
   return { loadingImages, images }
 }
-const mapDispatchToProps = dispatch => {
-  return {
-    loadImage: cursor => dispatch(loadCameraRollImages(cursor)),
-  }
+const mapDispatchToProps = {
+  loadCameraRollImages,
 }
 
 export default connect(mapStateToProps, mapDispatchToProps)(PickImageScreen)

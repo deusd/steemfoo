@@ -10,7 +10,6 @@ export function loadCameraRollImages(cursor: string) {
     payload: {
       promise: CameraRoll.getPhotos({
         first: 20,
-        cursor,
       }),
     },
   }
