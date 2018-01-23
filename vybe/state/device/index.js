@@ -22,14 +22,14 @@ export default (state = initialState, action) => {
 
   switch (action.type) {
     case LOAD_CAMERA_ROLL_IMAGES_REQUEST:
-      newState = {...newState, loadingImages: true}
-      break;
+      newState = { ...newState, loadingImages: true }
+      break
     case resolve(LOAD_CAMERA_ROLL_IMAGES_REQUEST):
-      newState = {...newState, loadingImages: false}
-      break;
-    reject(LOAD_CAMERA_ROLL_IMAGES_REQUEST):
-      newState = {...newState, loadingImages: false}
-    break;
+      newState = { ...newState, loadingImages: false }
+      break
+    case reject(LOAD_CAMERA_ROLL_IMAGES_REQUEST):
+      newState = { ...newState, loadingImages: false }
+      break
     case SAVE_TO_CAMERA_ROLL:
       break
     default:
