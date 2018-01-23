@@ -1,44 +1,58 @@
 //@flow
 
 import React from "react"
-import { FlatList, Image, Dimensions } from "react-native"
+import { FlatList, Image, Dimensions, StyleSheet } from "react-native"
 import PropTypes from "prop-types"
 import { ImageType } from "../types"
+
+let size
 
 export default class ImageGrid extends React.Component<{
   images: ImageType[],
   imagesAcross: number,
+  imageSize: number,
 }> {
-  renderImage = size => image => {
-    const { uri } = image
+  renderImage = ({ item, key }, index) => {
+    console.log(item)
+    const { uri } = item
+    const { imageSize: size, imagesAcross } = this.props
 
-    return (
-      <Image
-        uri={image.uri}
-        style={{
-          width: size,
-          height: size,
-          resizeMode: Image.resizeMode.contain,
-        }}
-      />
-    )
+    const customStyles = StyleSheet.create({
+      image: {
+        resizeMode: Image.resizeMode.cover,
+        borderWidth: 1,
+        borderColor: "white",
+        width: size,
+        height: size,
+      },
+    })
+
+    return <Image key={key} source={{ uri }} style={customStyles.image} />
   }
 
   render() {
-    const { width, height } = Dimensions.get("window")
-    const { images, imagesAcross } = this.props
+    const { images, imagesAcross, imageSize } = this.props
     const hasImages = images && images.length > 0
-    console.log(images)
+
+    // update image size for styling
+    size = imageSize
+
     return hasImages ? (
       <FlatList
-        style={{
-          flexDirection: "row",
-          flexWrap: "wrap",
-        }}
+        numColumns={imagesAcross}
         data={images}
-        renderItem={this.renderImage(width / imagesAcross)}
+        renderItem={this.renderImage}
         keyExtractor={image => image.uri}
+        style={styles.grid}
       />
     ) : null
   }
 }
+
+const styles = StyleSheet.create({
+  grid: {
+    flexDirection: "row",
+    flex: 1,
+    width: "100%",
+  },
+})

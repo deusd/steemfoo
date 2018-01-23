@@ -11,6 +11,9 @@ import {
   Alert,
   CameraRoll,
   ActivityIndicator,
+  Dimensions,
+  Image,
+  View,
 } from "react-native"
 import {
   ActionSheet,
@@ -88,6 +91,27 @@ export default class App extends Component<{}> {
   onLoadImage = () => {
     Alert.alert("Wow", "stuff happened yo")
   }
+
+  renderLoading() {
+    return <ActivityIndicator size="large" />
+  }
+
+  renderImages() {
+    const { width, height } = Dimensions.get("window")
+    const size = width / 5
+
+    return (
+      <React.Fragment>
+        <Image style={{ width: width, height: width }} />
+        <ImageGrid
+          images={this.state.images}
+          imagesAcross={5}
+          imageSize={size}
+        />
+      </React.Fragment>
+    )
+  }
+
   render() {
     return (
       <Provider store={store}>
@@ -95,14 +119,14 @@ export default class App extends Component<{}> {
           <Header>
             <Body>
               <Title>VYBE</Title>
-              {this.state.loadingImages ? (
-                <ActivityIndicator size="large" />
-              ) : null}
-
-              <ImageGrid images={this.state.images} imagesAcross={5} />
             </Body>
           </Header>
-          <Content />
+          <Content>
+            {/* <Text>Got some text here</Text> */}
+            {this.state.loadingImages
+              ? this.renderLoading()
+              : this.renderImages()}
+          </Content>
           <Footer>
             <FooterTab>
               <Button>
