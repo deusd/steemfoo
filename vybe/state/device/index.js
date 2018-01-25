@@ -1,33 +1,27 @@
 //@flow
 import { CameraRoll } from "react-native"
 import { cloneDeep } from "lodash"
-import { LOAD_CAMERA_ROLL_IMAGES_REQUEST, SAVE_TO_CAMERA_ROLL } from "../types"
-import { resolve, reject } from "redux-simple-promise"
+import { createAction } from "redux-action"
+import { LOAD_CAMERA_ROLL_IMAGES, SAVE_TO_CAMERA_ROLL } from "../types"
 
-export function loadCameraRollImages(cursor: string) {
-  return {
-    type: LOAD_CAMERA_ROLL_IMAGES_REQUEST,
-    payload: {
-      promise: CameraRoll.getPhotos({
-        first: 20,
-      }),
-    },
+export const loadCameraRollImages = createAction(
+  LOAD_CAMERA_ROLL_IMAGES,
+  (cursor: string) => {
+    return CameraRoll.getPhotos({
+      first: 20,
+    })
   }
-}
+)
 
 initialState = {}
 export default (state = initialState, action) => {
   newState = cloneDeep(state)
+  console.log("random action?!?!?!", action)
 
   switch (action.type) {
-    case LOAD_CAMERA_ROLL_IMAGES_REQUEST:
-      newState = { ...newState, loadingImages: true }
-      break
-    case resolve(LOAD_CAMERA_ROLL_IMAGES_REQUEST):
+    case LOAD_CAMERA_ROLL_IMAGES:
       newState = { ...newState, loadingImages: false }
-      break
-    case reject(LOAD_CAMERA_ROLL_IMAGES_REQUEST):
-      newState = { ...newState, loadingImages: false }
+      console.log("got action", action)
       break
     case SAVE_TO_CAMERA_ROLL:
       break
