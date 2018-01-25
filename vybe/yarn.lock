@@ -1991,9 +1991,9 @@ flow-bin@^0.63.1:
   version "0.63.1"
   resolved "https://registry.yarnpkg.com/flow-bin/-/flow-bin-0.63.1.tgz#ab00067c197169a5fb5b4996c8f6927b06694828"
 
-flux-standard-action@0.6.0:
-  version "0.6.0"
-  resolved "https://registry.yarnpkg.com/flux-standard-action/-/flux-standard-action-0.6.0.tgz#e0ef9cdcc7442e9e76464d7b8d7a5c2a5012948d"
+flux-standard-action@^0.6.1:
+  version "0.6.1"
+  resolved "https://registry.yarnpkg.com/flux-standard-action/-/flux-standard-action-0.6.1.tgz#6f34211b94834ea1c3cc30f4e7afad3d0fbf71a2"
   dependencies:
     lodash.isplainobject "^3.2.0"
 
@@ -4300,11 +4300,11 @@ redux-persist@^5.4.0:
   version "5.4.0"
   resolved "https://registry.yarnpkg.com/redux-persist/-/redux-persist-5.4.0.tgz#a1062313546a9d4ca6f9271464d18f736e8ca394"
 
-redux-simple-promise@^2.0.2:
-  version "2.0.2"
-  resolved "https://registry.yarnpkg.com/redux-simple-promise/-/redux-simple-promise-2.0.2.tgz#068131d76fea0590ffba47ee55c28bef24ea9642"
+redux-promise@^0.5.3:
+  version "0.5.3"
+  resolved "https://registry.yarnpkg.com/redux-promise/-/redux-promise-0.5.3.tgz#e97e6c9d3bf376eacb79babe6d906da20112d6d8"
   dependencies:
-    flux-standard-action "0.6.0"
+    flux-standard-action "^0.6.1"
 
 redux-thunk@^2.2.0:
   version "2.2.0"
