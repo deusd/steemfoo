@@ -24,6 +24,7 @@
     "redux-devtools-extension": "^2.13.2",
     "redux-logger": "^3.0.6",
     "redux-persist": "^5.4.0",
+    "redux-simple-promise": "^2.0.2",
     "redux-thunk": "^2.2.0",
     "steem": "^0.6.7"
   },
