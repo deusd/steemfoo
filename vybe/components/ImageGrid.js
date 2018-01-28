@@ -15,6 +15,7 @@ export default class ImageGrid extends React.Component<{
   images: ImageType[],
   imagesAcross: number,
   imageSize: number,
+  onImageSelected: Function,
 }> {
   state = {
     selectedIndex: 0,
@@ -22,6 +23,10 @@ export default class ImageGrid extends React.Component<{
 
   imageSelected = selectedIndex => () => {
     this.setState({ selectedIndex })
+    const { onImageSelected } = this.props
+    if (onImageSelected) {
+      onImageSelected(selectedIndex)
+    }
   }
 
   renderImage = ({ item, key, index }) => {

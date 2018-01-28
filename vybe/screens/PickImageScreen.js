@@ -32,46 +32,12 @@ import { loadCameraRollImages } from "../state/device"
 class PickImageScreen extends React.Component {
   state = {
     images: [],
+    selectedImage: 0,
   }
 
   componentDidMount() {
     // this.loadCameraRollPhotos()
     this.props.loadCameraRollImages()
-  }
-
-  loadCameraRollPhotos(cursor, next) {
-    this.setState({ loadingImages: true })
-    CameraRoll.getPhotos({ first: 20 })
-      .then(result => {
-        newImages = []
-        result.edges.map(e => {
-          if (e.node && e.node.image) {
-            const {
-              image: { filename, height, uri, width },
-              location,
-              timestamp,
-            } = e.node
-            newImages.push({
-              filename,
-              height,
-              width,
-              uri,
-              location,
-              timestamp,
-            })
-          }
-        })
-
-        console.log(newImages)
-        this.setState({
-          images: _.concat(this.state.images, newImages),
-          loadingImages: false,
-        })
-      })
-      .catch(reason => {
-        console.log(reason)
-        this.setState({ loadingImages: false })
-      })
   }
 
   onLoadImage = () => {
@@ -85,17 +51,21 @@ class PickImageScreen extends React.Component {
   renderImages() {
     const { width, height } = Dimensions.get("window")
     const size = width / 5
+    const { image } = this.props
+    const { selectedImage } = this.state
+    console.log("we are on image", selectedImage)
 
     return (
       <React.Fragment>
         <Image
-          source={{ uri: _.get(this.state, "images[0].uri") }}
+          source={{ uri: _.get(this.props, `images[${selectedImage}].uri`) }}
           style={{ width: width, height: width }}
         />
         <ImageGrid
-          images={this.state.images}
+          images={this.props.images}
           imagesAcross={5}
           imageSize={size}
+          onImageSelected={selectedImage => this.setState({ selectedImage })}
         />
       </React.Fragment>
     )
@@ -111,7 +81,7 @@ class PickImageScreen extends React.Component {
         </Header>
         <Content>
           {/* <Text>Got some text here</Text> */}
-          {this.state.loadingImages
+          {this.props.loadingImages
             ? this.renderLoading()
             : this.renderImages()}
         </Content>
