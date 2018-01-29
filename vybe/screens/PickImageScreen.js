@@ -80,7 +80,6 @@ class PickImageScreen extends React.Component {
           </Body>
         </Header>
         <Content>
-          {/* <Text>Got some text here</Text> */}
           {this.props.loadingImages
             ? this.renderLoading()
             : this.renderImages()}

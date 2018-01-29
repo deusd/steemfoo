@@ -22,7 +22,7 @@ export const loadCameraRollImages = createAction(
 
 initialState = {}
 export default (state = initialState, action) => {
-  console.log("my custom action", action)
+  console.log("kick ass code", action)
   newState = cloneDeep(state)
 
   switch (action.type) {
