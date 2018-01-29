@@ -7,8 +7,7 @@
     "test": "jest",
     "ios": "react-native run-ios",
     "android-prod": "ENVFILE=.env.prod react-native run-android",
-    "build-android-prod":
-      "export ENVFILE=.env.prod && cd android && ./gradlew assembleRelease && cd .."
+    "build-android-prod": "export ENVFILE=.env.prod && cd android && ./gradlew assembleRelease && cd .."
   },
   "dependencies": {
     "@expo/vector-icons": "^6.2.2",
@@ -35,9 +34,12 @@
   "devDependencies": {
     "babel-jest": "22.1.0",
     "babel-preset-react-native": "4.0.0",
+    "chai": "^4.1.2",
+    "chai-as-promised": "^7.1.1",
     "flow-bin": "^0.63.1",
     "jest": "22.1.2",
-    "react-test-renderer": "16.2.0"
+    "react-test-renderer": "16.2.0",
+    "sinon": "^4.2.2"
   },
   "jest": {
     "preset": "react-native"
