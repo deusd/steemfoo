@@ -5,12 +5,6 @@ import { createAction } from "redux-action"
 import { resolve, reject } from "redux-simple-promise"
 import { LOAD_CAMERA_ROLL_IMAGES, SAVE_TO_CAMERA_ROLL } from "../types"
 
-// export const loadCameraRollImages = createAction(LOAD_CAMERA_ROLL_IMAGES, {
-//   promise: CameraRoll.getPhotos({
-//     first: 20,
-//   }),
-// })
-
 export const loadCameraRollImages = createAction(
   LOAD_CAMERA_ROLL_IMAGES,
   () => ({
@@ -22,7 +16,6 @@ export const loadCameraRollImages = createAction(
 
 initialState = {}
 export default (state = initialState, action) => {
-  console.log("kick ass code", action)
   newState = cloneDeep(state)
 
   switch (action.type) {

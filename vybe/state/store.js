@@ -14,7 +14,7 @@ const middlewares = [thunkMiddleware, promiseMiddleware()]
 if (__DEV__) {
   middlewares = [...middlewares, loggerMiddleware]
 }
-console.log("getting to the config", Config)
+
 // Initialize Firebase
 var config = {
   apiKey: Config.FIREBASE_API_KEY,
@@ -24,7 +24,7 @@ var config = {
   storageBucket: Config.FIREBASE_STORAGE_BUCKET,
   messagingSenderId: Config.FIREBASE_MESSAGING_SENDER_ID,
 }
-console.log("here is our awesome config", config)
+
 firebase.initializeApp(config)
 
 const composeEnhancer = composeWithDevTools({})
