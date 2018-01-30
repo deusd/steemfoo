@@ -16,7 +16,8 @@ export const loadCameraRollImages = createAction(
 
 initialState = {}
 export default (state = initialState, action) => {
-  newState = cloneDeep(state)
+  let newState = cloneDeep(state)
+  newState.error = undefined
 
   switch (action.type) {
     case LOAD_CAMERA_ROLL_IMAGES:
@@ -43,7 +44,7 @@ export default (state = initialState, action) => {
       newState = { ...newState, images, loadingImages: false }
       break
     case reject(LOAD_CAMERA_ROLL_IMAGES):
-      newState = { ...newState, loadingImages: false }
+      newState = { ...newState, loadingImages: false, error: action.payload }
     case SAVE_TO_CAMERA_ROLL:
       break
     default:

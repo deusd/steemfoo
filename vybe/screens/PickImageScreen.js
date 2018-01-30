@@ -25,9 +25,10 @@ import {
 } from "native-base"
 
 import { connect } from "react-redux"
-import * as _ from "lodash"
+import { get } from "lodash"
 import ImageGrid from "../components/ImageGrid"
 import { loadCameraRollImages } from "../state/device"
+import { uploadImage } from "../state/firebase"
 
 class PickImageScreen extends React.Component {
   state = {
@@ -40,12 +41,13 @@ class PickImageScreen extends React.Component {
     this.props.loadCameraRollImages()
   }
 
-  onLoadImage = () => {
-    Alert.alert("Wow", "stuff happened yo")
-  }
-
   renderLoading() {
     return <ActivityIndicator size="large" />
+  }
+
+  get mainImage(): string {
+    const { selectedImage } = this.state
+    return get(this.props, `images[${selectedImage}].uri`)
   }
 
   renderImages() {
@@ -58,7 +60,7 @@ class PickImageScreen extends React.Component {
     return (
       <React.Fragment>
         <Image
-          source={{ uri: _.get(this.props, `images[${selectedImage}].uri`) }}
+          source={{ uri: this.mainImage }}
           style={{ width: width, height: width }}
         />
         <ImageGrid
@@ -83,6 +85,14 @@ class PickImageScreen extends React.Component {
           {this.props.loadingImages
             ? this.renderLoading()
             : this.renderImages()}
+          <Button
+            full
+            onPress={() => {
+              this.props.uploadImage(this.mainImage)
+            }}
+          >
+            <Text>Upload image</Text>
+          </Button>
         </Content>
         <Footer>
           <FooterTab>
@@ -98,10 +108,11 @@ class PickImageScreen extends React.Component {
 
 const mapStateToProps = state => {
   const { loadingImages, images } = state.device
-  return { loadingImages, images }
+  return { loadingImages, images, firebase: state.firebase }
 }
 const mapDispatchToProps = {
   loadCameraRollImages,
+  uploadImage,
 }
 
 export default connect(mapStateToProps, mapDispatchToProps)(PickImageScreen)
