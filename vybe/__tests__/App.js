@@ -5,6 +5,7 @@ import App from "../App"
 // Note: test renderer must be required after react-native.
 import renderer from "react-test-renderer"
 
+// TODO: get snapshot tests working
 it("renders correctly", () => {
   // const tree = renderer.create(<App />).toJSON()
   // expect(tree).toMatchSnapshot()
