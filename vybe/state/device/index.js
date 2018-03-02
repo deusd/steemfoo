@@ -10,7 +10,6 @@ export const loadCameraRollImages = createAction(
   () => ({
     promise: CameraRoll.getPhotos({
       first: 20,
-      base64: true,
     }),
   })
 )
@@ -26,6 +25,7 @@ export default (state = initialState, action) => {
       break
     case resolve(LOAD_CAMERA_ROLL_IMAGES):
       const images = action.payload.edges.map(e => {
+        console.log(e.node.image)
         if (e.node && e.node.image) {
           const {
             image: { filename, height, uri, width },

@@ -46,13 +46,6 @@ class PickImageScreen extends React.Component {
 
   get mainImage(): string {
     const { selectedImage } = this.state
-    const image = get(this.props, `images[${selectedImage}].base64`)
-    console.log(`mainImage`, image)
-    return image
-  }
-
-  get mainImagePath(): string {
-    const { selectedImage } = this.state
     const image = get(this.props, `images[${selectedImage}].uri`)
     console.log("mainImagePath", image)
     return image
@@ -67,7 +60,7 @@ class PickImageScreen extends React.Component {
     return (
       <React.Fragment>
         <Image
-          source={{ uri: this.mainImagePath }}
+          source={{ uri: this.mainImage }}
           style={{ width: width, height: width }}
         />
         <ImageGrid
@@ -78,6 +71,10 @@ class PickImageScreen extends React.Component {
         />
       </React.Fragment>
     )
+  }
+
+  uploadImage = () => {
+    this.props.uploadImage(this.mainImage)
   }
 
   render() {
@@ -92,12 +89,7 @@ class PickImageScreen extends React.Component {
           {this.props.loadingImages
             ? this.renderLoading()
             : this.renderImages()}
-          <Button
-            full
-            onPress={() => {
-              this.props.uploadImage(this.mainImage)
-            }}
-          >
+          <Button full onPress={this.uploadImage}>
             <Text>Upload image</Text>
           </Button>
         </Content>
