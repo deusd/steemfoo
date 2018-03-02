@@ -8,7 +8,10 @@ import { pending, resolve, reject } from "../../utilities/reducer"
 export const uploadImage = createAction(
   FIREBASE_UPLOAD_IMAGE,
   (base64: string) => {
-    console.log("uploadImage", base64)
+    if (!base64) {
+      throw "You must provide the base64 for the image!!!"
+    }
+
     return {
       base64,
       promise: uploadPostImage(base64),
