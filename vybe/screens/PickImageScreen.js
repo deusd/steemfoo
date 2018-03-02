@@ -32,7 +32,6 @@ import { uploadImage } from "../state/firebase"
 
 class PickImageScreen extends React.Component {
   state = {
-    images: [],
     selectedImage: 0,
   }
 
@@ -47,7 +46,16 @@ class PickImageScreen extends React.Component {
 
   get mainImage(): string {
     const { selectedImage } = this.state
-    return get(this.props, `images[${selectedImage}].base64`)
+    const image = get(this.props, `images[${selectedImage}].base64`)
+    console.log(`mainImage`, image)
+    return image
+  }
+
+  get mainImagePath(): string {
+    const { selectedImage } = this.state
+    const image = get(this.props, `images[${selectedImage}].uri`)
+    console.log("mainImagePath", image)
+    return image
   }
 
   renderImages() {
@@ -55,12 +63,11 @@ class PickImageScreen extends React.Component {
     const size = width / 5
     const { image } = this.props
     const { selectedImage } = this.state
-    console.log("we are on image", selectedImage)
 
     return (
       <React.Fragment>
         <Image
-          source={{ uri: this.mainImage }}
+          source={{ uri: this.mainImagePath }}
           style={{ width: width, height: width }}
         />
         <ImageGrid

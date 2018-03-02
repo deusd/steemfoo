@@ -7,10 +7,13 @@ import { pending, resolve, reject } from "../../utilities/reducer"
 
 export const uploadImage = createAction(
   FIREBASE_UPLOAD_IMAGE,
-  (filePath: string) => ({
-    filePath,
-    promise: uploadPostImage(base64),
-  })
+  (base64: string) => {
+    console.log("uploadImage", base64)
+    return {
+      base64,
+      promise: uploadPostImage(base64),
+    }
+  }
 )
 
 const initialState = {}
