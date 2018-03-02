@@ -2,7 +2,7 @@
 import { CameraRoll } from "react-native"
 import { cloneDeep } from "lodash"
 import { createAction } from "redux-action"
-import { resolve, reject } from "redux-simple-promise"
+import { pending, resolve, reject } from "../../utilities/reducer"
 import { LOAD_CAMERA_ROLL_IMAGES, SAVE_TO_CAMERA_ROLL } from "../types"
 
 export const loadCameraRollImages = createAction(
@@ -14,13 +14,13 @@ export const loadCameraRollImages = createAction(
   })
 )
 
-initialState = {}
+const initialState = {}
 export default (state = initialState, action) => {
   let newState = cloneDeep(state)
   newState.error = undefined
 
   switch (action.type) {
-    case LOAD_CAMERA_ROLL_IMAGES:
+    case pending(LOAD_CAMERA_ROLL_IMAGES):
       newState = { ...newState, loadingImages: true }
       break
     case resolve(LOAD_CAMERA_ROLL_IMAGES):

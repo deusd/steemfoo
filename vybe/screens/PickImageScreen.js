@@ -47,7 +47,7 @@ class PickImageScreen extends React.Component {
 
   get mainImage(): string {
     const { selectedImage } = this.state
-    return get(this.props, `images[${selectedImage}].uri`)
+    return get(this.props, `images[${selectedImage}].base64`)
   }
 
   renderImages() {
