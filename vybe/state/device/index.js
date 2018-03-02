@@ -10,6 +10,7 @@ export const loadCameraRollImages = createAction(
   () => ({
     promise: CameraRoll.getPhotos({
       first: 20,
+      base64: true,
     }),
   })
 )
@@ -45,6 +46,7 @@ export default (state = initialState, action) => {
       break
     case reject(LOAD_CAMERA_ROLL_IMAGES):
       newState = { ...newState, loadingImages: false, error: action.payload }
+      break
     case SAVE_TO_CAMERA_ROLL:
       break
     default:
