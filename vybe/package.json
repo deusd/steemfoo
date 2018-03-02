@@ -7,8 +7,7 @@
     "test": "jest",
     "ios": "react-native run-ios",
     "android-prod": "ENVFILE=.env.prod react-native run-android",
-    "build-android-prod":
-      "export ENVFILE=.env.prod && cd android && ./gradlew assembleRelease && cd .."
+    "build-android-prod": "export ENVFILE=.env.prod && cd android && ./gradlew assembleRelease && cd .."
   },
   "dependencies": {
     "@expo/vector-icons": "^6.2.2",
@@ -55,6 +54,8 @@
     "transform": {
       "^.+\\.js?$": "babel-jest"
     },
-    "transformIgnorePatterns": ["!node_modules/react-runtime"]
+    "transformIgnorePatterns": [
+      "!node_modules/react-runtime"
+    ]
   }
 }
