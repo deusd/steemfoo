@@ -16,7 +16,7 @@
     }
   },
   "plugins": ["prettier", "class-property", "react"],
-  "extends": ["prettier"],
+  "extends": ["eslint:recommended", "prettier"],
   "settings": {
     "react": {
       "pragma": "React",
