@@ -1,2 +1,4 @@
 node_modules/
 vybe/.vscode/.react/
+*.code-workspace
+yarn-error.log
