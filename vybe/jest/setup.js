@@ -1,7 +1,4 @@
-import { JSDOM } from "jsdom"
-
-const jsdom = new JSDOM("<!doctype html><html><body></body></html>")
-const { window } = jsdom
+// import { JSDOM } from "jsdom"
 
 function copyProps(src, target) {
   const props = Object.getOwnPropertyNames(src)
@@ -14,6 +11,10 @@ function copyProps(src, target) {
       {}
     )
   Object.defineProperties(target, props)
+}
+
+const window = {
+  document : {}
 }
 
 global.window = window
