@@ -1,15 +1,8 @@
 //@flow
 
-import React from "react"
-import {
-  FlatList,
-  Image,
-  Dimensions,
-  StyleSheet,
-  TouchableWithoutFeedback,
-} from "react-native"
-import PropTypes from "prop-types"
-import { ImageType } from "../types"
+import React from 'react'
+import { Image, StyleSheet } from 'react-native'
+import { ImageType } from '../types'
 
 export default class ImageGrid extends React.Component<{
   images: ImageType[],
@@ -29,16 +22,16 @@ export default class ImageGrid extends React.Component<{
     }
   }
 
-  renderImage = ({ item, key, index }) => {
+  renderImage = ({ item, index }) => {
     const { uri } = item
-    const { imageSize: size, imagesAcross } = this.props
+    const { imageSize: size } = this.props
     const { selectedIndex } = this.state
 
     const customStyles = StyleSheet.create({
       image: {
         resizeMode: Image.resizeMode.cover,
         borderWidth: 1,
-        borderColor: "white",
+        borderColor: 'white',
         width: size,
         height: size,
         opacity: selectedIndex == index ? 0.25 : 1,
@@ -53,7 +46,7 @@ export default class ImageGrid extends React.Component<{
   }
 
   render() {
-    const { images, imagesAcross, imageSize } = this.props
+    const { images, imagesAcross } = this.props
     const hasImages = images && images.length > 0
 
     return hasImages ? (
@@ -71,8 +64,8 @@ export default class ImageGrid extends React.Component<{
 
 const styles = StyleSheet.create({
   grid: {
-    flexDirection: "row",
+    flexDirection: 'row',
     flex: 1,
-    width: "100%",
+    width: '100%',
   },
 })

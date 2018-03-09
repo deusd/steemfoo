@@ -1,4 +1,5 @@
-import React from "react"
+/* eslint-disable */
+import React from 'react'
 
 import {
   Platform,
@@ -9,7 +10,7 @@ import {
   Dimensions,
   Image,
   View,
-} from "react-native"
+} from 'react-native'
 import {
   ActionSheet,
   Container,
@@ -22,9 +23,8 @@ import {
   Footer,
   FooterTab,
   Icon,
-} from "native-base"
-import steem from "steem"
-import { connect } from "react-redux"
+} from 'native-base'
+import { connect } from 'react-redux'
 
 class PostsScreen extends React.Component {
   render() {
