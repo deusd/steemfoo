@@ -1,0 +1,7 @@
+{
+  "editor.formatOnSave": false,
+  "eslint.autoFixOnSave": true,
+  "javascript.validate.enable": false,
+  "eslint.packageManager": "yarn",
+  "eslint.enable": true
+}
