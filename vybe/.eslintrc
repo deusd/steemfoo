@@ -2,7 +2,8 @@
   "parser": "babel-eslint",
   "env": {
     "es6": true,
-    "node": true
+    "node": true,
+    "jest": true
   },
   "parserOptions": {
     "ecmaVersion": 2017,
@@ -26,11 +27,9 @@
   "rules": {
     "prettier/prettier": [
       "error",
-      {
-        "singleQuote": true,
-        "semi": false
-      }
+      { "singleQuote": true, "semi": false, "trailingComma": "es5" }
     ],
-    "no-undef": ["error"]
+    "no-undef": ["error"],
+    "no-trailing-spaces": "error"
   }
 }
