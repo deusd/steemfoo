@@ -1,38 +1,35 @@
 //@flow
-import { cloneDeep } from "lodash"
-import { createAction } from "redux-action"
-import { pending, resolve, reject } from "../../utilities/reducer"
-import { VYBE_GET_POSTS } from "../types"
+import { cloneDeep } from 'lodash'
+import { createAction } from 'redux-action'
+import { pending, resolve, reject } from '../../utilities/reducer'
+import { VYBE_GET_POSTS } from '../types'
+import api from '../../api'
+import { PostType, PostOptions } from '../../types'
 
-
-
-steem.api.setOptions({ url: "https://api.steemit.com" })
-steem.api.getDiscussionsByCreated(
-  {
-    tag: "steepshot",
-    limit: "30",
-  },
-  (err, result) => {
-    if (err) {
-      console.error(err)
+export const getPosts = createAction(
+  VYBE_GET_POSTS,
+  (postType: PostType, options: PostOptions) => {
+    let promise
+    switch (postType) {
+      case 'trending':
+        promise = api.getTrendingPosts(options)
+        break
+      case 'latest':
+        promise = api.getLatestPosts(options)
+        break
+      case 'hot':
+        promise = api.getHotPosts(options)
+        break
+      default:
+        throw new Error('You must provide a valid post type')
     }
-    console.log(result)
+
+    return {
+      options,
+      promise,
+    }
   }
 )
-
-type PostType = 'trending' | 'latest' | 'hot'
-export const getTrendingPosts = createAction(VYBE_GET_POSTS, (postType: PostType, startAtPermaLink: string) => {
-  switch (postType) {
-    case 'trending':
-    break;
-    case: 'lastest':
-    break;
-    case: 'hot':
-    break;
-    default:
-    throw new Error('You must provide a valid post type')
-  }
-})
 
 const initialState = {
   posts: [],
@@ -43,6 +40,12 @@ export default (state = initialState, action) => {
   let newState = cloneDeep(state)
 
   switch (action.type) {
+    case pending(VYBE_GET_POSTS):
+      break
+    case resolve(VYBE_GET_POSTS):
+      break
+    case reject(VYBE_GET_POSTS):
+      break
     default:
       break
   }
