@@ -9,7 +9,7 @@ import {
   ActivityIndicator,
   Dimensions,
   Image,
-  View,
+  View
 } from 'react-native'
 import {
   ActionSheet,

@@ -1,4 +1,4 @@
-import { PENDING, FULFILLED, REJECTED } from "redux-promise-middleware"
+import { PENDING, FULFILLED, REJECTED } from 'redux-promise-middleware'
 
 export function pending(type: string) {
   return `${type}_${PENDING}`

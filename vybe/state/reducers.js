@@ -1,7 +1,6 @@
-import { combineReducers } from "redux"
-import device from "./device"
-import firebase from "./firebase"
+import { combineReducers } from 'redux'
+import device from './device'
+import firebase from './firebase'
+import steem from './steem'
 
-const initialState = {}
-
-export default combineReducers({ device, firebase })
+export default combineReducers({ device, firebase, steem })

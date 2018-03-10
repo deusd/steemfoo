@@ -4,13 +4,13 @@
  * @flow
  */
 
-import React, { Component } from "react"
-import { Platform } from "react-native"
+import React, { Component } from 'react'
+import { Platform } from 'react-native'
 
-import { Provider } from "react-redux"
-import store from "./state/store"
-import PickImageScreen from "./screens/PickImageScreen"
-import PostsScreen from "./screens/PostsScreen"
+import { Provider } from 'react-redux'
+import store from './state/store'
+import PickImageScreen from './screens/PickImageScreen'
+import PostsScreen from './screens/PostsScreen'
 
 // disable annoying yellow box warnings
 console.disableYellowBox = true

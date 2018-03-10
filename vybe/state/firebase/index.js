@@ -1,15 +1,15 @@
-import { createAction } from "redux-action"
-import { cloneDeep } from "lodash"
-import firebase from "firebase"
-import { FIREBASE_UPLOAD_IMAGE, FIREBASE_DOWNLOAD_IMAGE } from "../types"
-import { uploadPostImage } from "../../utilities/image"
-import { pending, resolve, reject } from "../../utilities/reducer"
+import { createAction } from 'redux-action'
+import { cloneDeep } from 'lodash'
+import firebase from 'firebase'
+import { FIREBASE_UPLOAD_IMAGE, FIREBASE_DOWNLOAD_IMAGE } from '../types'
+import { uploadPostImage } from '../../utilities/image'
+import { pending, resolve, reject } from '../../utilities/reducer'
 
 export const uploadImage = createAction(
   FIREBASE_UPLOAD_IMAGE,
   (base64: string) => {
     if (!base64) {
-      throw "You must provide the base64 for the image!!!"
+      throw 'You must provide the base64 for the image!!!'
     }
 
     return {

@@ -10,10 +10,10 @@ export const convertToByteArray = input => {
 
 const atob = input => {
   const chars =
-    "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789+/="
+    'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789+/='
 
-  let str = input.replace(/=+$/, "")
-  let output = ""
+  let str = input.replace(/=+$/, '')
+  let output = ''
 
   if (str.length % 4 == 1) {
     throw new Error(

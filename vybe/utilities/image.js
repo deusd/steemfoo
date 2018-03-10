@@ -1,6 +1,6 @@
-import firebase from "firebase"
-import RNFetchBlob from "react-native-fetch-blob"
-import { convertToByteArray } from "./blob"
+import firebase from 'firebase'
+import RNFetchBlob from 'react-native-fetch-blob'
+import { convertToByteArray } from './blob'
 
 const uploadAsByteArray = (
   imagePath: string,
@@ -9,10 +9,10 @@ const uploadAsByteArray = (
 ) =>
   new Promise((resolve, reject) => {
     // use RNFB to convert asset path to byte array
-    RNFetchBlob.fs.readFile(imagePath, "base64").then(data => {
+    RNFetchBlob.fs.readFile(imagePath, 'base64').then(data => {
       // convert base64 to bytearray and send to firebase
       const pickerResultAsByteArray = convertToByteArray(data)
-      const metadata = { contentType: "image/jpeg" }
+      const metadata = { contentType: 'image/jpeg' }
       const storageRef = firebase.storage().ref()
       const imagePath = `images/${rootDir}/${imageName}.jpg`
       const ref = storageRef.child(imagePath)
@@ -20,23 +20,21 @@ const uploadAsByteArray = (
 
       // process the upload and handle the events
       uploadTask.on(
-        "state_changed",
+        'state_changed',
         snapshot => {
-          const progress = snapshot.bytesTransferred / snapshot.totalBytes * 100
-          console.log(imagePath, progress)
+          // const progress = snapshot.bytesTransferred / snapshot.totalBytes * 100
         },
         error => {
           switch (error.code) {
-            case "storage/unauthorized":
+            case 'storage/unauthorized':
               // User doesn't have permission to access the object
-              reject("Upload denied, check that you are still signed in")
+              reject('Upload denied, check that you are still signed in')
               break
-            case "storage/canceled":
+            case 'storage/canceled':
               // User canceled the upload, nothing to do here
               break
             default:
-              reject("There was an uploading your image")
-              console.error(error)
+              reject('There was an uploading your image')
               break
           }
         },
@@ -50,5 +48,5 @@ const uploadAsByteArray = (
 
 export const uploadPostImage = (imagePath: string) => {
   // const { uid } = firebase.auth().currentUser
-  return uploadAsByteArray(imagePath, "testing", "12345")
+  return uploadAsByteArray(imagePath, 'testing', '12345')
 }

@@ -1,34 +1,12 @@
-import React from "react"
+import React from 'react'
 
-import {
-  Platform,
-  StyleSheet,
-  Alert,
-  CameraRoll,
-  ActivityIndicator,
-  Dimensions,
-  Image,
-  View,
-} from "react-native"
-import {
-  ActionSheet,
-  Container,
-  Header,
-  Body,
-  Title,
-  Button,
-  Content,
-  Text,
-  Footer,
-  FooterTab,
-  Icon,
-} from "native-base"
+import { Dimensions } from 'react-native'
 
-import { connect } from "react-redux"
-import { get } from "lodash"
-import ImageGrid from "../components/ImageGrid"
-import { loadCameraRollImages } from "../state/device"
-import { uploadImage } from "../state/firebase"
+import { connect } from 'react-redux'
+import { get } from 'lodash'
+// import ImageGrid from '../components/ImageGrid'
+import { loadCameraRollImages } from '../state/device'
+import { uploadImage } from '../state/firebase'
 
 class PickImageScreen extends React.Component {
   state = {
@@ -47,15 +25,14 @@ class PickImageScreen extends React.Component {
   get mainImage(): string {
     const { selectedImage } = this.state
     const image = get(this.props, `images[${selectedImage}].uri`)
-    console.log("mainImagePath", image)
     return image
   }
 
   renderImages() {
-    const { width, height } = Dimensions.get("window")
+    const { width } = Dimensions.get('window')
     const size = width / 5
-    const { image } = this.props
-    const { selectedImage } = this.state
+    // const { image } = this.props
+    // const { selectedImage } = this.state
 
     return (
       <React.Fragment>

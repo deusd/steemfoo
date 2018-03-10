@@ -1,16 +1,17 @@
-import { AsyncStore } from "react-native"
-import { createStore, applyMiddleware, combineReducers } from "redux"
-import { createLogger } from "redux-logger"
-import thunkMiddleware from "redux-thunk"
-import promiseMiddleware from "redux-promise-middleware"
-import { composeWithDevTools } from "redux-devtools-extension/developmentOnly"
-import Config from "react-native-config"
-import firebase from "firebase"
-import reducer from "./reducers"
+// import { AsyncStore } from 'react-native'
+import { createStore, applyMiddleware, combineReducers } from 'redux'
+import { createLogger } from 'redux-logger'
+import thunkMiddleware from 'redux-thunk'
+import promiseMiddleware from 'redux-promise-middleware'
+import { composeWithDevTools } from 'redux-devtools-extension/developmentOnly'
+import Config from 'react-native-config'
+import firebase from 'firebase'
+import reducer from './reducers'
 
 const loggerMiddleware = createLogger()
 
-const middlewares = [thunkMiddleware, promiseMiddleware()]
+let middlewares = [thunkMiddleware, promiseMiddleware()]
+
 if (__DEV__) {
   middlewares = [...middlewares, loggerMiddleware]
 }
