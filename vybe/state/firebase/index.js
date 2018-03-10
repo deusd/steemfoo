@@ -19,7 +19,7 @@ export const uploadImage = createAction(
   }
 )
 
-const initialState = {}
+const initialState = { uploadingImage: false }
 export default (state = initialState, action) => {
   let newState = cloneDeep(state)
   switch (action.type) {
