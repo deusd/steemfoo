@@ -38,21 +38,28 @@ const initialState = {
 
 export default (state = initialState, action) => {
   let newState = cloneDeep(state)
-
   switch (action.type) {
     case pending(VYBE_GET_POSTS):
       newState = { ...newState, isLoadingPosts: true, error: undefined }
       break
-    case resolve(VYBE_GET_POSTS):
+    case resolve(VYBE_GET_POSTS): {
+      const posts = state.posts
+      const newPosts = action.payload.data
+
       newState = {
         ...newState,
         isLoadingPosts: false,
-        data: state.date.concat(action.payload.data),
+        posts: [...posts, ...newPosts],
         error: undefined,
       }
       break
+    }
     case reject(VYBE_GET_POSTS):
-      newState = { ...newState, isLoadingPosts: false, error: action.payload }
+      newState = {
+        ...newState,
+        isLoadingPosts: false,
+        error: action.payload.error,
+      }
       break
     default:
       break

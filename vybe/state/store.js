@@ -30,12 +30,13 @@ firebase.initializeApp(config)
 
 const composeEnhancer = composeWithDevTools({})
 
-function configureStore(initialState) {
+const initialState = {}
+function configureStore() {
   const enhancer = composeEnhancer(applyMiddleware(...middlewares))
 
   return createStore(reducer, enhancer)
 }
 
-const store = configureStore({})
+const store = configureStore(initialState)
 
 export default store
