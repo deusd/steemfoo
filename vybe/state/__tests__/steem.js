@@ -13,12 +13,10 @@ describe('steem tests', () => {
       expect(getPosts('fakemethodtype')).toThrow()
     })
 
-    // describe('when called with trending', () => {
-    //   it('should return action with promise', () => {
-    //     const action = getPosts('trending', options)
-    //     expect(action).toHaveProperty('promise')
-    //     expect(action.options).toMatchObject(options)
-    //   })
-    // })
+    it('should not throw when called with a know post type', () => {
+      expect(getPosts('latest')).not.toThrow()
+      expect(getPosts('trending')).not.toThrow()
+      expect(getPosts('hot')).not.toThrow()
+    })
   })
 })
