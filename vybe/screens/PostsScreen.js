@@ -28,8 +28,23 @@ import { connect } from 'react-redux'
 import { getPosts } from "../state/steem";
 
 class PostsScreen extends React.Component {
+  componentDidMount()  {
+    this.props.getPosts("latest", { tag: "steepshot", limit: 20 });
+  }
+
+  showLoadingPosts() {
+      return (<React.Fragment><Text>Loading posts<ActivityIndicator/></Text></React.Fragment>);
+  }
+
+  showPosts() {
+    return <Text>{this.props.posts}</Text>
+  }
+
   render() {
-    this.props.getPosts('latest', {tag: 'steepshot', limit: 20})
+    const {
+      isLoadingPosts,
+      posts
+    } = this.props
 
     return (
       <Container>
@@ -40,7 +55,7 @@ class PostsScreen extends React.Component {
         </Header>
         <Content>
           <Body>
-            <Text>Welcome to the posts screen</Text>
+            {isLoadingPosts ? this.showLoadingPosts() : this.showPosts()}
           </Body>
         </Content>
       </Container>
@@ -48,8 +63,8 @@ class PostsScreen extends React.Component {
   }
 }
 
-const mapStateToProps = state => ({
-
+const mapStateToProps = ({steem}) => ({
+  ...steem
 })
 const mapDispatchToProps = {
   getPosts
