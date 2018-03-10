@@ -2,6 +2,7 @@
 import { cloneDeep } from 'lodash'
 import { createAction } from 'redux-action'
 import { pending, resolve, reject } from '../../utilities/reducer'
+import { formatPost } from '../../utilities/post'
 import { VYBE_GET_POSTS } from '../types'
 import api from '../../api'
 import { PostType, PostOptions } from '../../types'
@@ -49,7 +50,7 @@ export default (state = initialState, action) => {
       newState = {
         ...newState,
         isLoadingPosts: false,
-        posts: [...posts, ...newPosts],
+        posts: [...posts, newPosts.map(post => formatPost(post))],
         error: undefined,
       }
       break

@@ -22,3 +22,22 @@ export type PostOptions = {
   startAtPermaLink: string,
   limit: number,
 }
+
+export type Vote = {
+  voter: string,
+  time: Date,
+}
+
+export type Post = {
+  title: string,
+  author: string,
+  id: number,
+  metadata: Object,
+  votes: Array<Vote>,
+  url: string,
+  created: Date,
+  last_update: Date,
+  active: Date,
+  category: string,
+  permalink: string,
+}

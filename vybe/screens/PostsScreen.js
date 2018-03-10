@@ -37,7 +37,7 @@ class PostsScreen extends React.Component {
   }
 
   showPosts() {
-    return <Text>{this.props.posts}</Text>
+    return <Text>{this.props.posts.toString()}</Text>
   }
 
   render() {
