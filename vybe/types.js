@@ -20,5 +20,5 @@ export type PostType = 'trending' | 'latest' | 'hot'
 export type PostOptions = {
   tag: string,
   startAtPermaLink: string,
-  limit: string,
+  limit: number,
 }

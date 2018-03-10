@@ -41,10 +41,18 @@ export default (state = initialState, action) => {
 
   switch (action.type) {
     case pending(VYBE_GET_POSTS):
+      newState = { ...newState, isLoadingPosts: true, error: undefined }
       break
     case resolve(VYBE_GET_POSTS):
+      newState = {
+        ...newState,
+        isLoadingPosts: false,
+        data: state.date.concat(action.payload.data),
+        error: undefined,
+      }
       break
     case reject(VYBE_GET_POSTS):
+      newState = { ...newState, isLoadingPosts: false, error: action.payload }
       break
     default:
       break

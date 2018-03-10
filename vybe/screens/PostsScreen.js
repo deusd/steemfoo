@@ -25,9 +25,12 @@ import {
   Icon,
 } from 'native-base'
 import { connect } from 'react-redux'
+import { getPosts } from "../state/steem";
 
 class PostsScreen extends React.Component {
   render() {
+    this.props.getPosts('latest', {tag: 'steepshot', limit: 20})
+
     return (
       <Container>
         <Header>
@@ -45,4 +48,10 @@ class PostsScreen extends React.Component {
   }
 }
 
-export default connect()(PostsScreen)
+const mapStateToProps = state => ({
+
+})
+const mapDispatchToProps = {
+  getPosts
+}
+export default connect(mapStateToProps, mapDispatchToProps)(PostsScreen)
