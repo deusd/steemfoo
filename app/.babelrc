@@ -1,9 +1,0 @@
-{
-  "presets": ["babel-preset-expo", "react-native", "flow"],
-  "env": {
-    "development": {
-      "plugins": ["transform-decorators-legacy", "transform-react-jsx-source"]
-    }
-  },
-  "retainLines": true
-}
