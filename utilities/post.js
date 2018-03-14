@@ -1,3 +1,4 @@
+import moment from 'moment'
 import { Post } from '../types'
 
 export function formatPost(post): Post {
@@ -7,9 +8,9 @@ export function formatPost(post): Post {
     id: post.id,
     metadata: JSON.parse(post.json_metadata || '{}'),
     url: post.url,
-    created: new Date(post.created),
-    last_update: new Date(post.last_update),
-    active: new Date(post.active),
+    created: moment(post.created),
+    last_update: moment(post.last_update),
+    active: moment(post.active),
     category: post.category,
     permalink: post.permlink,
   }

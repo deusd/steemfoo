@@ -44,13 +44,13 @@ export default (state = initialState, action) => {
       newState = { ...newState, isLoadingPosts: true, error: undefined }
       break
     case resolve(VYBE_GET_POSTS): {
-      const posts = state.posts
+      const posts = newState.posts
       const newPosts = action.payload.data
 
       newState = {
         ...newState,
         isLoadingPosts: false,
-        posts: [...posts, newPosts.map(post => formatPost(post))],
+        posts: posts.concat(newPosts.map(post => formatPost(post))),
         error: undefined,
       }
       break

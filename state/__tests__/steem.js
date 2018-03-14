@@ -1,6 +1,6 @@
 import steem, { getPosts } from '../steem'
-import { pending, resolve, reject } from '../../utilities/reducer'
-import { VYBE_GET_POSTS } from '../../types'
+import fixture from '../steem/fixture'
+import { formatPost } from '../../utilities/post.js'
 
 jest.mock('axios')
 
@@ -40,13 +40,13 @@ describe('steem tests', () => {
     })
 
     it(`should handle VYBE_GET_POSTS_FULFILLED`, () => {
-      const data = [1, 2, 3]
+      const data = fixture.posts
       const action = { type: 'VYBE_GET_POSTS_FULFILLED', payload: { data } }
+      const state = steem(undefined, action)
 
-      expect(steem(undefined, action)).toEqual({
-        posts: data,
-        isLoadingPosts: false,
-      })
+      expect(state.posts).toEqual(data.map(post => formatPost(post)))
+      expect(state.isLoadingPosts).toBe(false)
+      expect(state.error).toBeUndefined()
     })
 
     it(`should handle VYBE_GET_POSTS_REJECTED`, () => {

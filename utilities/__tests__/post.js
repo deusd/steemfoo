@@ -1,3 +1,4 @@
+import moment from 'moment'
 import { formatPost } from '../post'
 
 const post = {
@@ -109,9 +110,9 @@ describe('post tests', () => {
         app: 'steepshot/0.1.2.10',
       },
       url: post.url,
-      created: new Date('2018-03-10T18:59:51'),
-      last_update: new Date('2018-03-10T18:59:51'),
-      active: new Date('2018-03-10T18:59:51'),
+      created: moment('2018-03-10T18:59:51'),
+      last_update: moment('2018-03-10T18:59:51'),
+      active: moment('2018-03-10T18:59:51'),
       category: 'leopard',
       permalink: '20180310t185920673z-post',
     })
