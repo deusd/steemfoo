@@ -5156,9 +5156,9 @@ react-native@^0.54.0-rc.4:
     xmldoc "^0.4.0"
     yargs "^9.0.0"
 
-react-navigation@^2.0.0-alpha.3:
-  version "2.0.0-alpha.3"
-  resolved "https://registry.yarnpkg.com/react-navigation/-/react-navigation-2.0.0-alpha.3.tgz#9756e338cbd1a42a0420a8bafd416a5d1d50c0cb"
+react-navigation@^2.0.0-alpha.4:
+  version "2.0.0-alpha.4"
+  resolved "https://registry.yarnpkg.com/react-navigation/-/react-navigation-2.0.0-alpha.4.tgz#10ad126198e9c40e393751d466ae14a30bc3183f"
   dependencies:
     clamp "^1.0.1"
     hoist-non-react-statics "^2.2.0"
@@ -5703,9 +5703,9 @@ simple-swizzle@^0.2.2:
   dependencies:
     is-arrayish "^0.3.1"
 
-sinon@^4.4.4:
-  version "4.4.4"
-  resolved "https://registry.yarnpkg.com/sinon/-/sinon-4.4.4.tgz#113199a29ece8a394ea71bac77c5db0a4733c9b5"
+sinon@^4.4.6:
+  version "4.4.6"
+  resolved "https://registry.yarnpkg.com/sinon/-/sinon-4.4.6.tgz#0b21ce56f1b11015749a82a3bbde2f46b78ec0e1"
   dependencies:
     "@sinonjs/formatio" "^2.0.0"
     diff "^3.1.0"
