@@ -35,9 +35,11 @@ export type Post = {
   metadata: Object,
   votes: Array<Vote>,
   url: string,
+  imageUrl: string,
   created: Date,
   last_update: Date,
   active: Date,
   category: string,
   permalink: string,
+  location: string,
 }

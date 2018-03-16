@@ -1,5 +1,5 @@
 /* eslint-disable */
-import React from 'react'
+import React from "react";
 
 import {
   Platform,
@@ -10,7 +10,7 @@ import {
   Dimensions,
   Image,
   View
-} from 'react-native'
+} from "react-native";
 import {
   ActionSheet,
   Container,
@@ -23,28 +23,54 @@ import {
   Footer,
   FooterTab,
   Icon,
-} from 'native-base'
-import { connect } from 'react-redux'
+  Card,
+  CardItem
+} from "native-base";
+import { connect } from "react-redux";
 import { getPosts } from "../state/steem";
+import { Post } from "../types";
 
 class PostsScreen extends React.Component {
-  componentDidMount()  {
+  componentDidMount() {
     this.props.getPosts("latest", { tag: "steepshot", limit: 20 });
   }
 
   showLoadingPosts() {
-      return (<React.Fragment><Text>Loading posts<ActivityIndicator/></Text></React.Fragment>);
+    return (
+      <View style={{ flex: 1, justifyContent: "center", alignItems: "center" }}>
+        <Text>
+          Loading posts<ActivityIndicator />
+        </Text>
+      </View>
+    );
+  }
+
+  renderPost(post: Post) {
+    return (
+      <View key={post.id}>
+        <View>
+          <Text>{post.author}</Text>
+          {post.location && <Text>{post.location}</Text>}
+        </View>
+        <Image
+          style={{ width: "100%", aspectRatio: 1 }}
+          src={{ uri: post.imageUrl }}
+        />
+        <View>
+          <Text>{post.author}</Text>
+          <Text>{post.title}</Text>
+          {post.votes && <Text>{post.votes.length} likes</Text>}
+        </View>
+      </View>
+    );
   }
 
   showPosts() {
-    return <Text>{this.props.posts.toString()}</Text>
+    return <View>{this.props.posts.map(this.renderPost)}</View>;
   }
 
   render() {
-    const {
-      isLoadingPosts,
-      posts
-    } = this.props
+    const { isLoadingPosts, posts } = this.props;
 
     return (
       <Container>
@@ -59,14 +85,14 @@ class PostsScreen extends React.Component {
           </Body>
         </Content>
       </Container>
-    )
+    );
   }
 }
 
-const mapStateToProps = ({steem}) => ({
+const mapStateToProps = ({ steem }) => ({
   ...steem
-})
+});
 const mapDispatchToProps = {
   getPosts
-}
-export default connect(mapStateToProps, mapDispatchToProps)(PostsScreen)
+};
+export default connect(mapStateToProps, mapDispatchToProps)(PostsScreen);
