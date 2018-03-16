@@ -4,7 +4,7 @@ import PropTypes from 'prop-types'
 
 class Row extends React.Component {
   static propTypes = {
-    children: PropTypes.node.isRequired(),
+    children: PropTypes.node.isRequired,
     style: PropTypes.object,
   }
 
@@ -14,7 +14,7 @@ class Row extends React.Component {
 
   render() {
     return (
-      <View style={{ flexDirection: 'row', ...this.props.style }}>
+      <View style={[{ flexDirection: 'row' }, this.props.style]}>
         {this.props.children}
       </View>
     )

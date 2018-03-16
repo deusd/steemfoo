@@ -4,7 +4,7 @@ import PropTypes from 'prop-types'
 
 class Columns extends React.Component {
   static propTypes = {
-    children: PropTypes.node.isRequired(),
+    children: PropTypes.node.isRequired,
     style: PropTypes.object,
   }
 
@@ -13,11 +13,7 @@ class Columns extends React.Component {
   }
 
   render() {
-    return (
-      <View style={{ flexDirection: 'column', ...this.props.style }}>
-        {this.props.children}
-      </View>
-    )
+    return <View style={this.props.style}>{this.props.children}</View>
   }
 }
 
