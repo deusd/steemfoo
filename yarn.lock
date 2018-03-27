@@ -337,13 +337,6 @@
     lodash "^4.2.0"
     to-fast-properties "^2.0.0"
 
-"@expo/vector-icons@^6.2.2":
-  version "6.3.1"
-  resolved "https://registry.yarnpkg.com/@expo/vector-icons/-/vector-icons-6.3.1.tgz#ffb97cc2343e4a330b44ce3063ee7c8571a6a50d"
-  dependencies:
-    lodash "^4.17.4"
-    react-native-vector-icons "4.5.0"
-
 "@firebase/app-types@0.1.2":
   version "0.1.2"
   resolved "https://registry.yarnpkg.com/@firebase/app-types/-/app-types-0.1.2.tgz#a20cb346e3be374c0bdee6b102de0ea5e8e6fa27"
@@ -5145,14 +5138,13 @@ react-native-safe-area-view@^0.7.0:
   dependencies:
     hoist-non-react-statics "^2.3.1"
 
-react-native-tab-view@^0.0.74, "react-native-tab-view@github:react-navigation/react-native-tab-view":
+react-native-tab-view@^0.0.74, react-native-tab-view@react-navigation/react-native-tab-view:
   version "0.0.74"
-  uid "36ebd834d78b841fc19778c966465d02fd1213bb"
   resolved "https://codeload.github.com/react-navigation/react-native-tab-view/tar.gz/36ebd834d78b841fc19778c966465d02fd1213bb"
   dependencies:
     prop-types "^15.6.0"
 
-react-native-vector-icons@4.5.0:
+react-native-vector-icons@^4.5.0:
   version "4.5.0"
   resolved "https://registry.yarnpkg.com/react-native-vector-icons/-/react-native-vector-icons-4.5.0.tgz#6b95619e64f62f05f579f74a01fe5640df95158b"
   dependencies:
@@ -5235,7 +5227,7 @@ react-navigation-deprecated-tab-navigator@1.0.1:
   version "1.0.1"
   resolved "https://registry.yarnpkg.com/react-navigation-deprecated-tab-navigator/-/react-navigation-deprecated-tab-navigator-1.0.1.tgz#a869d749d16116630411d6c7761c51484ba90175"
   dependencies:
-    react-native-tab-view "github:react-navigation/react-native-tab-view"
+    react-native-tab-view react-navigation/react-native-tab-view
 
 react-navigation-tabs@0.1.0-alpha.3:
   version "0.1.0-alpha.3"
