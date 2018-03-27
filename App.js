@@ -4,22 +4,22 @@
  * @flow
  */
 
-import React, { Component } from 'react'
-
-import { Provider } from 'react-redux'
-import store from './state/store'
+import React from 'react'
+import ApolloClient from 'apollo-boost'
+import { ApolloProvider } from 'react-apollo'
 import PostsScreen from './screens/PostsScreen'
 
 // disable annoying yellow box warnings
-console.disableYellowBox = true  // eslint-disable-line
+console.disableYellowBox = true;  // eslint-disable-line
 
-export default class App extends Component<{}> {
-  render() {
-    return (
-      <Provider store={store}>
-        {/* <PickImageScreen /> */}
-        <PostsScreen />
-      </Provider>
-    )
-  }
-}
+const client = new ApolloClient({
+  uri: 'https://us-central1-vybe-6b570.cloudfunctions.net/api/graphql',
+})
+
+const App = () => (
+  <ApolloProvider client={client}>
+    <PostsScreen />
+  </ApolloProvider>
+)
+
+export default App
