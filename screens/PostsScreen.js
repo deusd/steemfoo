@@ -4,6 +4,7 @@ import { StyleSheet, ActivityIndicator, Image, View, Text } from 'react-native'
 import { Container, Header, Body, Title, Content } from 'native-base'
 import { Query } from 'react-apollo'
 import gql from 'graphql-tag'
+import numeral from 'numeral'
 import Row from '../components/layouts/Row'
 import Column from '../components/layouts/Column'
 
@@ -47,7 +48,7 @@ const Post = props => (
         {props.title}
       </Text>
 
-      {props.votes && <Text>{props.votes.length} likes</Text>}
+      {props.votes && <Text>{numeral(props.votes.length).format('0,0')} likes</Text>}
     </View>
   </View>
 )
@@ -69,6 +70,9 @@ const PostsContent = () => (
           author
           created
           imageUrl
+          votes {
+            voter
+          }
         }
       }
     `}
