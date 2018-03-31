@@ -1,30 +1,40 @@
 import React from 'react'
 
-import { StyleSheet, ActivityIndicator, Image, View, Text } from 'react-native'
+import {
+  StyleSheet,
+  ActivityIndicator,
+  View,
+  Text,
+  FlatList,
+} from 'react-native'
 import { Container, Header, Body, Title, Content } from 'native-base'
 import { Query } from 'react-apollo'
 import gql from 'graphql-tag'
 import numeral from 'numeral'
+import Icon from 'react-native-vector-icons/FontAwesome'
+import Image from 'react-native-image-progress'
 import Row from '../components/layouts/Row'
 import Column from '../components/layouts/Column'
 
-const Post = props => (
-  <View key={props.id}>
+const iconSize = 24
+
+const Post = ({ post }) => (
+  <View key={post.id}>
     <Row style={[styles.container, styles.header]}>
       <Image
         style={{
           width: 50,
           aspectRatio: 1,
-          resizeMethod: 'contain',
-          borderRadius: 25,
+          resizeMethod: 'cover',
         }}
+        borderRadius={25}
         source={{
           uri:
             'https://images.unsplash.com/photo-1445404590072-16ef9c18bd83?ixlib=rb-0.3.5&ixid=eyJhcHBfaWQiOjEyMDd9&s=f680f7ae6fcc0dea32872ad2b6c8f722&auto=format&fit=crop&w=500&q=80',
         }}
       />
       <Column style={{ flex: 1, paddingLeft: 6 }}>
-        <Text style={styles.author}>{props.author}</Text>
+        <Text style={styles.author}>{post.author}</Text>
         <Row style={{ justifyContent: 'space-between' }}>
           <Text style={styles.fontBasic}>somewhere you wish your were</Text>
           <Text style={styles.fontBasicDimmed}>3 days ago</Text>
@@ -35,20 +45,39 @@ const Post = props => (
       style={{
         width: '100%',
         aspectRatio: 1,
-        resizeMethod: 'cover',
+        resizeMethod: 'contain',
       }}
       source={{
         uri:
-          'https://images.unsplash.com/photo-1445404590072-16ef9c18bd83?ixlib=rb-0.3.5&ixid=eyJhcHBfaWQiOjEyMDd9&s=f680f7ae6fcc0dea32872ad2b6c8f722&auto=format&fit=crop&w=500&q=80',
+          post.imageUrl ||
+          'http://www.bsmc.net.au/wp-content/uploads/No-image-available.jpg',
       }}
     />
+    <Row style={{ padding: 10 }}>
+      <Row style={{ flex: 1, alignItems: 'flex-start' }}>
+        <Icon name="heart-o" size={iconSize} />
+        <Icon name="comment-o" size={iconSize} style={{ marginLeft: 16 }} />
+      </Row>
+      <View style={{ flex: 1, alignItems: 'center' }}>
+        <Text style={{ fontSize: 22 }}>{post.value}</Text>
+      </View>
+      <View style={{ flex: 1, alignItems: 'flex-end' }}>
+        <Icon name="retweet" size={iconSize} />
+      </View>
+    </Row>
+    <Row style={{ justifyContent: 'space-between', paddingHorizontal: 10 }}>
+      <Text style={styles.likeRepostText}>
+        {numeral(post.votes.length).format('0,0')} likes
+      </Text>
+      <Text style={styles.likeRepostText}>
+        {numeral(1234).format('0,0')} Resteems
+      </Text>
+    </Row>
     <View style={styles.container}>
       <Text style={styles.fontBasic}>
-        <Text style={{ fontWeight: 'bold' }}>{props.author} </Text>
-        {props.title}
+        <Text style={{ fontWeight: 'bold' }}>{post.author} </Text>
+        {post.title}
       </Text>
-
-      {props.votes && <Text>{numeral(props.votes.length).format('0,0')} likes</Text>}
     </View>
   </View>
 )
@@ -56,7 +85,7 @@ const Post = props => (
 const Loading = () => (
   <View style={{ flex: 1, justifyContent: 'center', alignItems: 'center' }}>
     <Text>
-      Loading posts<ActivityIndicator />
+      Loading posts <ActivityIndicator />
     </Text>
   </View>
 )
@@ -66,11 +95,14 @@ const PostsContent = () => (
     query={gql`
       {
         posts(postType: TRENDING, limit: 20) {
+          id
           title
           author
           created
           imageUrl
+          value
           votes {
+            time
             voter
           }
         }
@@ -88,7 +120,13 @@ const PostsContent = () => (
           </View>
         )
 
-      return data.posts.map(post => <Post key={post.id} {...post} />)
+      return (
+        <FlatList
+          data={data.posts}
+          renderItem={({ item }) => <Post post={item} />}
+          keyExtractor={item => item.id}
+        />
+      )
     }}
   </Query>
 )
@@ -131,6 +169,9 @@ const styles = StyleSheet.create({
     borderBottomWidth: StyleSheet.hairlineWidth,
     borderBottomColor: '#F2F2F2',
     alignItems: 'center',
+  },
+  likeRepostText: {
+    fontSize: 14,
   },
 })
 
