@@ -4561,9 +4561,9 @@ native-base-shoutem-theme@0.2.2:
     lodash "^4.10.1"
     prop-types "^15.5.10"
 
-native-base@^2.3.10:
-  version "2.3.10"
-  resolved "https://registry.yarnpkg.com/native-base/-/native-base-2.3.10.tgz#01f0e9b1ab5f4fcd3b9c04b19743d589fa444176"
+native-base@^2.4.1:
+  version "2.4.1"
+  resolved "https://registry.yarnpkg.com/native-base/-/native-base-2.4.1.tgz#2fca37b85a0a0f631c647c6be6837e879c9a9c82"
   dependencies:
     blueimp-md5 "^2.5.0"
     clamp "^1.0.1"
@@ -5382,9 +5382,9 @@ react-navigation-tabs@0.1.0-alpha.3:
     react-native-safe-area-view "^0.7.0"
     react-native-tab-view "^0.0.74"
 
-react-navigation@^2.0.0-beta.5:
-  version "2.0.0-beta.5"
-  resolved "https://registry.yarnpkg.com/react-navigation/-/react-navigation-2.0.0-beta.5.tgz#948f930189158d3e20c750f69533607350319fac"
+react-navigation@^2.0.0-beta.6:
+  version "2.0.0-beta.6"
+  resolved "https://registry.yarnpkg.com/react-navigation/-/react-navigation-2.0.0-beta.6.tgz#49777573f9a4f8f56c44a14f149797ee5da4241a"
   dependencies:
     clamp "^1.0.1"
     create-react-context "^0.2.1"
@@ -5935,9 +5935,9 @@ simple-swizzle@^0.2.2:
   dependencies:
     is-arrayish "^0.3.1"
 
-sinon@^4.4.8:
-  version "4.4.8"
-  resolved "https://registry.yarnpkg.com/sinon/-/sinon-4.4.8.tgz#0479e0ccb8caa0d737ce9773c8d53d57d38f2d84"
+sinon@^4.4.9:
+  version "4.4.9"
+  resolved "https://registry.yarnpkg.com/sinon/-/sinon-4.4.9.tgz#0792a2a5171eb0cf242edacb0eba3898b8b4297f"
   dependencies:
     "@sinonjs/formatio" "^2.0.0"
     diff "^3.1.0"
