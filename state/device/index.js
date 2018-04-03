@@ -17,6 +17,7 @@ export const loadCameraRollImages = createAction(
 const initialState = {}
 export default (state = initialState, action) => {
   let newState = cloneDeep(state)
+  let images
   newState.error = undefined
 
   switch (action.type) {
@@ -24,7 +25,7 @@ export default (state = initialState, action) => {
       newState = { ...newState, loadingImages: true }
       break
     case resolve(LOAD_CAMERA_ROLL_IMAGES):
-      const images = action.payload.edges.map(edge => {
+      images = action.payload.edges.map(edge => {
         if (edge.node && edge.node.image) {
           const {
             image: { filename, height, uri, width },

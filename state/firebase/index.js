@@ -1,6 +1,5 @@
 import { createAction } from 'redux-action'
 import { cloneDeep } from 'lodash'
-import firebase from 'firebase'
 import { FIREBASE_UPLOAD_IMAGE, FIREBASE_DOWNLOAD_IMAGE } from '../types'
 import { uploadPostImage } from '../../utilities/image'
 import { pending, resolve, reject } from '../../utilities/reducer'
