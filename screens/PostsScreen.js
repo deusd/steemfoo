@@ -1,5 +1,5 @@
 // @flow
-import React from 'react'
+import React, { Fragment } from 'react'
 
 import {
   StyleSheet,
@@ -67,11 +67,22 @@ const Post = ({ post }: Props) => (
     <Row style={[styles.container, styles.header]}>
       <ProfileImageThumb profileImage={post.authorAccount.profileImage} />
       <Column style={{ flex: 1, paddingLeft: 6 }}>
-        <Text style={styles.author}>{post.author}</Text>
-        <Row style={{ justifyContent: 'space-between' }}>
-          <Text style={styles.fontBasic}>somewhere you wish your were</Text>
-          <Text style={styles.fontBasicDimmed}>3 days ago</Text>
-        </Row>
+        {post.authorAccount.location ? (
+          <Fragment>
+            <Text style={styles.author}>{post.author}</Text>
+            <Row style={{ justifyContent: 'space-between' }}>
+              <Text style={styles.fontBasic}>
+                {post.authorAccount.location}
+              </Text>
+              <Text style={styles.fontBasicDimmed}>3 days ago</Text>
+            </Row>
+          </Fragment>
+        ) : (
+          <Row style={{ justifyContent: 'space-between' }}>
+            <Text style={styles.author}>{post.author}</Text>
+            <Text style={styles.fontBasicDimmed}>3 days ago</Text>
+          </Row>
+        )}
       </Column>
     </Row>
     <Image
