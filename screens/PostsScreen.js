@@ -1,3 +1,4 @@
+// @flow
 import React from 'react'
 
 import {
@@ -7,7 +8,7 @@ import {
   Text,
   FlatList,
 } from 'react-native'
-import { Container, Header, Body, Title, Content } from 'native-base'
+import { Container, Content } from 'native-base'
 import { Query } from 'react-apollo'
 import gql from 'graphql-tag'
 import numeral from 'numeral'
@@ -15,10 +16,50 @@ import Icon from 'react-native-vector-icons/FontAwesome'
 import Image from 'react-native-image-progress'
 import Row from '../components/layouts/Row'
 import Column from '../components/layouts/Column'
+import ApolloWrapper from '../components/ApolloWrapper'
 
 const iconSize = 24
 
-const Post = ({ post }) => (
+type Vote = {
+  voter: string,
+  time: string,
+}
+
+type Account = {
+  id: number,
+  name: string,
+  created: string,
+  profileImage: string,
+  coverImage: string,
+  about: string,
+  location: string,
+}
+
+type PostType = {
+  title: string,
+  author: string,
+  authorAccount: Account,
+  id: number,
+  metadata: any,
+  votes: [Vote],
+  url: string,
+  imageUrl: string,
+  created: string,
+  lastUpdate: string,
+  active: string,
+  category: string,
+  permalink: string,
+  location: string,
+  profileImage: string,
+  value: string,
+  reposts: number,
+}
+
+type Props = {
+  post: PostType,
+}
+
+const Post = ({ post }: Props) => (
   <View key={post.id}>
     <Row style={[styles.container, styles.header]}>
       <Image
@@ -133,11 +174,6 @@ const PostsContent = () => (
 
 const PostsScreen = () => (
   <Container>
-    <Header>
-      <Body>
-        <Title>VYBE</Title>
-      </Body>
-    </Header>
     <Content>
       <PostsContent />
     </Content>
@@ -175,4 +211,4 @@ const styles = StyleSheet.create({
   },
 })
 
-export default PostsScreen
+export default ApolloWrapper(PostsScreen)
