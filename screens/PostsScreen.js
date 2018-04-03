@@ -17,6 +17,7 @@ import Image from 'react-native-image-progress'
 import Row from '../components/layouts/Row'
 import Column from '../components/layouts/Column'
 import ApolloWrapper from '../components/ApolloWrapper'
+import ProfileImageThumb from '../components/ProfileImageThumb'
 
 const iconSize = 24
 
@@ -62,19 +63,7 @@ type Props = {
 const Post = ({ post }: Props) => (
   <View key={post.id}>
     <Row style={[styles.container, styles.header]}>
-      <Image
-        style={{
-          width: 50,
-          aspectRatio: 1,
-        }}
-        resizeMode={'cover'}
-        borderRadius={6}
-        source={{
-          uri:
-            post.authorAccount.profileImage ||
-            'http://www.bsmc.net.au/wp-content/uploads/No-image-available.jpg',
-        }}
-      />
+      <ProfileImageThumb profileImage={post.authorAccount.profileImage} />
       <Column style={{ flex: 1, paddingLeft: 6 }}>
         <Text style={styles.author}>{post.author}</Text>
         <Row style={{ justifyContent: 'space-between' }}>
