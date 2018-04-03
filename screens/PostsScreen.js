@@ -54,6 +54,8 @@ type PostType = {
   profileImage: string,
   value: string,
   reposts: number,
+  voteCount: number,
+  commentCount: number,
 }
 
 type Props = {
@@ -98,7 +100,7 @@ const Post = ({ post }: Props) => (
     </Row>
     <Row style={{ justifyContent: 'space-between', paddingHorizontal: 10 }}>
       <Text style={styles.likeRepostText}>
-        {numeral(post.votes.length).format('0,0')} likes
+        {numeral(post.voteCount).format('0,0')} likes
       </Text>
       <Text style={styles.likeRepostText}>
         {numeral(1234).format('0,0')} Resteems
@@ -137,10 +139,8 @@ const PostsContent = () => (
           created
           imageUrl
           value
-          votes {
-            voter
-            time
-          }
+          voteCount
+          commentCount
         }
       }
     `}
