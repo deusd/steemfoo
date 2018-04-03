@@ -66,12 +66,13 @@ const Post = ({ post }: Props) => (
         style={{
           width: 50,
           aspectRatio: 1,
-          resizeMethod: 'cover',
         }}
-        borderRadius={25}
+        resizeMode={'cover'}
+        borderRadius={6}
         source={{
           uri:
-            'https://images.unsplash.com/photo-1445404590072-16ef9c18bd83?ixlib=rb-0.3.5&ixid=eyJhcHBfaWQiOjEyMDd9&s=f680f7ae6fcc0dea32872ad2b6c8f722&auto=format&fit=crop&w=500&q=80',
+            post.authorAccount.profileImage ||
+            'http://www.bsmc.net.au/wp-content/uploads/No-image-available.jpg',
         }}
       />
       <Column style={{ flex: 1, paddingLeft: 6 }}>
@@ -86,8 +87,8 @@ const Post = ({ post }: Props) => (
       style={{
         width: '100%',
         aspectRatio: 1,
-        resizeMethod: 'contain',
       }}
+      resizeMode={'cover'}
       source={{
         uri:
           post.imageUrl ||
@@ -139,12 +140,17 @@ const PostsContent = () => (
           id
           title
           author
+          authorAccount {
+            id
+            name
+            profileImage
+          }
           created
           imageUrl
           value
           votes {
-            time
             voter
+            time
           }
         }
       }
