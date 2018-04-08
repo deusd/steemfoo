@@ -20,6 +20,8 @@ import ApolloWrapper from '../components/ApolloWrapper'
 import ProfileImageThumb from '../components/ProfileImageThumb'
 
 const iconSize = 24
+import Loading from '../components/Loading'
+import PageContainer from '../components/PageContainer'
 
 type Vote = {
   voter: string,
@@ -126,15 +128,7 @@ const Post = ({ post }: Props) => (
   </View>
 )
 
-const Loading = () => (
-  <View style={{ flex: 1, justifyContent: 'center', alignItems: 'center' }}>
-    <Text>
-      Loading posts <ActivityIndicator />
-    </Text>
-  </View>
-)
-
-const PostsContent = () => (
+const PostsContent = props => (
   <Query
     query={gql`
       {
@@ -178,13 +172,15 @@ const PostsContent = () => (
   </Query>
 )
 
-const PostsScreen = () => (
-  <Container>
-    <Content>
-      <PostsContent />
-    </Content>
-  </Container>
-)
+class PostsScreen extends React.Component {
+  render() {
+    return (
+      <PageContainer>
+        <PostsContent navigation={this.props.navigation} />
+      </PageContainer>
+    )
+  }
+}
 
 const styles = StyleSheet.create({
   container: {
