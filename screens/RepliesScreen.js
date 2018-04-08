@@ -22,11 +22,12 @@ import Loading from '../components/Loading'
 import { ICON_BUTTON_SIZE } from '../constants'
 import PageContainer from '../components/PageContainer'
 
-const replyQuery = gql`
+function getReplyQuery(author, permalink) {
+  return gql`
   {
     replies(
-      author: "brittuf"
-      permlink: "get-a-free-cryptopuppy-and-guaranteed-dividends-with-buy-of-the-day"
+      author: "${author}"
+      permlink: "${permalink}"
     ) {
       ...replyFields
       ...repliesRecursive
@@ -50,6 +51,7 @@ const replyQuery = gql`
     created
     permalink
     hasReplies
+    voteCount
   }
 
   fragment repliesRecursive on Reply {
@@ -79,6 +81,7 @@ const replyQuery = gql`
     }
   }
 `
+}
 
 const Reply = ({ reply }) => (
   <Column style={styles.reply}>
@@ -99,16 +102,16 @@ const Reply = ({ reply }) => (
         color="#4F4F4F"
       />
     </Row>
-    <Row>
+    <Row style={{ marginTop: 10 }}>
       <View style={styles.full}>
         <Text>2 weeks ago</Text>
       </View>
-      <View style={styles.full}>
+      <View style={[styles.full, { alignItems: 'center' }]}>
         <Text>$0.92</Text>
       </View>
-      <View style={styles.full}>
+      <View style={[styles.full, { alignItems: 'flex-end' }]}>
         <Text>
-          123 likes{' '}
+          {reply.voteCount} likes{' '}
           <Icon name="reply" size={ICON_BUTTON_SIZE} color="#4F4F4F" />
         </Text>
       </View>
@@ -124,8 +127,8 @@ const Replies = ({ replies }) =>
     </Fragment>
   ))
 
-const RepliesContent = () => (
-  <Query query={replyQuery}>
+const RepliesContent = ({ author, permalink }) => (
+  <Query query={getReplyQuery(author, permalink)}>
     {({ loading, error, data }) => {
       if (loading) return <Loading />
       if (error)

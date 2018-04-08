@@ -8,6 +8,7 @@ import gql from 'graphql-tag'
 import numeral from 'numeral'
 import Icon from 'react-native-vector-icons/FontAwesome'
 import Image from 'react-native-image-progress'
+import timeago from 'timeago.js'
 import Row from '../components/layouts/Row'
 import Column from '../components/layouts/Column'
 import ApolloWrapper from '../components/ApolloWrapper'
@@ -68,13 +69,17 @@ const Post = ({ post, onViewAllReplies }: PostProps) => (
             <Text style={styles.author}>{post.author}</Text>
             <Row style={{ justifyContent: 'space-between' }}>
               <Text style={styles.fontBasicDimmed}>in {post.category}</Text>
-              <Text style={styles.fontBasicDimmed}>3 days ago</Text>
+              <Text style={styles.fontBasicDimmed}>
+                {timeago().format(post.created)}
+              </Text>
             </Row>
           </Fragment>
         ) : (
           <Row style={{ justifyContent: 'space-between' }}>
             <Text style={styles.author}>{post.author}</Text>
-            <Text style={styles.fontBasicDimmed}>3 days ago</Text>
+            <Text style={styles.fontBasicDimmed}>
+              {timeago().format(post.created)}
+            </Text>
           </Row>
         )}
       </Column>
@@ -143,6 +148,7 @@ const PostsContent = props => (
           voteCount
           commentCount
           category
+          permalink
           authorAccount {
             id
             name
