@@ -1,14 +1,8 @@
 // @flow
 import React, { Fragment } from 'react'
 
-import {
-  StyleSheet,
-  ActivityIndicator,
-  View,
-  Text,
-  FlatList,
-} from 'react-native'
-import { Container, Content } from 'native-base'
+import { StyleSheet, View, Text, FlatList } from 'react-native'
+import { Container, Content, Button } from 'native-base'
 import { Query } from 'react-apollo'
 import gql from 'graphql-tag'
 import numeral from 'numeral'
@@ -18,10 +12,9 @@ import Row from '../components/layouts/Row'
 import Column from '../components/layouts/Column'
 import ApolloWrapper from '../components/ApolloWrapper'
 import ProfileImageThumb from '../components/ProfileImageThumb'
-
-const iconSize = 24
 import Loading from '../components/Loading'
 import PageContainer from '../components/PageContainer'
+import { ICON_BUTTON_SIZE } from '../constants'
 
 type Vote = {
   voter: string,
@@ -60,22 +53,21 @@ type PostType = {
   commentCount: number,
 }
 
-type Props = {
+type PostProps = {
   post: PostType,
+  onViewAllReplies: Function,
 }
 
-const Post = ({ post }: Props) => (
+const Post = ({ post, onViewAllReplies }: PostProps) => (
   <View key={post.id}>
     <Row style={[styles.container, styles.header]}>
       <ProfileImageThumb profileImage={post.authorAccount.profileImage} />
       <Column style={{ flex: 1, paddingLeft: 6 }}>
-        {post.authorAccount.location ? (
+        {post.category ? (
           <Fragment>
             <Text style={styles.author}>{post.author}</Text>
             <Row style={{ justifyContent: 'space-between' }}>
-              <Text style={styles.fontBasic}>
-                {post.authorAccount.location}
-              </Text>
+              <Text style={styles.fontBasicDimmed}>in {post.category}</Text>
               <Text style={styles.fontBasicDimmed}>3 days ago</Text>
             </Row>
           </Fragment>
@@ -101,14 +93,18 @@ const Post = ({ post }: Props) => (
     />
     <Row style={{ padding: 10 }}>
       <Row style={{ flex: 1, alignItems: 'flex-start' }}>
-        <Icon name="heart-o" size={iconSize} />
-        <Icon name="comment-o" size={iconSize} style={{ marginLeft: 16 }} />
+        <Icon name="heart-o" size={ICON_BUTTON_SIZE} />
+        <Icon
+          name="comment-o"
+          size={ICON_BUTTON_SIZE}
+          style={{ marginLeft: 16 }}
+        />
       </Row>
       <View style={{ flex: 1, alignItems: 'center' }}>
         <Text style={{ fontSize: 22 }}>{post.value}</Text>
       </View>
       <View style={{ flex: 1, alignItems: 'flex-end' }}>
-        <Icon name="retweet" size={iconSize} />
+        <Icon name="retweet" size={ICON_BUTTON_SIZE} />
       </View>
     </Row>
     <Row style={{ justifyContent: 'space-between', paddingHorizontal: 10 }}>
@@ -124,6 +120,11 @@ const Post = ({ post }: Props) => (
         <Text style={{ fontWeight: 'bold' }}>{post.author} </Text>
         {post.title}
       </Text>
+      {post.commentCount > 0 && (
+        <Button transparent onPress={() => onViewAllReplies(post)}>
+          <Text>{`View all ${post.commentCount} comments`}</Text>
+        </Button>
+      )}
     </View>
   </View>
 )
@@ -136,16 +137,18 @@ const PostsContent = props => (
           id
           title
           author
-          authorAccount {
-            id
-            name
-            profileImage
-          }
           created
           imageUrl
           value
           voteCount
           commentCount
+          category
+          authorAccount {
+            id
+            name
+            profileImage
+            location
+          }
         }
       }
     `}
@@ -164,8 +167,15 @@ const PostsContent = props => (
       return (
         <FlatList
           data={data.posts}
-          renderItem={({ item }) => <Post post={item} />}
-          keyExtractor={item => item.id}
+          renderItem={({ item }) => (
+            <Post
+              post={item}
+              onViewAllReplies={() =>
+                props.navigation.navigate('Replies', { post: item })
+              }
+            />
+          )}
+          keyExtractor={item => item.permalink}
         />
       )
     }}
@@ -199,7 +209,7 @@ const styles = StyleSheet.create({
   },
   fontBasicDimmed: {
     fontSize: 14,
-    color: '#4F4F4F',
+    color: '#858585',
   },
   header: {
     borderTopWidth: StyleSheet.hairlineWidth,

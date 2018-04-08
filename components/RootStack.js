@@ -1,5 +1,6 @@
 import { StackNavigator } from 'react-navigation'
 import PostsScreen from '../screens/PostsScreen'
+import RepliesScreen from '../screens/RepliesScreen'
 
 const RootStack = StackNavigator(
   {
@@ -7,9 +8,9 @@ const RootStack = StackNavigator(
       screen: PostsScreen,
       passProps: { ...this.props },
     },
-    // Replies: {
-    //   screen: RepliesScreen,
-    // },
+    Replies: {
+      screen: RepliesScreen,
+    },
   },
   {
     initialRouteName: 'Posts',
