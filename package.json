@@ -1,4 +1,4 @@
-
+{
   "name": "vybe",
   "version": "0.0.1",
   "private": true,
@@ -9,7 +9,8 @@
     "test": "jest",
     "ios": "react-native run-ios --scheme Production",
     "android-prod": "ENVFILE=.env.prod react-native run-android",
-    "build-android-prod": "export ENVFILE=.env.prod && cd android && ./gradlew assembleRelease && cd .."
+    "build-android-prod":
+      "export ENVFILE=.env.prod && cd android && ./gradlew assembleRelease && cd .."
   },
   "dependencies": {
     "apollo-boost": "^0.1.4",
@@ -71,11 +72,7 @@
     "transform": {
       "^.+\\.js?$": "babel-jest"
     },
-    "transformIgnorePatterns": [
-      "!node_modules/react-runtime"
-    ],
-    "setupFiles": [
-      "./jest/setup.js"
-    ]
+    "transformIgnorePatterns": ["!node_modules/react-runtime"],
+    "setupFiles": ["./jest/setup.js"]
   }
 }
