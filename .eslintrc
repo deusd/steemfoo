@@ -36,8 +36,7 @@
       { "singleQuote": true, "semi": false, "trailingComma": "es5" }
     ],
     "no-undef": ["error"],
-    "no-trailing-spaces": "error",
-    "no-large-snapshotes": "error"
+    "no-trailing-spaces": "error"
   },
   "globals": {
     "__DEV__": true
