@@ -3,5 +3,6 @@
 exports[`constants should be available 1`] = `
 Object {
   "ICON_BUTTON_SIZE": 24,
+  "PROFILE_PLACEHOLDER_IMAGE": "http://www.bsmc.net.au/wp-content/uploads/No-image-available.jpg",
 }
 `;

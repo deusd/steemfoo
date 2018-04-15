@@ -1,5 +1,6 @@
 import React from 'react'
 import Image from 'react-native-image-progress'
+import { PROFILE_PLACEHOLDER_IMAGE } from '../constants'
 
 type Props = {
   profileImage: string,
@@ -18,9 +19,7 @@ const ProfileImageThumb = ({ profileImage, style }: Props) => (
     resizeMode={'cover'}
     borderRadius={6}
     source={{
-      uri:
-        profileImage ||
-        'http://www.bsmc.net.au/wp-content/uploads/No-image-available.jpg',
+      uri: profileImage || PROFILE_PLACEHOLDER_IMAGE,
     }}
   />
 )

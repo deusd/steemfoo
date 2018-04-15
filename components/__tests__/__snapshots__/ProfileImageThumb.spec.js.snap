@@ -1,0 +1,141 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`ProfileImageThumb component should render 1`] = `
+<ImageProgress
+  borderRadius={6}
+  errorContainerStyle={
+    Object {
+      "alignItems": "center",
+      "bottom": 0,
+      "justifyContent": "center",
+      "left": 0,
+      "position": "absolute",
+      "right": 0,
+      "top": 0,
+    }
+  }
+  indicatorContainerStyle={
+    Object {
+      "alignItems": "center",
+      "bottom": 0,
+      "justifyContent": "center",
+      "left": 0,
+      "position": "absolute",
+      "right": 0,
+      "top": 0,
+    }
+  }
+  resizeMode="cover"
+  source={
+    Object {
+      "uri": "http://www.bsmc.net.au/wp-content/uploads/No-image-available.jpg",
+    }
+  }
+  style={
+    Array [
+      Object {
+        "aspectRatio": 1,
+        "width": 50,
+      },
+      undefined,
+    ]
+  }
+  threshold={50}
+/>
+`;
+
+exports[`ProfileImageThumb component should render with the given style 1`] = `
+<ImageProgress
+  borderRadius={6}
+  errorContainerStyle={
+    Object {
+      "alignItems": "center",
+      "bottom": 0,
+      "justifyContent": "center",
+      "left": 0,
+      "position": "absolute",
+      "right": 0,
+      "top": 0,
+    }
+  }
+  indicatorContainerStyle={
+    Object {
+      "alignItems": "center",
+      "bottom": 0,
+      "justifyContent": "center",
+      "left": 0,
+      "position": "absolute",
+      "right": 0,
+      "top": 0,
+    }
+  }
+  resizeMode="cover"
+  source={
+    Object {
+      "uri": "http://www.bsmc.net.au/wp-content/uploads/No-image-available.jpg",
+    }
+  }
+  style={
+    Array [
+      Object {
+        "aspectRatio": 1,
+        "width": 50,
+      },
+      Object {
+        "padding": 10,
+      },
+    ]
+  }
+  threshold={50}
+/>
+`;
+
+exports[`ProfileImageThumb component should should render with the given profile image 1`] = `
+<ImageProgress
+  borderRadius={6}
+  errorContainerStyle={
+    Object {
+      "alignItems": "center",
+      "bottom": 0,
+      "justifyContent": "center",
+      "left": 0,
+      "position": "absolute",
+      "right": 0,
+      "top": 0,
+    }
+  }
+  indicatorContainerStyle={
+    Object {
+      "alignItems": "center",
+      "bottom": 0,
+      "justifyContent": "center",
+      "left": 0,
+      "position": "absolute",
+      "right": 0,
+      "top": 0,
+    }
+  }
+  resizeMode="cover"
+  source={
+    Object {
+      "uri": "http://www.images.com/image.png",
+    }
+  }
+  style={
+    Array [
+      Object {
+        "aspectRatio": 1,
+        "width": 50,
+      },
+      Array [
+        Object {
+          "aspectRatio": 1,
+          "width": 50,
+        },
+        undefined,
+      ],
+    ]
+  }
+  threshold={50}
+/>
+`;
