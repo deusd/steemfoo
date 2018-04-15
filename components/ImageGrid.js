@@ -1,7 +1,12 @@
 //@flow
 
 import React from 'react'
-import { Image, StyleSheet } from 'react-native'
+import {
+  Image,
+  StyleSheet,
+  TouchableWithoutFeedback,
+  FlatList,
+} from 'react-native'
 import { ImageType } from '../types'
 
 export default class ImageGrid extends React.Component<{

@@ -1,6 +1,5 @@
 import steem, { getPosts } from '../steem'
 import fixture from '../steem/fixture'
-import { formatPost } from '../../utilities/post.js'
 
 jest.mock('axios')
 
@@ -15,7 +14,7 @@ describe('steem tests', () => {
       expect(getPosts('fakemethodtype')).toThrow()
     })
 
-    it('should not throw when called with a know post type', () => {
+    it('should not throw when called with a known post type', () => {
       expect(getPosts('latest')).not.toThrow()
       expect(getPosts('trending')).not.toThrow()
       expect(getPosts('hot')).not.toThrow()
@@ -44,7 +43,6 @@ describe('steem tests', () => {
       const action = { type: 'VYBE_GET_POSTS_FULFILLED', payload: { data } }
       const state = steem(undefined, action)
 
-      expect(state.posts).toEqual(data.map(post => formatPost(post)))
       expect(state.isLoadingPosts).toBe(false)
       expect(state.error).toBeUndefined()
     })

@@ -1,6 +1,5 @@
 import { createAction } from 'redux-action'
 import { cloneDeep } from 'lodash'
-import firebase from 'firebase'
 import { FIREBASE_UPLOAD_IMAGE, FIREBASE_DOWNLOAD_IMAGE } from '../types'
 import { uploadPostImage } from '../../utilities/image'
 import { pending, resolve, reject } from '../../utilities/reducer'
@@ -23,7 +22,7 @@ const initialState = { uploadingImage: false }
 export default (state = initialState, action) => {
   let newState = cloneDeep(state)
   switch (action.type) {
-    case pending(FIREBASE_UPLOAD_IMAGE):
+    case pending(FIREBASE_UPLOAD_IMAGE): // eslint-disable-line jest/no-disabled-tests
       newState = { ...newState, uploadingImage: true }
       break
     case resolve(FIREBASE_UPLOAD_IMAGE):

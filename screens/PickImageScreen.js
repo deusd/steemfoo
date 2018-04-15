@@ -1,16 +1,24 @@
+/* eslint-disable */
 import React from 'react'
 
-import { Dimensions } from 'react-native'
+import { Dimensions, Image, ActivityIndicator, Text } from 'react-native'
 
 import { connect } from 'react-redux'
 import { get } from 'lodash'
-// import ImageGrid from '../components/ImageGrid'
+import PropTypes from 'prop-types'
+import ImageGrid from '../components/ImageGrid'
 import { loadCameraRollImages } from '../state/device'
 import { uploadImage } from '../state/firebase'
 
 class PickImageScreen extends React.Component {
   state = {
     selectedImage: 0,
+    loadingImages: PropTypes.bool.isRequired,
+    images: PropTypes.array.isRequired,
+  }
+
+  static propTypes = {
+    loadCameraRollImages: PropTypes.func.isRequired,
   }
 
   componentDidMount() {

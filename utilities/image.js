@@ -21,9 +21,9 @@ const uploadAsByteArray = (
       // process the upload and handle the events
       uploadTask.on(
         'state_changed',
-        snapshot => {
-          // const progress = snapshot.bytesTransferred / snapshot.totalBytes * 100
-        },
+        // snapshot => {
+        // const progress = snapshot.bytesTransferred / snapshot.totalBytes * 100
+        // },
         error => {
           switch (error.code) {
             case 'storage/unauthorized':

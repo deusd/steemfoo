@@ -3,7 +3,8 @@
   "env": {
     "es6": true,
     "node": true,
-    "jest": true
+    "jest": true,
+    "jest/globals": true
   },
   "parserOptions": {
     "ecmaVersion": 2017,
@@ -16,8 +17,13 @@
       "experimentalDecorators": true
     }
   },
-  "plugins": ["prettier", "class-property", "react"],
-  "extends": ["eslint:recommended", "plugin:react/recommended", "prettier"],
+  "plugins": ["prettier", "class-property", "react", "jest"],
+  "extends": [
+    "prettier",
+    "eslint:recommended",
+    "plugin:react/recommended",
+    "plugin:jest/recommended"
+  ],
   "settings": {
     "react": {
       "pragma": "React",

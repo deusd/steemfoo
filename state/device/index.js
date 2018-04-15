@@ -17,28 +17,22 @@ export const loadCameraRollImages = createAction(
 const initialState = {}
 export default (state = initialState, action) => {
   let newState = cloneDeep(state)
+  let images
   newState.error = undefined
 
   switch (action.type) {
-    case pending(LOAD_CAMERA_ROLL_IMAGES):
+    case pending(LOAD_CAMERA_ROLL_IMAGES): // eslint-disable-line jest/no-disabled-tests
       newState = { ...newState, loadingImages: true }
       break
     case resolve(LOAD_CAMERA_ROLL_IMAGES):
-      const images = action.payload.edges.map(edge => {
+      images = action.payload.edges.map(edge => {
         if (edge.node && edge.node.image) {
           const {
             image: { filename, height, uri, width },
             location,
             timestamp,
           } = edge.node
-          return {
-            filename,
-            height,
-            width,
-            uri,
-            location,
-            timestamp,
-          }
+          return { filename, height, width, uri, location, timestamp }
         }
       })
       newState = { ...newState, images, loadingImages: false }
