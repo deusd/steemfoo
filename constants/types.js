@@ -34,3 +34,16 @@ export type PostType = {
   voteCount: number,
   commentCount: number,
 }
+
+export type Reply = {
+  id: number,
+  depth: number,
+  body: string,
+  author: string,
+  authorAccount: Account,
+  votes: Vote,
+  created: string,
+  permalink: string,
+  hasReplies: boolean,
+  voteCount: number,
+}

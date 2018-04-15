@@ -1,26 +1,17 @@
+import gql from 'graphql-tag'
 // @flow
 import React, { Fragment } from 'react'
-
-import {
-  StyleSheet,
-  ActivityIndicator,
-  View,
-  Text,
-  FlatList,
-} from 'react-native'
-import { Container, Content, Button } from 'native-base'
 import { Query } from 'react-apollo'
-import gql from 'graphql-tag'
-import numeral from 'numeral'
+import { StyleSheet, Text, View } from 'react-native'
 import Icon from 'react-native-vector-icons/FontAwesome'
-import Image from 'react-native-image-progress'
-import Row from '../components/layouts/Row'
-import Column from '../components/layouts/Column'
 import ApolloWrapper from '../components/ApolloWrapper'
-import ProfileImageThumb from '../components/ProfileImageThumb'
 import Loading from '../components/Loading'
-import { ICON_BUTTON_SIZE } from '../constants'
 import PageContainer from '../components/PageContainer'
+import ProfileImageThumb from '../components/ProfileImageThumb'
+import Column from '../components/layouts/Column'
+import Row from '../components/layouts/Row'
+import { ICON_BUTTON_SIZE } from '../constants'
+import { Reply as ReplyType } from '../constants/types'
 
 function getReplyQuery(author, permalink) {
   return gql`
@@ -82,8 +73,10 @@ function getReplyQuery(author, permalink) {
   }
 `
 }
-
-const Reply = ({ reply }) => (
+type ReplyProps = {
+  reply: ReplyType,
+}
+const Reply = ({ reply }: ReplyProps) => (
   <Column style={styles.reply}>
     <Row style={{ width: '100%' }}>
       <ProfileImageThumb
@@ -119,7 +112,10 @@ const Reply = ({ reply }) => (
   </Column>
 )
 
-const Replies = ({ replies }) =>
+type RepliesProps = {
+  replies: [ReplyType],
+}
+const Replies = ({ replies }: RepliesProps) =>
   replies.map(reply => (
     <Fragment key={reply.permalink}>
       <Reply reply={reply} />
@@ -127,7 +123,12 @@ const Replies = ({ replies }) =>
     </Fragment>
   ))
 
-const RepliesContent = ({ author, permalink }) => (
+type PropTypes = {
+  author: string,
+  permalink: string,
+}
+
+const RepliesContent = ({ author, permalink }: PropTypes) => (
   <Query query={getReplyQuery(author, permalink)}>
     {({ loading, error, data }) => {
       if (loading) return <Loading />
@@ -144,7 +145,7 @@ const RepliesContent = ({ author, permalink }) => (
   </Query>
 )
 
-const RepliesScreen = props => {
+const RepliesScreen = (props: any) => {
   const post = props.navigation.state.params.post
 
   return (

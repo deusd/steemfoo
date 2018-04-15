@@ -22,7 +22,7 @@ const initialState = { uploadingImage: false }
 export default (state = initialState, action) => {
   let newState = cloneDeep(state)
   switch (action.type) {
-    case pending(FIREBASE_UPLOAD_IMAGE):
+    case pending(FIREBASE_UPLOAD_IMAGE): // eslint-disable-line jest/no-disabled-tests
       newState = { ...newState, uploadingImage: true }
       break
     case resolve(FIREBASE_UPLOAD_IMAGE):

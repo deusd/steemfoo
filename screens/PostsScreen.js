@@ -8,7 +8,7 @@ import Loading from '../components/Loading'
 import PageContainer from '../components/PageContainer'
 import Post from '../components/Post'
 
-const PostsContent = props => (
+const PostsContent = (props: any) => (
   <Query
     query={gql`
       {
@@ -62,7 +62,9 @@ const PostsContent = props => (
   </Query>
 )
 
-class PostsScreen extends React.Component {
+class PostsScreen extends React.Component<{
+  navigation: any,
+}> {
   render() {
     return (
       <PageContainer>

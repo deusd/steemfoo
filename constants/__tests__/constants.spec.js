@@ -1,7 +1,7 @@
-import * as constants from "../"
+import * as constants from '../'
 
-describe("constants", () => {
-  it("should be available", () => {
+describe('constants', () => {
+  it('should be available', () => {
     expect(constants).toMatchSnapshot()
   })
 })
