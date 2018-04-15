@@ -1,7 +1,6 @@
 import 'react-native'
 import { shallow } from 'enzyme'
 import React from 'react'
-import { View } from 'react-native'
 import ProfileImageThumb from '../ProfileImageThumb'
 import { PROFILE_PLACEHOLDER_IMAGE } from '../../constants'
 
