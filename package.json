@@ -86,6 +86,9 @@
       "<rootDir>/node_modules/",
       "<rootDir>/__tests__/samples/"
     ],
+    "transformIgnorePatterns": [
+      "node_modules/(?!react-native|native-base|native-base-shoutem-theme|@shoutem/animation|@shoutem/ui|tcomb-form-native)"
+    ],
     "setupTestFrameworkScriptFile": "./jest/setup.js"
   }
 }
