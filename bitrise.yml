@@ -1,4 +1,5 @@
-format_version: "4"
+---
+format_version: '4'
 default_step_lib_source: https://github.com/bitrise-io/bitrise-steplib.git
 project_type: react-native
 app:
@@ -19,12 +20,12 @@ app:
     opts:
       is_expand: false
 trigger_map:
-- push_branch: '*'
-  workflow: primary
 - push_branch: master
   workflow: deploy
-- pull_request_source_branch: '*'
+- push_branch: "*"
   workflow: primary
+- pull_request_source_branch: "*"
+  workflow: build
 workflows:
   build:
     before_run:
@@ -35,26 +36,35 @@ workflows:
     - install-missing-android-tools@2.1.1: {}
     - gradle-runner@1.8.3:
         inputs:
-        - gradle_file: $GRADLE_BUILD_FILE_PATH
+        - gradle_file: "$GRADLE_BUILD_FILE_PATH"
         - gradle_task: assembleRelease
-        - gradlew_path: $GRADLEW_PATH
+        - gradlew_path: "$GRADLEW_PATH"
+    - sign-apk@1.2.0: {}
     - certificate-and-profile-installer@1.9.2: {}
     - xcode-archive@2.4.6:
         inputs:
-        - project_path: $BITRISE_PROJECT_PATH
-        - scheme: $BITRISE_SCHEME
-        - export_method: $BITRISE_EXPORT_METHOD
-        - configuration: Release
+        - project_path: "$BITRISE_PROJECT_PATH"
+        - scheme: "$BITRISE_SCHEME"
+        - export_method: "$BITRISE_EXPORT_METHOD"
+        - team_id: ''
+        - configuration: ''
   deploy:
     before_run:
     - build
     steps:
     - hockeyapp-deploy@2.4.2:
         inputs:
-        - app_id: $HOCKEY_APP_ID
+        - app_id: "$HOCKEY_APP_ID"
         - notes: Deploy with Bitrise HockeyApp Deploy Step $BITRISE_BUILD_NUMBER
         - repository_url: https://github.com/deusd/steemfoo
-        - api_token: $HOCKEY_API_KEY
+        - api_token: "$HOCKEY_API_KEY"
+    - hockeyapp-deploy-android@1.2.1:
+        inputs:
+        - app_id: "$HOCKEY_APP_KEY_ANDROID"
+        - notes: Deploy with Bitrise HockeyApp Deploy Step $BITRISE_BUILD_NUMBER
+        - repository_url: https://github.com/deusd/steemfoo
+        - apk_path: "$BITRISE_SIGNED_APK_PATH"
+        - api_token: "$HOCKEY_API_KEY"
     - deploy-to-bitrise-io@1.3.10: {}
   primary:
     steps:
