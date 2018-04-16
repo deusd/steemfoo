@@ -47,8 +47,8 @@ exports[`Reply component should show the placeholder image if no author profile 
         testID="authorText"
       >
         jahangirwifii
+         
       </Text>
-       
       <Text
         accessible={true}
         allowFontScaling={true}
@@ -129,22 +129,30 @@ exports[`Reply component should show the placeholder image if no author profile 
         ]
       }
     >
-      <Text
-        accessible={true}
-        allowFontScaling={true}
-        ellipsizeMode="tail"
-        testID="replyVoteCount"
+      <Row
+        style={Object {}}
       >
-        0
-         likes
-         
+        <Text
+          accessible={true}
+          allowFontScaling={true}
+          ellipsizeMode="tail"
+          testID="replyVoteCount"
+        >
+          0
+           likes
+        </Text>
         <Icon
           allowFontScaling={false}
           color="#4F4F4F"
           name="reply"
           size={24}
+          style={
+            Object {
+              "marginLeft": 10,
+            }
+          }
         />
-      </Text>
+      </Row>
     </Component>
   </Row>
 </Columns>
