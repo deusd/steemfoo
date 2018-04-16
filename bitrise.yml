@@ -26,7 +26,7 @@ trigger_map:
 - pull_request_source_branch: '*'
   workflow: primary
 workflows:
-  deploy:
+  build:
     before_run:
     - primary
     steps:
@@ -45,6 +45,10 @@ workflows:
         - scheme: $BITRISE_SCHEME
         - export_method: $BITRISE_EXPORT_METHOD
         - configuration: Release
+  deploy:
+    before_run:
+    - build
+    steps:
     - hockeyapp-deploy@2.4.2:
         inputs:
         - app_id: $HOCKEY_APP_ID
