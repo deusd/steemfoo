@@ -5,8 +5,8 @@ import Row from './layouts/Row'
 const Loading = () => (
   <View style={{ flex: 1, justifyContent: 'center', alignItems: 'center' }}>
     <Row>
-      <Text>Loading posts</Text>
-      <ActivityIndicator style={{ marginLeft: 10 }} />
+      <Text style={{ marginRight: 10 }}>Loading posts</Text>
+      <ActivityIndicator />
     </Row>
   </View>
 )

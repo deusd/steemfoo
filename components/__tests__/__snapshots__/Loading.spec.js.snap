@@ -17,6 +17,11 @@ exports[`Loading component should render with no styles 1`] = `
       accessible={true}
       allowFontScaling={true}
       ellipsizeMode="tail"
+      style={
+        Object {
+          "marginRight": 10,
+        }
+      }
     >
       Loading posts
     </Text>
@@ -25,11 +30,6 @@ exports[`Loading component should render with no styles 1`] = `
       color="#999999"
       hidesWhenStopped={true}
       size="small"
-      style={
-        Object {
-          "marginLeft": 10,
-        }
-      }
     />
   </Row>
 </Component>
