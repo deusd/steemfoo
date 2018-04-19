@@ -10,18 +10,27 @@ exports[`Loading component should render with no styles 1`] = `
     }
   }
 >
-  <Text
-    accessible={true}
-    allowFontScaling={true}
-    ellipsizeMode="tail"
+  <Row
+    style={Object {}}
   >
-    Loading posts 
+    <Text
+      accessible={true}
+      allowFontScaling={true}
+      ellipsizeMode="tail"
+      style={
+        Object {
+          "marginRight": 10,
+        }
+      }
+    >
+      Loading posts
+    </Text>
     <ActivityIndicator
       animating={true}
       color="#999999"
       hidesWhenStopped={true}
       size="small"
     />
-  </Text>
+  </Row>
 </Component>
 `;

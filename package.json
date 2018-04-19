@@ -9,8 +9,7 @@
     "test": "jest",
     "ios": "react-native run-ios --scheme Production",
     "android-prod": "ENVFILE=.env.prod react-native run-android",
-    "build-android-prod":
-      "export ENVFILE=.env.prod && cd android && ./gradlew assembleRelease && cd ..",
+    "build-android-prod": "export ENVFILE=.env.prod && cd android && ./gradlew assembleRelease && cd ..",
     "link-packages": "react-native link",
     "upgrade-rn": "react-native-git-upgrade"
   },
@@ -69,6 +68,7 @@
     "eslint-plugin-react": "^7.7.0",
     "flow-bin": "^0.69.0",
     "jest": "^22.4.3",
+    "jest-cli": "^22.4.3",
     "jest-enzyme": "^6.0.0",
     "jest-react-native": "^18.0.0",
     "prettier": "^1.12.0",

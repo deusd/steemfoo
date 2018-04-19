@@ -32,7 +32,7 @@ describe('Reply component', () => {
     })
 
     it('with the author text', () => {
-      expect(wrapper.find({ testID: 'authorText' }).props().children).toEqual(
+      expect(wrapper.find({ testID: 'authorText' }).props().children).toContain(
         reply.author
       )
     })

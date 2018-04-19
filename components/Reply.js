@@ -19,8 +19,8 @@ const Reply = ({ reply }: ReplyProps) => (
       />
       <View style={styles.full}>
         <Text style={styles.authorText} testID="authorText">
-          {reply.author}
-        </Text>{' '}
+          {reply.author}{' '}
+        </Text>
         <Text style={styles.commentText} testID="replyMessageText">
           {reply.body}
         </Text>
@@ -40,10 +40,15 @@ const Reply = ({ reply }: ReplyProps) => (
         <Text>$0.92</Text>
       </View>
       <View style={[styles.full, { alignItems: 'flex-end' }]}>
-        <Text testID="replyVoteCount">
-          {reply.voteCount} likes{' '}
-          <Icon name="reply" size={ICON_BUTTON_SIZE} color="#4F4F4F" />
-        </Text>
+        <Row>
+          <Text testID="replyVoteCount">{reply.voteCount} likes</Text>
+          <Icon
+            name="reply"
+            size={ICON_BUTTON_SIZE}
+            color="#4F4F4F"
+            style={{ marginLeft: 10 }}
+          />
+        </Row>
       </View>
     </Row>
   </Column>
