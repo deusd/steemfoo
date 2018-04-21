@@ -1,10 +1,7 @@
 import 'react-native'
 import { shallow } from 'enzyme'
 import React from 'react'
-import { Text } from 'react-native'
 import Reply from '../Reply'
-import ProfileImageThumb from '../ProfileImageThumb'
-import { PROFILE_PLACEHOLDER_IMAGE } from '../../constants'
 
 const reply = {
   author: 'jahangirwifii',
@@ -13,6 +10,7 @@ const reply = {
   },
   body: '@tipu need again 2.5...',
   voteCount: 0,
+  value: '$123.45',
 }
 
 describe('Reply component', () => {
@@ -41,6 +39,12 @@ describe('Reply component', () => {
       expect(
         wrapper.find({ testID: 'replyMessageText' }).props().children
       ).toEqual(reply.body)
+    })
+
+    it('with the reply value text', () => {
+      expect(
+        wrapper.find({ testID: 'replyValueText' }).props().children
+      ).toEqual(reply.value)
     })
 
     it('with the vote count', () => {
