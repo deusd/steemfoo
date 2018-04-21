@@ -98,11 +98,13 @@ android {
     buildToolsVersion "23.0.1"
 
     defaultConfig {
+        def buildNumber = System.getenv("BITRISE_BUILD_NUMBER") ?: "1"
+        def buildVersion = System.getenv("VYBE_VERSION_CODE") ?: "1.0"
         applicationId "io.wevybe.app"
         minSdkVersion 16
         targetSdkVersion 22
-        versionCode 1
-        versionName "1.0"
+        versionCode Integer.parseInt(buildNumber)
+        versionName buildVersion
         ndk {
             abiFilters "armeabi-v7a", "x86"
         }
