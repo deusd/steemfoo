@@ -113,8 +113,9 @@ exports[`Reply component should show the placeholder image if no author profile 
         accessible={true}
         allowFontScaling={true}
         ellipsizeMode="tail"
+        testID="replyValueText"
       >
-        $0.92
+        $123.45
       </Text>
     </Component>
     <Component

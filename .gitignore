@@ -56,3 +56,4 @@ buck-out/
 *.jsbundle
 
 .bitrise.secrets.yml
+*.apk

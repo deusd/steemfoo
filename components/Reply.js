@@ -37,7 +37,7 @@ const Reply = ({ reply }: ReplyProps) => (
         <Text>2 weeks ago</Text>
       </View>
       <View style={[styles.full, { alignItems: 'center' }]}>
-        <Text>$0.92</Text>
+        <Text testID="replyValueText">{reply.value}</Text>
       </View>
       <View style={[styles.full, { alignItems: 'flex-end' }]}>
         <Row>

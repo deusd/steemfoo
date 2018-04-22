@@ -2,7 +2,7 @@ import gql from 'graphql-tag'
 // @flow
 import React, { Fragment } from 'react'
 import { Query } from 'react-apollo'
-import { StyleSheet, Text, View } from 'react-native'
+import { Text, View } from 'react-native'
 import ApolloWrapper from '../components/ApolloWrapper'
 import Loading from '../components/Loading'
 import PageContainer from '../components/PageContainer'
@@ -39,6 +39,7 @@ function getReplyQuery(author, permalink) {
     permalink
     hasReplies
     voteCount
+    value
   }
 
   fragment repliesRecursive on Reply {
