@@ -89,7 +89,7 @@ type PropTypes = {
 
 const RepliesContent = ({ author, permalink }: PropTypes) => (
   <Query query={getReplyQuery(author, permalink)}>
-    {({ loading, error, data }) => {
+    {({ loading, error, data, refetch }) => {
       if (loading) return <Loading />
       if (error)
         return (
@@ -97,6 +97,7 @@ const RepliesContent = ({ author, permalink }: PropTypes) => (
             style={{ flex: 1, justifyContent: 'center', alignItems: 'center' }}
           >
             <Text>Error :(</Text>
+            <Button title={'Retry'} onPress={refetch} />
           </View>
         )
       return <Replies replies={data.replies} />

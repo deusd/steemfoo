@@ -2,7 +2,7 @@ import gql from 'graphql-tag'
 // @flow
 import React from 'react'
 import { Query } from 'react-apollo'
-import { FlatList, Text, View } from 'react-native'
+import { FlatList, Text, View, Button } from 'react-native'
 import ApolloWrapper from '../components/ApolloWrapper'
 import Loading from '../components/Loading'
 import PageContainer from '../components/PageContainer'
@@ -33,7 +33,7 @@ const PostsContent = (props: any) => (
       }
     `}
   >
-    {({ loading, error, data }) => {
+    {({ loading, error, data, refetch }) => {
       if (loading) return <Loading />
       if (error)
         return (
@@ -41,6 +41,7 @@ const PostsContent = (props: any) => (
             style={{ flex: 1, justifyContent: 'center', alignItems: 'center' }}
           >
             <Text>Error :(</Text>
+            <Button title={'Retry'} onPress={refetch} />
           </View>
         )
 
