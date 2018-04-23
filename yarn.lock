@@ -5899,9 +5899,9 @@ react-lifecycles-compat@^2.0.0:
   version "2.0.1"
   resolved "https://registry.yarnpkg.com/react-lifecycles-compat/-/react-lifecycles-compat-2.0.1.tgz#5b52e412d8c2689345014764996456e5dc157470"
 
-react-native-actionsheet@^2.4.1:
-  version "2.4.1"
-  resolved "https://registry.yarnpkg.com/react-native-actionsheet/-/react-native-actionsheet-2.4.1.tgz#e886bc7b13bb60eac2e85be5e59ea09e1a4fa683"
+react-native-actionsheet@^2.4.2:
+  version "2.4.2"
+  resolved "https://registry.yarnpkg.com/react-native-actionsheet/-/react-native-actionsheet-2.4.2.tgz#6a00dd51a75ef2c8974312130e405af73191500f"
 
 react-native-config@^0.11.5:
   version "0.11.5"
