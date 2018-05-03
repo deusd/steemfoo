@@ -15,7 +15,7 @@ class QueryRender extends React.Component<{
     refetching: false,
   }
 
-  unsetRefetch() {
+  unsetRefetch = () => {
     this.setState({ refetching: false })
   }
 
@@ -42,7 +42,11 @@ class QueryRender extends React.Component<{
           testID={'ErrorWrapper'}
         >
           <Text>Error :(</Text>
-          <Button title={'Retry'} onPress={this.handleRefetch(refetch)} />
+          <Button
+            testID="RefetchButton"
+            title={'Retry'}
+            onPress={this.handleRefetch(refetch)}
+          />
         </View>
       )
 

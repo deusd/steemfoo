@@ -7,6 +7,7 @@ import ApolloWrapper from '../components/ApolloWrapper'
 import Loading from '../components/Loading'
 import PageContainer from '../components/PageContainer'
 import Post from '../components/Post'
+import QueryRender from '../components/Query'
 
 const PostsContent = (props: any) => (
   <Query
@@ -34,33 +35,24 @@ const PostsContent = (props: any) => (
     `}
     notifyOnNetworkStatusChange
   >
-    {({ loading, error, data, refetch, networkStatus }) => {
-      if (loading || networkStatus === 4) return <Loading />
-      if (error)
-        return (
-          <View
-            style={{ flex: 1, justifyContent: 'center', alignItems: 'center' }}
-          >
-            <Text>Error :(</Text>
-            <Button title={'Retry'} onPress={() => refetch()} />
-          </View>
-        )
-
-      return (
-        <FlatList
-          data={data.posts}
-          renderItem={({ item }) => (
-            <Post
-              post={item}
-              onViewAllReplies={() =>
-                props.navigation.navigate('Replies', { post: item })
-              }
-            />
-          )}
-          keyExtractor={item => item.permalink}
-        />
-      )
-    }}
+    {result => (
+      <QueryRender {...result}>
+        {data => (
+          <FlatList
+            data={data.posts}
+            renderItem={({ item }) => (
+              <Post
+                post={item}
+                onViewAllReplies={() =>
+                  props.navigation.navigate('Replies', { post: item })
+                }
+              />
+            )}
+            keyExtractor={item => item.permalink}
+          />
+        )}
+      </QueryRender>
+    )}
   </Query>
 )
 
