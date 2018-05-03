@@ -32,16 +32,17 @@ const PostsContent = (props: any) => (
         }
       }
     `}
+    notifyOnNetworkStatusChange
   >
-    {({ loading, error, data, refetch }) => {
-      if (loading) return <Loading />
+    {({ loading, error, data, refetch, networkStatus }) => {
+      if (loading || networkStatus === 4) return <Loading />
       if (error)
         return (
           <View
             style={{ flex: 1, justifyContent: 'center', alignItems: 'center' }}
           >
             <Text>Error :(</Text>
-            <Button title={'Retry'} onPress={refetch} />
+            <Button title={'Retry'} onPress={() => refetch()} />
           </View>
         )
 

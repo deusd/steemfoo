@@ -1,0 +1,11 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Query component should render 1`] = `
+<View>
+  <[object Object] />
+</View>
+`;
+
+exports[`Query component when loading should show the loading component 1`] = `<Loading />`;
+
+exports[`Query component when refetching should show the loading component 1`] = `<Loading />`;

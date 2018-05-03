@@ -2,7 +2,8 @@ import gql from 'graphql-tag'
 // @flow
 import React, { Fragment } from 'react'
 import { Query } from 'react-apollo'
-import { Text, View } from 'react-native'
+import { Text, View, Button } from 'react-native'
+import { NetworkStatus } from 'apollo-boost'
 import ApolloWrapper from '../components/ApolloWrapper'
 import Loading from '../components/Loading'
 import PageContainer from '../components/PageContainer'
@@ -88,9 +89,13 @@ type PropTypes = {
 }
 
 const RepliesContent = ({ author, permalink }: PropTypes) => (
-  <Query query={getReplyQuery(author, permalink)}>
-    {({ loading, error, data, refetch }) => {
-      if (loading) return <Loading />
+  <Query
+    query={getReplyQuery(author, permalink)}
+    errorPolicy="all"
+    notifyOnNetworkStatusChange
+  >
+    {({ loading, error, data, refetch, networkStatus }) => {
+      if (loading || networkStatus === 4) return <Loading />
       if (error)
         return (
           <View
