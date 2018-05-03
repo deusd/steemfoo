@@ -1,6 +1,5 @@
 // @flow
 import React from 'react'
-import { Query as GQLQuery } from 'react-apollo'
 import { Text, Button, View } from 'react-native'
 import Loading from '../components/Loading'
 

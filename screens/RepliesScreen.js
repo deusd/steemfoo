@@ -3,12 +3,12 @@ import gql from 'graphql-tag'
 import React, { Fragment } from 'react'
 import { Query } from 'react-apollo'
 import { Text, View, Button } from 'react-native'
-import { NetworkStatus } from 'apollo-boost'
 import ApolloWrapper from '../components/ApolloWrapper'
 import Loading from '../components/Loading'
 import PageContainer from '../components/PageContainer'
 import { Reply as ReplyType } from '../constants/types'
 import Reply from '../components/Reply'
+import QueryRender from '../components/Query'
 
 function getReplyQuery(author, permalink) {
   return gql`
@@ -94,19 +94,11 @@ const RepliesContent = ({ author, permalink }: PropTypes) => (
     errorPolicy="all"
     notifyOnNetworkStatusChange
   >
-    {({ loading, error, data, refetch, networkStatus }) => {
-      if (loading || networkStatus === 4) return <Loading />
-      if (error)
-        return (
-          <View
-            style={{ flex: 1, justifyContent: 'center', alignItems: 'center' }}
-          >
-            <Text>Error :(</Text>
-            <Button title={'Retry'} onPress={refetch} />
-          </View>
-        )
-      return <Replies replies={data.replies} />
-    }}
+    {result => (
+      <QueryRender {...result}>
+        {data => <Replies replies={data.replies} />}
+      </QueryRender>
+    )}
   </Query>
 )
 

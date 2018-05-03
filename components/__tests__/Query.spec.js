@@ -1,7 +1,7 @@
 import 'react-native'
 import { shallow } from 'enzyme'
 import React from 'react'
-import { View, Text } from 'react-native'
+import { View } from 'react-native'
 import Query from '../Query'
 import Loading from '../Loading'
 import gql from 'graphql-tag'
@@ -18,7 +18,6 @@ const query = gql`
 
 describe('Query component', () => {
   let wrapper
-  let refetch
 
   beforeEach(() => {
     wrapper = shallow(
