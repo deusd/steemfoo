@@ -2,12 +2,11 @@ import gql from 'graphql-tag'
 // @flow
 import React, { Fragment } from 'react'
 import { Query } from 'react-apollo'
-import { Text, View } from 'react-native'
 import ApolloWrapper from '../components/ApolloWrapper'
-import Loading from '../components/Loading'
 import PageContainer from '../components/PageContainer'
 import { Reply as ReplyType } from '../constants/types'
 import Reply from '../components/Reply'
+import QueryRender from '../components/Query'
 
 function getReplyQuery(author, permalink) {
   return gql`
@@ -88,19 +87,16 @@ type PropTypes = {
 }
 
 const RepliesContent = ({ author, permalink }: PropTypes) => (
-  <Query query={getReplyQuery(author, permalink)}>
-    {({ loading, error, data }) => {
-      if (loading) return <Loading />
-      if (error)
-        return (
-          <View
-            style={{ flex: 1, justifyContent: 'center', alignItems: 'center' }}
-          >
-            <Text>Error :(</Text>
-          </View>
-        )
-      return <Replies replies={data.replies} />
-    }}
+  <Query
+    query={getReplyQuery(author, permalink)}
+    errorPolicy="all"
+    notifyOnNetworkStatusChange
+  >
+    {result => (
+      <QueryRender {...result}>
+        {data => <Replies replies={data.replies} />}
+      </QueryRender>
+    )}
   </Query>
 )
 

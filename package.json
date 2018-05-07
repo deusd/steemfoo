@@ -10,7 +10,8 @@
     "test": "jest",
     "ios": "react-native run-ios --scheme Production",
     "android-prod": "ENVFILE=.env.prod react-native run-android",
-    "build-android-prod": "export ENVFILE=.env.prod && cd android && ./gradlew assembleRelease && cd ..",
+    "build-android-prod":
+      "export ENVFILE=.env.prod && cd android && ./gradlew assembleRelease && cd ..",
     "link-packages": "react-native link",
     "upgrade-rn": "react-native-git-upgrade"
   },
@@ -26,7 +27,7 @@
     "native-base": "^2.4.3",
     "numeral": "^2.0.6",
     "react": "16.3.2",
-    "react-apollo": "^2.1.3",
+    "react-apollo": "2.1.0",
     "react-native": "0.55.3",
     "react-native-actionsheet": "^2.4.2",
     "react-native-config": "^0.11.5",
