@@ -9,14 +9,17 @@
     "pretest": "yarn lint",
     "test": "jest",
     "ios": "react-native run-ios --scheme Production",
+    "android": "react-native run-android",
     "android-prod": "ENVFILE=.env.prod react-native run-android",
-    "build-android-prod":
-      "export ENVFILE=.env.prod && cd android && ./gradlew assembleRelease && cd ..",
+    "build-android-prod": "export ENVFILE=.env.prod && cd android && ./gradlew assembleRelease && cd ..",
     "link-packages": "react-native link",
     "upgrade-rn": "react-native-git-upgrade"
   },
   "dependencies": {
     "apollo-boost": "^0.1.6",
+    "appcenter": "1.5.0",
+    "appcenter-analytics": "1.5.0",
+    "appcenter-crashes": "1.5.0",
     "axios": "^0.18.0",
     "firebase": "^4.13.1",
     "flux-standard-action": "^2.0.2",

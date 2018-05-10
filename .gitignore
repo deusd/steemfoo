@@ -59,4 +59,4 @@ bitrise.yml
 gradle.deps
 .bitrise.secrets.yml
 *.apk
-
+ios/Pods
