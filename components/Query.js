@@ -25,7 +25,9 @@ class QueryRender extends React.Component<{
     refetch()
       .then(this.unsetRefetch)
       .catch(this.unsetRefetch)
+  }
 
+  handleCrash = async () => {
     await Crashes.setEnabled(true)
     Crashes.generateTestCrash()
   }
@@ -37,11 +39,7 @@ class QueryRender extends React.Component<{
     if (error)
       return (
         <View
-          style={{
-            flex: 1,
-            justifyContent: 'center',
-            alignItems: 'center',
-          }}
+          style={{ flex: 1, justifyContent: 'center', alignItems: 'center' }}
           testID={'ErrorWrapper'}
         >
           <Text>Error :(</Text>
@@ -50,10 +48,24 @@ class QueryRender extends React.Component<{
             title={'Retry'}
             onPress={this.handleRefetch(refetch)}
           />
+          <Button
+            testID="CrashButton"
+            title={'Crash'}
+            onPress={this.handleCrash}
+          />
         </View>
       )
 
-    return <View>{this.props.children(data)}</View>
+    return (
+      <View>
+        {this.props.children(data)}
+        <Button
+          testID="CrashButton"
+          title={'Crash'}
+          onPress={this.handleCrash}
+        />
+      </View>
+    )
   }
 }
 

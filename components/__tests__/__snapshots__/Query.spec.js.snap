@@ -5,6 +5,11 @@ exports[`Query component should render 1`] = `
   <Component
     testID="TestComponent"
   />
+  <Button
+    onPress={[Function]}
+    testID="CrashButton"
+    title="Crash"
+  />
 </View>
 `;
 
@@ -14,6 +19,11 @@ exports[`Query component when not loading should not show the loading component 
 <Component>
   <Component
     testID="TestComponent"
+  />
+  <Button
+    onPress={[Function]}
+    testID="CrashButton"
+    title="Crash"
   />
 </Component>
 `;
