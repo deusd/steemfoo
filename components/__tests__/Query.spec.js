@@ -2,10 +2,9 @@ import 'react-native'
 import { shallow } from 'enzyme'
 import React from 'react'
 import { View } from 'react-native'
+import gql from 'graphql-tag'
 import Query from '../Query'
 import Loading from '../Loading'
-import gql from 'graphql-tag'
-// import Loading from '../Loading'
 
 const query = gql`
   {
@@ -70,7 +69,6 @@ describe('Query component', () => {
         .find({ testID: 'RefetchButton' })
         .props()
         .onPress()
-      wrapper.update()
       setImmediate(() => {
         expect(wrapper.state('refetching')).toBe(false)
         done()

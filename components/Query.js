@@ -19,13 +19,15 @@ class QueryRender extends React.Component<{
     this.setState({ refetching: false })
   }
 
-  handleRefetch = refetch => () => {
+  handleRefetch = refetch => async () => {
     this.setState({ refetching: true })
 
-    Crashes.generateTestCrash()
     refetch()
       .then(this.unsetRefetch)
       .catch(this.unsetRefetch)
+
+    await Crashes.setEnabled(true)
+    Crashes.generateTestCrash()
   }
 
   render() {
