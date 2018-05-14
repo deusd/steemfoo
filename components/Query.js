@@ -1,6 +1,7 @@
 // @flow
 import React from 'react'
 import { Text, Button, View } from 'react-native'
+import Crashes from 'appcenter-crashes'
 import Loading from '../components/Loading'
 
 class QueryRender extends React.Component<{
@@ -21,6 +22,7 @@ class QueryRender extends React.Component<{
   handleRefetch = refetch => () => {
     this.setState({ refetching: true })
 
+    Crashes.generateTestCrash()
     refetch()
       .then(this.unsetRefetch)
       .catch(this.unsetRefetch)
