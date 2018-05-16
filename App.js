@@ -5,12 +5,17 @@
  */
 
 import React from 'react'
-
+import SplashScreen from 'react-native-splash-screen'
 import RootStack from './components/RootStack'
 
-// disable annoying yellow box warnings
-console.disableYellowBox = true;  // eslint-disable-line
+class App extends React.Component {
+  componentDidMount() {
+    SplashScreen.hide()
+  }
 
-const App = () => <RootStack />
+  render() {
+    return <RootStack />
+  }
+}
 
 export default App
