@@ -3,6 +3,7 @@ package com.vybe;
 import android.os.Bundle;
 
 import com.facebook.react.ReactActivity;
+import org.devio.rn.splashscreen.SplashScreen;
 import net.hockeyapp.android.CrashManager;
 import net.hockeyapp.android.UpdateManager;
 
@@ -20,9 +21,7 @@ public class MainActivity extends ReactActivity {
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        // Your own code to create the view
-        // ...
-
+        SplashScreen.show(this);
         checkForUpdates();
     }
 
