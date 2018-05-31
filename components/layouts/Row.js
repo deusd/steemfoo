@@ -5,7 +5,7 @@ import PropTypes from 'prop-types'
 class Row extends React.Component {
   static propTypes = {
     children: PropTypes.node.isRequired,
-    style: PropTypes.object,
+    style: PropTypes.oneOfType([PropTypes.object, PropTypes.array]),
   }
 
   static defaultProps = {

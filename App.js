@@ -7,6 +7,7 @@
 import React from 'react'
 import SplashScreen from 'react-native-splash-screen'
 import RootStack from './components/RootStack'
+import LoginScreen from './screens/LoginScreen'
 
 class App extends React.Component {
   componentDidMount() {
@@ -14,7 +15,7 @@ class App extends React.Component {
   }
 
   render() {
-    return <RootStack />
+    return <LoginScreen />
   }
 }
 
