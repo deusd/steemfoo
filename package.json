@@ -8,6 +8,7 @@
     "start": "node node_modules/react-native/local-cli/cli.js start",
     "pretest": "yarn lint",
     "test": "jest",
+    "test:only": "jest",
     "ios": "react-native run-ios --scheme Production",
     "android-prod": "ENVFILE=.env.prod react-native run-android",
     "build-android-prod": "export ENVFILE=.env.prod && cd android && ./gradlew assembleRelease && cd ..",
@@ -25,6 +26,7 @@
     "moment": "^2.22.1",
     "native-base": "^2.4.5",
     "numeral": "^2.0.6",
+    "prop-types": "^15.6.1",
     "react": "16.3.2",
     "react-apollo": "2.1.4",
     "react-native": "0.55.4",
@@ -78,6 +80,7 @@
     "react-dom": "^16.3.2",
     "react-native-git-upgrade": "^0.2.7",
     "react-test-renderer": "^16.3.2",
+    "redux-mock-store": "^1.5.1",
     "sinon": "^5.0.7"
   },
   "jest": {
