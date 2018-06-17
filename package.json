@@ -41,11 +41,13 @@
     "react-native-vector-icons": "^4.6.0",
     "react-navigation": "^2.0.2",
     "react-redux": "^5.0.6",
+    "realm": "^2.8.4",
     "redux": "^4.0.0",
     "redux-action": "^1.2.2",
     "redux-devtools-extension": "^2.13.2",
     "redux-logger": "^3.0.6",
-    "redux-persist": "^5.4.0",
+    "redux-persist": "^5.10.0",
+    "redux-persist-realm": "^0.1.0",
     "redux-promise-middleware": "^5.1.1",
     "redux-thunk": "^2.2.0",
     "timeago.js": "3.0.2"
@@ -79,8 +81,8 @@
     "prettier": "^1.13.4",
     "react-dom": "^16.3.2",
     "react-native-git-upgrade": "^0.2.7",
-    "redux-mock-store": "^1.5.1",
     "react-test-renderer": "^16.4.0",
+    "redux-mock-store": "^1.5.1",
     "sinon": "^5.0.10"
   },
   "jest": {
