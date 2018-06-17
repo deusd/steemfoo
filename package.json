@@ -68,7 +68,7 @@
     "eslint-plugin-class-property": "^1.1.0",
     "eslint-plugin-jest": "^21.17.0",
     "eslint-plugin-prettier": "^2.6.0",
-    "eslint-plugin-react": "^7.8.2",
+    "eslint-plugin-react": "^7.9.1",
     "flow-bin": "^0.73.0",
     "jest": "^22.4.4",
     "jest-cli": "^22.4.4",
