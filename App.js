@@ -7,7 +7,8 @@
 import React from 'react'
 import SplashScreen from 'react-native-splash-screen'
 import { Provider } from 'react-redux'
-import RootStack from './components/RootStack'
+// import RootStack from './components/RootStack'
+// import Loading from './components/Loading'
 import LoginScreen from './screens/LoginScreen'
 import store from './state/store'
 
