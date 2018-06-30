@@ -1,5 +1,5 @@
-import Database from '../db'
-import Realm from 'realm'
+import moment from 'moment'
+import { Database } from '../db'
 
 describe('db', () => {
   let date = new Date().getTime()
@@ -15,26 +15,25 @@ describe('db', () => {
   }
 
   beforeAll(() => {
-    jest.spyOn(Realm, 'open')
     database = new Database({ inMemory: true, inMemoryIdentifier: date })
   })
 
-  it('should return a realm instance when called', async () => {
+  it('should return a realm instance when called', () => {
     expect(database.realm).toBeDefined()
   })
 
-  it('should create a user with id 1', async () => {
+  it('should create a user with id 1', () => {
     database.setUser(userSettings)
 
     expect(database.realm.objects('User')).toHaveLength(1)
   })
 
-  it('should return the created user with settings', async () => {
+  it('should return the created user with settings', () => {
     const user = database.getUser()
     expect(user).toEqual(expect.objectContaining({ ...userSettings, id: 1 }))
   })
 
-  it('should only ever have one user', async () => {
+  it('should only ever have one user', () => {
     userSettings.userName = 'new user name'
     userSettings.tokenType = 'new token type'
     database.setUser(userSettings)
@@ -43,8 +42,17 @@ describe('db', () => {
     expect(user).toEqual(expect.objectContaining({ ...userSettings, id: 1 }))
   })
 
-  it('should be able to remove the user', async () => {
+  it('should be able to remove the user', () => {
     database.removeUser()
+    expect(database.realm.objects('User')).toHaveLength(0)
+  })
+
+  it('should remove the user if the expiration data has passed', () => {
+    userSettings.accessTokenExpirationDate = moment()
+      .subtract(3, 'days')
+      .toString()
+    database.setUser(userSettings)
+    expect(database.getUser()).toBeUndefined()
     expect(database.realm.objects('User')).toHaveLength(0)
   })
 })

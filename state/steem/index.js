@@ -1,6 +1,7 @@
 import { cloneDeep } from 'lodash'
 import { createAction } from 'redux-action'
 import { authorize } from 'react-native-app-auth'
+import database from '../db'
 import { pending, resolve, reject } from '../../utilities/reducer'
 import { SIGN_IN, SIGN_OUT } from '../types'
 import api from '../../api'
@@ -19,7 +20,27 @@ const config = {
 
 export const login = createAction(SIGN_IN, () => {
   return {
-    promise: authorize(config),
+    promise: new Promise((resolve, reject) => {
+      let user = database.getUser()
+
+      if (user) {
+        resolve(user)
+      } else {
+        authorize(config)
+          .then(remoteUser => {
+            const formattedUser = {
+              accessTokenExpirationDate: remoteUser.accessTokenExpirationDate,
+              idToken: remoteUser.idToken,
+              userName: remoteUser.additionalparameters.username,
+              accessToken: 'string',
+              tokenType: 'string',
+              refreshToken: 'string',
+            }
+            resolve(formattedUser)
+          })
+          .catch(reason => reject(reason))
+      }
+    }),
   }
 })
 
