@@ -9,6 +9,7 @@
     "pretest": "yarn lint",
     "test": "jest",
     "test:only": "jest",
+    "test:watch": "jest --watch",
     "ios": "react-native run-ios --scheme Production",
     "android-prod": "ENVFILE=.env.prod react-native run-android",
     "build-android-prod": "export ENVFILE=.env.prod && cd android && ./gradlew assembleRelease && cd ..",
