@@ -50,9 +50,10 @@ describe('db', () => {
   it('should remove the user if the expiration data has passed', () => {
     userSettings.accessTokenExpirationDate = moment()
       .subtract(3, 'days')
-      .toString()
+      .format()
     database.setUser(userSettings)
     expect(database.getUser()).toBeUndefined()
+    expect(database.realm.objects('User')).toHaveLength(0)
     expect(database.realm.objects('User')).toHaveLength(0)
   })
 })

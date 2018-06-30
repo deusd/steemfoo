@@ -39,7 +39,6 @@ export class Database {
       const user = users[0]
 
       if (moment().isAfter(user.accessTokenExpirationDate)) {
-        console.log({ user })
         this.removeUser()
       } else {
         return user
