@@ -28,7 +28,7 @@ def setupNodeAndTest() {
     sh 'wget -qO- https://raw.githubusercontent.com/creationix/nvm/v0.33.11/install.sh | bash'
   }
 
-  catch {
+  catch(all) {
     echo 'NVM install failed but may already be installed, attempting to continue'
   }
 
