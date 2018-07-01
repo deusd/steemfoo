@@ -41,7 +41,7 @@ def setupNodeAndTest() {
       sh """
         echo 'Grabbing nvm...'
         echo '------------------ nvm ---------------------'
-        [ -s "$NVM_DIR/nvm.sh" ] && . "$NVM_DIR/nvm.sh"
+        [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"
         nvm install ${version}
         nvm use ${version}
 
