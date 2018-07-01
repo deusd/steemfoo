@@ -1,7 +1,6 @@
 import 'react-native'
 import { shallow } from 'enzyme'
 import React from 'react'
-import { ActivityIndicator } from 'react-native'
 import Logo from './Logo'
 
 describe('Logo component', () => {

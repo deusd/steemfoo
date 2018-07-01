@@ -26,11 +26,7 @@ export class LoginScreen extends React.Component {
         <Text style={styles.smallText}>
           We never store your passwords or private keys locally
         </Text>
-        <TouchableOpacity
-          style={styles.button}
-          onPress={this.props.login}
-          style={styles.button}
-        >
+        <TouchableOpacity style={styles.button} onPress={this.props.login}>
           <Text style={styles.buttonText}>Login</Text>
         </TouchableOpacity>
       </PageContainer>
