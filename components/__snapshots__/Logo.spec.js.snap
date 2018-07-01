@@ -1,21 +1,3 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`Logo component should render with no styles 1`] = `
-<Text
-  accessible={true}
-  allowFontScaling={true}
-  ellipsizeMode="tail"
-  style={
-    Array [
-      Object {
-        "color": "white",
-        "fontFamily": "MarkScript",
-        "fontSize": 72,
-      },
-      undefined,
-    ]
-  }
->
-  Vybe
-</Text>
-`;
+exports[`Logo component should render with no styles 1`] = `undefined`;

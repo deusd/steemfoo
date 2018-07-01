@@ -61,3 +61,16 @@ gradle.deps
 *.apk
 
 ios/Pods/
+
+.lock
+.management/
+android/.project
+android/.settings/
+android/app/.classpath
+android/app/.project
+android/app/.settings/
+default.realm
+default.realm.lock
+default.realm.management/
+help
+realm-object-server

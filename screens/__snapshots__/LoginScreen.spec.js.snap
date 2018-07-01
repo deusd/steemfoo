@@ -9,7 +9,7 @@ exports[`LoginScreen should render 1`] = `
     }
   }
 >
-  <Component
+  <[object Object]
     style={
       Object {
         "alignSelf": "center",
