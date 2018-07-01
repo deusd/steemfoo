@@ -32,19 +32,9 @@ def setupNodeAndTest() {
 
   finally {
     // Run tests using creds
-    withEnv(getEnvForSuite()) {
-      // Actions:
-      //  1. Load NVM
-      //  2. Install/use required Node.js version
-      //  3. Install mocha-jenkins-reporter so that we can get junit style output
-      //  4. Run tests
+    nvm(version) {
       sh """
         echo 'Grabbing nvm...'
-        echo '------------------ nvm ---------------------'
-        [ -s "$NVM_DIR/nvm.sh" ] || true
-        . "$NVM_DIR/nvm.sh" || true
-        nvm install
-        nvm use
 
         echo 'Installing dependencies...'
         echo '------------------ install ---------------------'
