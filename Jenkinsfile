@@ -18,13 +18,30 @@ def getEnvForSuite() {
 
 def setupNodeAndTest() {
   // get version
-  String version = readFile('.nvmrc')
-  echo "current node version is ${version}"
+  echo 'NVM_DIR set to $NVM_DIR'
+  String version = readFile('.nvmrc').substring(1)
 
+  try {
+    // Install NVM
+    sh 'wget -qO- https://raw.githubusercontent.com/creationix/nvm/v0.33.11/install.sh | bash'
+  }
+
+  catch(all) {
+    echo 'NVM install failed but may already be installed, attempting to continue'
+  }
+
+  finally {
     // Run tests using creds
-    nvm(nvmInstallURL: 'https://raw.githubusercontent.com/creationix/nvm/v0.33.11/install.sh',
-        version: version) {
+    withEnv(getEnvForSuite()) {
+      // Actions:
+      //  1. Load NVM
+      //  2. Install/use required Node.js version
+      //  3. Install mocha-jenkins-reporter so that we can get junit style output
+      //  4. Run tests
       sh """
+        echo 'Grabbing nvm...'
+        echo '------------------ nvm ---------------------'
+        . ${env.HOME}/nvm.sh
         nvm install
         nvm use
 
@@ -36,6 +53,7 @@ def setupNodeAndTest() {
         echo '------------------ test ---------------------'
         yarn test
       """
+    }
   }
 }
 
