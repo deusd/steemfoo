@@ -27,6 +27,9 @@ def setupNodeAndTest() {
         nvmNodeJsOrgMirror: 'https://nodejs.org/dist',
         version: version) {
       sh """
+        nvm install
+        nvm use
+
         echo 'Installing dependencies...'
         echo '------------------ install ---------------------'
         yarn
