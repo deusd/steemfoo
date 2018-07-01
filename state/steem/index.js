@@ -21,16 +21,18 @@ export const login = createAction(SIGN_IN, () => {
   return {
     promise: new Promise((resolve, reject) => {
       let user = database.getUser()
+      console.log({ user })
 
       if (user) {
         resolve(user)
       } else {
         authorize(config)
           .then(remoteUser => {
+            console.log({ remoteUser })
             const formattedUser = {
               accessTokenExpirationDate: remoteUser.accessTokenExpirationDate,
               idToken: remoteUser.idToken,
-              userName: remoteUser.additionalparameters.username,
+              userName: (remoteUser.additionalParameters || {}).username,
               accessToken: 'string',
               tokenType: 'string',
               refreshToken: 'string',

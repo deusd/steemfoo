@@ -7,7 +7,7 @@ export default props => {
 
 const styles = {
   logo: {
-    fontFamily: 'MarkScript',
+    fontFamily: 'MarckScript-Regular',
     color: 'white',
     fontSize: 72,
   },
