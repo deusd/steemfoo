@@ -2,7 +2,7 @@ import 'react-native'
 import { shallow } from 'enzyme'
 import React from 'react'
 import { ActivityIndicator } from 'react-native'
-import Loading from '../Loading'
+import Loading from './Loading'
 
 describe('Loading component', () => {
   let wrapper

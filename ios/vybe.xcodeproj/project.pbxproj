@@ -43,6 +43,7 @@
 		43BA0DE7653346D99A32B98A /* MaterialIcons.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 621B7CAEB94F495E802CF4A8 /* MaterialIcons.ttf */; };
 		5E9157361DD0AC6A00FF2AA8 /* libRCTAnimation.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 5E9157331DD0AC6500FF2AA8 /* libRCTAnimation.a */; };
 		5F0793884EDA40E2A5244167 /* libRNFetchBlob.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 7E6CBC810A0E4A69BCA6D446 /* libRNFetchBlob.a */; };
+		600BCD0A20E8566D001EEA0E /* MarckScript.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 600BCCDD20E8566D001EEA0E /* MarckScript.ttf */; };
 		60FA2B3120841AF90036AEC0 /* Octicons.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 60FA2B0120841AF90036AEC0 /* Octicons.ttf */; };
 		60FA2B3220841AF90036AEC0 /* Feather.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 60FA2B0220841AF90036AEC0 /* Feather.ttf */; };
 		60FA2B3320841AF90036AEC0 /* Entypo.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 60FA2B0320841AF90036AEC0 /* Entypo.ttf */; };
@@ -437,6 +438,7 @@
 		47CD660123AA4218ABCE2838 /* EvilIcons.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = EvilIcons.ttf; path = "../node_modules/native-base/Fonts/EvilIcons.ttf"; sourceTree = "<group>"; };
 		4C5A840E58C9403BB893BDA0 /* libz.tbd */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libz.tbd; path = usr/lib/libz.tbd; sourceTree = SDKROOT; };
 		5E91572D1DD0AC6500FF2AA8 /* RCTAnimation.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = RCTAnimation.xcodeproj; path = "../node_modules/react-native/Libraries/NativeAnimation/RCTAnimation.xcodeproj"; sourceTree = "<group>"; };
+		600BCCDD20E8566D001EEA0E /* MarckScript.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = MarckScript.ttf; sourceTree = "<group>"; };
 		60FA2B0120841AF90036AEC0 /* Octicons.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = Octicons.ttf; sourceTree = "<group>"; };
 		60FA2B0220841AF90036AEC0 /* Feather.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = Feather.ttf; sourceTree = "<group>"; };
 		60FA2B0320841AF90036AEC0 /* Entypo.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = Entypo.ttf; sourceTree = "<group>"; };
@@ -775,6 +777,7 @@
 		60FA2B0020841AF90036AEC0 /* Fonts */ = {
 			isa = PBXGroup;
 			children = (
+				600BCCDD20E8566D001EEA0E /* MarckScript.ttf */,
 				60FA2B0120841AF90036AEC0 /* Octicons.ttf */,
 				60FA2B0220841AF90036AEC0 /* Feather.ttf */,
 				60FA2B0320841AF90036AEC0 /* Entypo.ttf */,
@@ -1429,6 +1432,7 @@
 				60FA2B3220841AF90036AEC0 /* Feather.ttf in Resources */,
 				60FA2B81208422B20036AEC0 /* HockeySDKResources.bundle in Resources */,
 				60FA2B3720841AF90036AEC0 /* FontAwesome.ttf in Resources */,
+				600BCD0A20E8566D001EEA0E /* MarckScript.ttf in Resources */,
 				60FA2B3320841AF90036AEC0 /* Entypo.ttf in Resources */,
 				60FA2B3420841AF90036AEC0 /* MaterialCommunityIcons.ttf in Resources */,
 				13B07FBD1A68108700A75B9A /* LaunchScreen.xib in Resources */,

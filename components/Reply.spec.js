@@ -1,7 +1,7 @@
 import 'react-native'
 import { shallow } from 'enzyme'
 import React from 'react'
-import Reply from '../Reply'
+import Reply from './Reply'
 
 const reply = {
   author: 'jahangirwifii',

@@ -2,7 +2,7 @@ import 'react-native'
 import { shallow } from 'enzyme'
 import React from 'react'
 import { View } from 'react-native'
-import Row from '../Row'
+import Row from './Row'
 
 describe('Row component', () => {
   let wrapper
