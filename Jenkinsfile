@@ -2,13 +2,18 @@ pipeline {
   agent any
 
   stages {
+    stage('Setup') {
+      steps {
+        echo 'Setup...'
+        echo '------------------ node setup ---------------------'
+        sh 'curl -o- https://raw.githubusercontent.com/creationix/nvm/v0.33.11/install.sh | bash'
+        sh 'nvm install'
+        sh 'nvm use'
+      }
+    }
     stage('Test') {
       steps {
         echo 'Testing...'
-        echo '------------------ node setup ---------------------'
-        sh 'nvm install'
-        sh 'nvm use'
-
         echo '------------------ install ---------------------'
         sh 'yarn'
 
