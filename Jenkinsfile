@@ -18,10 +18,8 @@ def getEnvForSuite() {
 
 def setupNodeAndTest() {
   // get version
-  sh 'ls -al'
-  sh 'echo $NVM_DIR'
-  sh 'ls $NVM_DIR'
-  String version = readFile('.nvmrc')
+  echo 'NVM_DIR set to $NVM_DIR'
+  String version = readFile('.nvmrc').substring(1)
 
   try {
     // Install NVM
@@ -43,6 +41,7 @@ def setupNodeAndTest() {
       sh """
         echo 'Grabbing nvm...'
         echo '------------------ nvm ---------------------'
+        [ -s "$NVM_DIR/nvm.sh" ] && . "$NVM_DIR/nvm.sh"
         nvm install ${version}
         nvm use ${version}
 
