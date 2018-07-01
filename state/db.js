@@ -15,7 +15,7 @@ const UserSchema = {
   },
 }
 
-export class Database {
+export default class Database {
   constructor(config) {
     this.realm = new Realm({ schema: [UserSchema], ...config })
   }

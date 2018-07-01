@@ -1,5 +1,5 @@
 import moment from 'moment'
-import { Database } from '../db'
+import Database from '../db'
 
 describe('db', () => {
   let date = new Date().getTime()
@@ -16,6 +16,10 @@ describe('db', () => {
 
   beforeAll(() => {
     database = new Database({ inMemory: true, inMemoryIdentifier: date })
+  })
+
+  afterAll(() => {
+    database.realm.close()
   })
 
   it('should return a realm instance when called', () => {

@@ -1,10 +1,9 @@
 import { cloneDeep } from 'lodash'
 import { createAction } from 'redux-action'
 import { authorize } from 'react-native-app-auth'
-import database from '../db'
+import database from '../../utilities/database'
 import { pending, resolve, reject } from '../../utilities/reducer'
 import { SIGN_IN, SIGN_OUT } from '../types'
-import api from '../../api'
 
 const config = {
   issuer: 'https://steemconnect.com/oauth2/',
