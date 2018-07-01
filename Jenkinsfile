@@ -18,16 +18,15 @@ def getEnvForSuite() {
 
 def setupNodeAndTest() {
   // get version
-  String version = readFile('.nvmrc')
+  String version = readFile('.nvmrc').substring(1)
   echo "current node version is ${version}"
 
     // Run tests using creds
-    nvm(version) {
+    nvm(nvmInstallURL: 'https://raw.githubusercontent.com/creationix/nvm/v0.33.2/install.sh',
+        nvmIoJsOrgMirror: 'https://iojs.org/dist',
+        nvmNodeJsOrgMirror: 'https://nodejs.org/dist',
+        version: version) {
       sh """
-        echo 'Grabbing nvm...'
-        nvm install
-        nvm use
-
         echo 'Installing dependencies...'
         echo '------------------ install ---------------------'
         yarn
