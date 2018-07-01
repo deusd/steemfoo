@@ -5,11 +5,11 @@ pipeline {
     stage('Test') {
       steps {
         echo 'Testing...'
-        checkout scm
-        nvm install
-        nvm use
-        yarn
-        yarn test
+        sh 'checkout scm'
+        sh 'nvm install'
+        sh 'nvm use'
+        sh 'yarn'
+        sh 'yarn test'
       }
     }
   }
