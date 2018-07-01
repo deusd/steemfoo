@@ -2,7 +2,7 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import { Text } from 'react-native'
 
-const Logo = props => {
+export const Logo = props => {
   return <Text style={[styles.logo, props.style]}>Vybe</Text>
 }
 
@@ -17,3 +17,5 @@ const styles = {
     fontSize: 72,
   },
 }
+
+export default Logo

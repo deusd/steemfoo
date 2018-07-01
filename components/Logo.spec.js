@@ -1,7 +1,7 @@
 import 'react-native'
 import { shallow } from 'enzyme'
 import React from 'react'
-import Logo from './Logo'
+import { Logo } from './Logo'
 
 describe('Logo component', () => {
   let wrapper

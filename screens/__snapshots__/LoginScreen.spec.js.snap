@@ -9,7 +9,7 @@ exports[`LoginScreen should render 1`] = `
     }
   }
 >
-  <[object Object]
+  <Logo
     style={
       Object {
         "alignSelf": "center",
