@@ -1,4 +1,4 @@
-def getEnvForSuite(suiteName) {
+def getEnvForSuite() {
   // Base environment variables
   def envVars = [
     "NVM_DIR=${env.HOME}/.nvm"
