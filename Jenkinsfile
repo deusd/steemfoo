@@ -41,7 +41,7 @@ def setupNodeAndTest() {
       sh """
         echo 'Grabbing nvm...'
         echo '------------------ nvm ---------------------'
-        source ${env.HOME}/.bashrc
+        [ -s "$NVM_DIR/nvm.sh" ] && . "$NVM_DIR/nvm.sh"
         nvm install
         nvm use
 
