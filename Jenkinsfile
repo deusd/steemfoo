@@ -22,7 +22,7 @@ def setupNodeAndTest() {
   echo "current node version is ${version}"
 
     // Run tests using creds
-    nvm(nvmInstallURL: 'https://raw.githubusercontent.com/creationix/nvm/v0.33.2/install.sh',
+    nvm(nvmInstallURL: 'https://raw.githubusercontent.com/creationix/nvm/v0.33.11/install.sh',
         nvmIoJsOrgMirror: 'https://iojs.org/dist',
         nvmNodeJsOrgMirror: 'https://nodejs.org/dist',
         version: version) {
