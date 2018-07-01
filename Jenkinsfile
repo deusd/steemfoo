@@ -16,8 +16,11 @@ def getEnvForSuite(suiteName) {
   return envVars
 }
 
-def setupNodeAndTest(version) {
+def setupNodeAndTest() {
   node {
+    // get version
+    String version = readFile('.nvmrc')
+
     // Install NVM
     sh 'wget -qO- https://raw.githubusercontent.com/creationix/nvm/v0.33.11/install.sh | bash'
     // Unstash the built content
@@ -48,13 +51,6 @@ def setupNodeAndTest(version) {
     }
   }
 }
-
-String getVersionFromPackageJson() {
-  version = readFile('.nvmrc')
-  return version
-}
-
-String version = getVersionFromPackageJson();
 
 pipeline {
   agent any
