@@ -25,8 +25,6 @@ def setupNodeAndTest() {
 
   // Install NVM
   sh 'wget -qO- https://raw.githubusercontent.com/creationix/nvm/v0.33.11/install.sh | bash'
-  // Unstash the built content
-  unstash name: 'built'
 
   // Run tests using creds
   withEnv(getEnvForSuite("${testSuite}")) {
