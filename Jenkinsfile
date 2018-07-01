@@ -19,12 +19,14 @@ def getEnvForSuite() {
 def setupNodeAndTest() {
   // get version
   String version = readFile('.nvmrc')
-  echo 'current node version is ${version}'
+  echo "current node version is ${version}"
 
     // Run tests using creds
     nvm(version) {
       sh """
         echo 'Grabbing nvm...'
+        nvm install
+        nvm use
 
         echo 'Installing dependencies...'
         echo '------------------ install ---------------------'
