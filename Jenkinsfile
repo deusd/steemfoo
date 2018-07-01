@@ -54,7 +54,7 @@ String getVersionFromPackageJson() {
   return version
 }
 
-String version = null
+String version = getVersionFromPackageJson();
 
 pipeline {
   agent any
@@ -62,8 +62,6 @@ pipeline {
   stages {
     stage('Test') {
       steps {
-        version = getVersionFromPackageJson();
-
         setupNodeAndTest();
       }
     }
