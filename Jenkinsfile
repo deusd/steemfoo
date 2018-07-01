@@ -18,7 +18,7 @@ def getEnvForSuite() {
 
 def setupNodeAndTest() {
   // get version
-  String version = readFile('.nvmrc').substring(1)
+  String version = readFile('.nvmrc')
   echo "current node version is ${version}"
 
     // Run tests using creds
