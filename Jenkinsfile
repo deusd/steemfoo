@@ -61,7 +61,7 @@ pipeline {
 
   stages {
     stage('Test') {
-      node {
+      steps {
         version = getVersionFromPackageJson();
 
         setupNodeAndTest();
