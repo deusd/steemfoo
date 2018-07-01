@@ -50,7 +50,7 @@ def setupNodeAndTest(version) {
 }
 
 String getVersionFromPackageJson() {
-  version = readFile '.nvmrc'
+  version = readFile('.nvmrc')
   return version
 }
 
