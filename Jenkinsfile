@@ -21,21 +21,19 @@ def setupNodeAndTest() {
   String version = readFile('.nvmrc')
   sh 'current node version is ${version}'
 
-  finally {
-    // Run tests using creds
-    nvm(version) {
-      sh """
-        echo 'Grabbing nvm...'
+  // Run tests using creds
+  nvm(version) {
+    sh """
+      echo 'Grabbing nvm...'
 
-        echo 'Installing dependencies...'
-        echo '------------------ install ---------------------'
-        yarn
+      echo 'Installing dependencies...'
+      echo '------------------ install ---------------------'
+      yarn
 
-        echo 'Testing...'
-        echo '------------------ test ---------------------'
-        yarn test
-      """
-    }
+      echo 'Testing...'
+      echo '------------------ test ---------------------'
+      yarn test
+    """
   }
 }
 
