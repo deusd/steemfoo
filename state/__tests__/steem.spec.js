@@ -1,6 +1,7 @@
 import { authorize } from 'react-native-app-auth'
 import reducer, { login } from '../steem'
 import { pending as going, resolve, reject } from '../../utilities/reducer'
+import database from '../../utilities/database'
 import * as types from '../types'
 import { mockStore } from './utilites'
 
@@ -22,6 +23,26 @@ describe('steem', () => {
   describe('reducer', () => {
     it('should return the default state', () => {
       expect(reducer(undefined, {})).toEqual(initialState)
+    })
+
+    it('should have the current user in the default state if available', () => {
+      const userSettings = {
+        accessTokenExpirationDate: '2018-07-07T15:44:51-0700',
+        idToken: 'id token',
+        userName: 'my name',
+        accessToken: 'access token',
+        tokenType: 'token type',
+        refreshToken: 'refresh token',
+      }
+      database.setUser(userSettings)
+
+      expect(reducer(undefined, {})).toEqual({
+        ...initialState,
+        user: {
+          id: 1,
+          ...userSettings,
+        },
+      })
     })
 
     it('should handle pending login', () => {

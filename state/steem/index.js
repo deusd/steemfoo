@@ -45,13 +45,13 @@ export const login = createAction(SIGN_IN, () => {
 
 export const logout = createAction(SIGN_OUT, () => null)
 
-const initialState = {
-  user: null,
+const initialState = () => ({
+  user: database.getUser() || null,
   signingIn: false,
   signinError: null,
-}
+})
 
-export default (state = initialState, action) => {
+export default (state = initialState(), action) => {
   let newState = cloneDeep(state)
   switch (action.type) {
     case pending(SIGN_IN): // eslint-disable-line
