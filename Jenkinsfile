@@ -5,10 +5,14 @@ pipeline {
     stage('Test') {
       steps {
         echo 'Testing...'
-        sh 'checkout scm'
+        echo '------------------ node setup ---------------------'
         sh 'nvm install'
         sh 'nvm use'
+
+        echo '------------------ install ---------------------'
         sh 'yarn'
+
+        echo '------------------ test ---------------------'
         sh 'yarn test'
       }
     }
