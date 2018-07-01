@@ -9,6 +9,7 @@ import { login } from '../state/steem'
 export class LoginScreen extends React.Component {
   static propTypes = {
     login: PropTypes.func.isRequired,
+    error: PropTypes.any,
   }
 
   render() {
