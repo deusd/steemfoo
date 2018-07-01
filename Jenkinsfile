@@ -7,6 +7,7 @@ pipeline {
         echo 'Setup...'
         echo '------------------ node setup ---------------------'
         sh 'curl -o- https://raw.githubusercontent.com/creationix/nvm/v0.33.11/install.sh | bash'
+        sh 'source ~/.bashrc'
         sh 'nvm install'
         sh 'nvm use'
       }
