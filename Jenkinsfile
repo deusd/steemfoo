@@ -27,7 +27,7 @@ def setupNodeAndTest() {
   sh 'wget -qO- https://raw.githubusercontent.com/creationix/nvm/v0.33.11/install.sh | bash'
 
   // Run tests using creds
-  withEnv(getEnvForSuite("${testSuite}")) {
+  withEnv(getEnvForSuite()) {
     // Actions:
     //  1. Load NVM
     //  2. Install/use required Node.js version
