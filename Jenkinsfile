@@ -19,6 +19,7 @@ def getEnvForSuite(suiteName) {
 def setupNodeAndTest() {
   node {
     // get version
+    sh 'ls -al'
     String version = readFile('.nvmrc')
 
     // Install NVM
