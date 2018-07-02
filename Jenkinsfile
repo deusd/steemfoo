@@ -40,17 +40,14 @@ def setupNodeAndTest() {
       //  4. Run tests
       sh """
         echo 'Grabbing nvm...'
-        echo '------------------ nvm ---------------------'
-        . ${env.HOME}/nvm.sh
+        . ${env.HOME}/.nvm/nvm.sh
         nvm install
         nvm use
 
         echo 'Installing dependencies...'
-        echo '------------------ install ---------------------'
         yarn
 
         echo 'Testing...'
-        echo '------------------ test ---------------------'
         yarn test
       """
     }
