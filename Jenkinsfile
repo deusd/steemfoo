@@ -39,6 +39,7 @@ def setupNodeAndTest() {
       //  3. Install mocha-jenkins-reporter so that we can get junit style output
       //  4. Run tests
       sh """
+        [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
         echo 'Grabbing nvm...'
         nvm install
         nvm use
