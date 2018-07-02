@@ -40,7 +40,6 @@ def setupNodeAndTest() {
       //  4. Run tests
       sh """
         echo 'Grabbing nvm...'
-        . ${env.HOME}/.nvm/nvm.sh
         nvm install
         nvm use
 
