@@ -19,7 +19,7 @@ def getEnvForSuite() {
 def setupNodeAndTest() {
   // get version
   echo 'NVM_DIR set to $NVM_DIR'
-  String version = readFile('.nvmrc').substring(1)
+  String version = readFile('.nvmrc')
 
   try {
     // Install NVM
@@ -33,23 +33,20 @@ def setupNodeAndTest() {
   finally {
     // Run tests using creds
     withEnv(getEnvForSuite()) {
+      nvm(version) {
+        sh """
+          echo 'Installing dependencies...'
+          yarn
+
+          echo 'Testing...'
+          yarn test
+        """
+      }
       // Actions:
       //  1. Load NVM
       //  2. Install/use required Node.js version
       //  3. Install mocha-jenkins-reporter so that we can get junit style output
       //  4. Run tests
-      sh """
-        [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
-        echo 'Grabbing nvm...'
-        nvm install
-        nvm use
-
-        echo 'Installing dependencies...'
-        yarn
-
-        echo 'Testing...'
-        yarn test
-      """
     }
   }
 }
