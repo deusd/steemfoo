@@ -6,7 +6,7 @@
     "lint": "eslint .",
     "lint:fix": "eslint . --fix",
     "start": "node node_modules/react-native/local-cli/cli.js start",
-    "pretest": "yarn lint",
+    "pretest": "npm run lint",
     "test": "jest",
     "test:only": "jest",
     "test:watch": "jest --watch",

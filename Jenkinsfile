@@ -25,13 +25,10 @@ def setupNodeAndTest() {
   withEnv(getEnvForSuite()) {
     nvm(version) {
       sh """
-        echo 'Installing dependencies...'
-        ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
-        brew install yarn
-        yarn
+        npm install
 
         echo 'Testing...'
-        yarn test
+        npm test
       """
     }
   }
