@@ -41,6 +41,23 @@ def buildAndroid() {
   }
 }
 
+def buildIos() {
+  withEnv(getEnvForSuite()) {
+    sh """
+      set -o pipefail
+      source ~/.bash_profile
+
+      cd ios
+      bundle install
+      bundle exec pod repo update
+      bundle exec pod install
+
+      cd ..
+      xcodebuild -workspace ios/vybe.xcworkspace -scheme Production archive -archivePath ./build/Production.xcarchive
+    """
+  }
+}
+
 pipeline {
   agent any
 
@@ -50,9 +67,20 @@ pipeline {
         setupNodeAndTest();
       }
     }
-    stage('Build Android') {
-      steps {
-        buildAndroid();
+    stage('Build') {
+      failFast true
+      parallel {
+        stage('Build Android') {
+          steps {
+            buildAndroid();
+          }
+        }
+
+        stage('Build Ios') {
+          steps {
+            buildIos();
+          }
+        }
       }
     }
   }
