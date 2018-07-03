@@ -1,7 +1,8 @@
 def getEnvForSuite() {
   // Base environment variables
   def envVars = [
-    "NVM_DIR=${env.HOME}/.nvm"
+    "NVM_DIR=${env.HOME}/.nvm",
+    "ANDROID_HOME=${env.HOME}/Library/Android/sdk"
   ]
 
   // Add test suite specific environment variables
@@ -34,6 +35,12 @@ def setupNodeAndTest() {
   }
 }
 
+def buildAndroid() {
+  withEnv(getEnvForSuite()) {
+    sh "android/gradlew -b android/build.gradle"
+  }
+}
+
 pipeline {
   agent any
 
@@ -41,6 +48,11 @@ pipeline {
     stage('Test') {
       steps {
         setupNodeAndTest();
+      }
+    }
+    stage('Build Android') {
+      steps {
+        buildAndroid();
       }
     }
   }
