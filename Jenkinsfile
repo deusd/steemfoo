@@ -42,6 +42,8 @@ def buildIos() {
       bundle install
       bundle exec pod repo update
       bundle exec pod install
+      react-native bundle --dev false --entry-file index.js --bundle-output ios/main.jsbundle --platform ios
+
 
       cd ..
       xcodebuild -workspace ios/vybe.xcworkspace -scheme Production archive -archivePath ./build/Production.xcarchive | xcpretty
