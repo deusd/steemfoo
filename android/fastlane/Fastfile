@@ -24,8 +24,7 @@ platform :android do
   desc "Build the app without distribution"
   lane :build do
     gradle(
-      task: "clean assembleRelease",
-      build_type: "Release"
+      task: "clean assembleRelease"
     )
   end
 end
