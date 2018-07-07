@@ -31,7 +31,10 @@ def setupNodeAndTest() {
 
 def buildAndroid() {
   withEnv(getEnvForSuite()) {
-    sh "android/gradlew -b android/build.gradle"
+    sh """
+      bundle install
+      bundle exec fastlane build
+      """
   }
 }
 
@@ -43,10 +46,7 @@ def buildIos() {
       bundle install
       bundle exec pod repo update
       bundle exec pod install
-
-
-      cd ..
-      xcodebuild -workspace ios/vybe.xcworkspace -scheme Production archive -archivePath ./build/Production.xcarchive
+      bundle exec fastlane build
       """
   }
 }
@@ -61,7 +61,7 @@ pipeline {
       }
     }
     stage('Build') {
-    failFast true
+      failFast true
       parallel {
         stage('Build Android') {
           steps {
