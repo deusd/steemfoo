@@ -6,7 +6,9 @@ def getEnvForSuite() {
    "PATH+BIN=/usr/local/bin",
    "PATH+RBENV=${env.HOME}/.rbenv/bin",
    "PATH+RBENV_SHIM=${env.HOME}/.rbenv/shims",
-   "GEM_HOME=${env.HOME}/src/gems"
+   "GEM_HOME=${env.HOME}/src/gems",
+   "LC_ALL=en_US.UTF-8",
+   "LANG=en_US.UTF-8"
   ]
 
   return envVars
