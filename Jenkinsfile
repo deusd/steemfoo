@@ -32,6 +32,7 @@ def setupNodeAndTest() {
 def buildAndroid() {
   withEnv(getEnvForSuite()) {
     sh """
+      cd android
       bundle install
       bundle exec fastlane build
       """
