@@ -34,6 +34,7 @@ def setupNodeAndTest() {
 def buildAndroid() {
   withEnv(getEnvForSuite()) {
     sh """
+      react-native bundle --dev false --entry-file index.js --bundle-output ios/main.jsbundle --platform android
       cd android
       bundle install
       bundle exec fastlane build
