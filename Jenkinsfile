@@ -2,7 +2,8 @@ def getEnvForSuite() {
   // Base environment variables
   def envVars = [
    "NVM_DIR=${env.HOME}/.nvm",
-   "ANDROID_HOME=${env.HOME}",
+   "ANDROID_HOME=${env.HOME}/Library/Android/sdk",
+   "PATH+ANDRIOD=${env.HOME}/Library/Android/platform-tools/",
    "PATH+BIN=/usr/local/bin",
    "PATH+RBENV=${env.HOME}/.rbenv/bin",
    "PATH+RBENV_SHIM=${env.HOME}/.rbenv/shims",
