@@ -1,4 +1,5 @@
 import { authorize } from 'react-native-app-auth'
+import moment from 'moment'
 import reducer, { login } from '../steem'
 import { pending as going, resolve, reject } from '../../utilities/reducer'
 import database from '../../utilities/database'
@@ -27,7 +28,9 @@ describe('steem', () => {
 
     it('should have the current user in the default state if available', () => {
       const userSettings = {
-        accessTokenExpirationDate: '2018-07-07T15:44:51-0700',
+        accessTokenExpirationDate: moment()
+          .add(8, 'days')
+          .format(),
         idToken: 'id token',
         userName: 'my name',
         accessToken: 'access token',

@@ -6,7 +6,9 @@ describe('db', () => {
   let database
 
   const userSettings = {
-    accessTokenExpirationDate: '2018-07-07T15:44:51-0700',
+    accessTokenExpirationDate: moment()
+      .add(8, 'days')
+      .format(),
     idToken: 'id token',
     userName: 'my name',
     accessToken: 'access token',
