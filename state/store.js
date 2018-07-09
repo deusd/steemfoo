@@ -1,4 +1,3 @@
-// import { AsyncStore } from 'react-native'
 import { createStore, applyMiddleware } from 'redux'
 import { createLogger } from 'redux-logger'
 import thunkMiddleware from 'redux-thunk'
@@ -30,13 +29,12 @@ firebase.initializeApp(config)
 
 const composeEnhancer = composeWithDevTools({})
 
-const initialState = {}
 function configureStore() {
   const enhancer = composeEnhancer(applyMiddleware(...middlewares))
 
   return createStore(reducer, enhancer)
 }
 
-const store = configureStore(initialState)
+const store = configureStore()
 
 export default store

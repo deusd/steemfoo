@@ -1,8 +1,8 @@
 import 'react-native'
 import { shallow } from 'enzyme'
 import React from 'react'
-import ProfileImageThumb from '../ProfileImageThumb'
-import { PROFILE_PLACEHOLDER_IMAGE } from '../../constants'
+import ProfileImageThumb from './ProfileImageThumb'
+import { PROFILE_PLACEHOLDER_IMAGE } from '../constants'
 
 describe('ProfileImageThumb component', () => {
   let wrapper

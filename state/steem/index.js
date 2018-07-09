@@ -1,64 +1,77 @@
-//@flow
 import { cloneDeep } from 'lodash'
 import { createAction } from 'redux-action'
+import { authorize } from 'react-native-app-auth'
+import database from '../../utilities/database'
 import { pending, resolve, reject } from '../../utilities/reducer'
-import { VYBE_GET_POSTS } from '../types'
-import api from '../../api'
-import { PostType, PostOptions } from '../../types'
+import { SIGN_IN, SIGN_OUT } from '../types'
 
-export const getPosts = createAction(
-  VYBE_GET_POSTS,
-  (postType: PostType, options: PostOptions) => {
-    let promise
-    switch (postType) {
-      case 'trending':
-        promise = api.getTrendingPosts(options)
-        break
-      case 'latest':
-        promise = api.getLatestPosts(options)
-        break
-      case 'hot':
-        promise = api.getHotPosts(options)
-        break
-      default:
-        throw new Error('You must provide a valid post type')
-    }
-
-    return {
-      options,
-      promise,
-    }
-  }
-)
-
-const initialState = {
-  posts: [],
-  isLoadingPosts: false,
+const config = {
+  issuer: 'https://steemconnect.com/oauth2/',
+  clientId: 'vybe',
+  redirectUrl: 'io.wevybe.app://oauthredirect.login',
+  scopes: ['offline'],
+  serviceConfiguration: {
+    authorizationEndpoint: 'https://steemconnect.com/oauth2/authorize',
+    tokenEndpoint: 'https://wevybe.herokuapp.com/loginWithAccessToken',
+    revocationEndpoint: 'https://steemconnect.com/oauth2/token/revoke',
+  },
 }
 
-export default (state = initialState, action) => {
+export const login = createAction(SIGN_IN, () => {
+  return {
+    promise: new Promise((resolve, reject) => {
+      let user = database.getUser()
+
+      if (user) {
+        resolve(user)
+      } else {
+        authorize(config)
+          .then(remoteUser => {
+            const formattedUser = {
+              accessTokenExpirationDate: remoteUser.accessTokenExpirationDate,
+              idToken: remoteUser.idToken,
+              userName: (remoteUser.additionalParameters || {}).username,
+              accessToken: 'string',
+              tokenType: 'string',
+              refreshToken: 'string',
+            }
+            resolve(formattedUser)
+          })
+          .catch(reason => reject(reason))
+      }
+    }),
+  }
+})
+
+export const logout = createAction(SIGN_OUT, () => null)
+
+const initialState = () => ({
+  user: database.getUser() || null,
+  signingIn: false,
+  signinError: null,
+})
+
+export default (state = initialState(), action) => {
   let newState = cloneDeep(state)
   switch (action.type) {
-    case pending(VYBE_GET_POSTS): // eslint-disable-line
-      newState = { ...newState, isLoadingPosts: true, error: undefined }
+    case pending(SIGN_IN): // eslint-disable-line
+      newState = { ...newState, signingIn: true, signinError: null, user: null }
       break
-    case resolve(VYBE_GET_POSTS): {
-      const posts = newState.posts
-      const newPosts = action.payload.data
-
+    case resolve(SIGN_IN): {
       newState = {
         ...newState,
-        isLoadingPosts: false,
-        posts: posts.concat(newPosts.map(post => post)),
-        error: undefined,
+        signingIn: false,
+        user: action.payload,
+        signinError: null,
       }
       break
     }
-    case reject(VYBE_GET_POSTS):
+    case reject(SIGN_IN):
       newState = {
         ...newState,
-        isLoadingPosts: false,
-        error: action.payload.error,
+        signingIn: false,
+        signinError: action.payload,
+        user: null,
       }
       break
     default:

@@ -43,3 +43,14 @@ export type Post = {
   permalink: string,
   location: string,
 }
+
+export type SteemPersona = {
+  accessToken: String,
+  accessTokenExpirationDate: String,
+  additionalParameter: {
+    username: String,
+  },
+  idToken: String,
+  refreshToken: String,
+  tokenType: String,
+}

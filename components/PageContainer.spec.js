@@ -2,7 +2,7 @@ import 'react-native'
 import { shallow } from 'enzyme'
 import React from 'react'
 import { View } from 'react-native'
-import PageContainer from '../PageContainer'
+import PageContainer from './PageContainer'
 
 describe('PageContainer component', () => {
   let wrapper

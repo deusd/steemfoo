@@ -6,7 +6,9 @@
 
 import React from 'react'
 import SplashScreen from 'react-native-splash-screen'
+import { Provider } from 'react-redux'
 import RootStack from './components/RootStack'
+import store from './state/store'
 
 class App extends React.Component {
   componentDidMount() {
@@ -14,7 +16,11 @@ class App extends React.Component {
   }
 
   render() {
-    return <RootStack />
+    return (
+      <Provider store={store}>
+        <RootStack />
+      </Provider>
+    )
   }
 }
 
