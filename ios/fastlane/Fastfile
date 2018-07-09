@@ -18,12 +18,15 @@ default_platform(:ios)
 platform :ios do
   desc "Generate the ios ipa"
   lane :build do
-    match(
-      type: "development",
-      git_url: "git@github.com:deusd/vibranium.git",
-      username: "deusduke@gmail.com",
-      app_identifier: "*"
+    create_keychain(
+      name: ENV["MATCH_KEYCHAIN_NAME"],
+      password: ENV["MATCH_KEYCHAIN_PASSWORD"],
+      default_keychain: true,
+      unlock: true,
+      timeout: 3600,
+      add_to_search_list: true
     )
+    match
     gym
   end
 end

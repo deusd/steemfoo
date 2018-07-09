@@ -45,14 +45,21 @@ def buildAndroid() {
 
 def buildIos() {
   withEnv(getEnvForSuite()) {
-    sh """
-      react-native bundle --dev false --entry-file index.js --bundle-output ios/main.jsbundle --platform ios
-      cd ios
-      bundle install
-      bundle exec pod repo update
-      bundle exec pod install
-      bundle exec fastlane build
-      """
+    withCredentials([
+      string(credentialsId: 'match-password', variable: 'MATCH_PASSWORD'),
+      string(credentialsId: 'fastlane-password', variable: 'FASTLANE_PASSWORD'),
+      string(credentialsId: 'match-keychain-password', variable: 'MATCH_KEYCHAIN_PASSWORD'),
+      string(credentialsId: 'match-keychain-name', variable: 'MATCH_KEYCHAIN_NAME')
+    ]) {
+      sh """
+        react-native bundle --dev false --entry-file index.js --bundle-output ios/main.jsbundle --platform ios
+        cd ios
+        bundle install
+        bundle exec pod repo update
+        bundle exec pod install
+        bundle exec fastlane build
+        """
+    }
   }
 }
 

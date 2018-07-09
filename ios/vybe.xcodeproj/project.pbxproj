@@ -1717,8 +1717,8 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = io.wevybe.app;
 				PRODUCT_NAME = vybe;
-				PROVISIONING_PROFILE = "0d2d440d-3c30-449c-a437-1d56920e835a";
-				PROVISIONING_PROFILE_SPECIFIER = "match Development *";
+				PROVISIONING_PROFILE = "a1a8109a-e674-48dc-b948-baa7d298979a";
+				PROVISIONING_PROFILE_SPECIFIER = "match Development io.wevybe.app";
 				VERSIONING_SYSTEM = "apple-generic";
 			};
 			name = Debug;
@@ -1755,8 +1755,8 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = io.wevybe.app;
 				PRODUCT_NAME = vybe;
-				PROVISIONING_PROFILE = "0d2d440d-3c30-449c-a437-1d56920e835a";
-				PROVISIONING_PROFILE_SPECIFIER = "match Development *";
+				PROVISIONING_PROFILE = "a1a8109a-e674-48dc-b948-baa7d298979a";
+				PROVISIONING_PROFILE_SPECIFIER = "match Development io.wevybe.app";
 				VERSIONING_SYSTEM = "apple-generic";
 			};
 			name = Release;
