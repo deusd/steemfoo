@@ -17,7 +17,7 @@
     "upgrade-rn": "react-native-git-upgrade"
   },
   "dependencies": {
-    "apollo-boost": "0.1.6",
+    "apollo-boost": "0.1.10",
     "axios": "0.18.0",
     "firebase": "5.0.4",
     "flux-standard-action": "2.0.3",
