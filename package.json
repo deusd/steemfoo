@@ -29,7 +29,7 @@
     "numeral": "2.0.6",
     "prop-types": "15.6.1",
     "react": "16.4.0",
-    "react-apollo": "2.1.4",
+    "react-apollo": "2.1.9",
     "react-native": "0.55.4",
     "react-native-actionsheet": "2.4.2",
     "react-native-app-auth": "2.4.1",
