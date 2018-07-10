@@ -59,8 +59,11 @@ def buildIos() {
       if ( !fileExists("${env.HOME}/.cocoapods/repos/master/.git/index.lock") ) {
         sh "bundle exec pod repo update"
       }
-      sh "bundle exec pod install"
-      sh "bundle exec fastlane build"
+      sh """
+        cd ios
+        bundle exec pod install
+        bundle exec fastlane build
+        """
     }
   }
 }
