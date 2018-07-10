@@ -55,10 +55,12 @@ def buildIos() {
         react-native bundle --dev false --entry-file index.js --bundle-output ios/main.jsbundle --platform ios
         cd ios
         bundle install
-        bundle exec pod repo update
-        bundle exec pod install
-        bundle exec fastlane build
         """
+      if not fileExists("${env.HOME}/.cocoapods/repos/master/.git/index.lock") {
+        sh "bundle exec pod repo update"
+      }
+      sh "bundle exec pod install"
+      sh "bundle exec fastlane build"
     }
   }
 }
