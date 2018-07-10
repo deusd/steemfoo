@@ -56,7 +56,7 @@ def buildIos() {
         cd ios
         bundle install
         """
-      if not fileExists("${env.HOME}/.cocoapods/repos/master/.git/index.lock") {
+      if ( !fileExists("${env.HOME}/.cocoapods/repos/master/.git/index.lock") ) {
         sh "bundle exec pod repo update"
       }
       sh "bundle exec pod install"
@@ -75,6 +75,8 @@ pipeline {
       }
     }
     stage('Build') {
+      when { anyOf { changeRequest(); branch 'master' } }
+
       failFast true
       parallel {
         stage('Build Android') {
