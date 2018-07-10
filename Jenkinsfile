@@ -52,8 +52,8 @@ def buildIos() {
       string(credentialsId: 'match-keychain-name', variable: 'MATCH_KEYCHAIN_NAME')
     ]) {
       sh """
-        cd ios
         react-native bundle --dev false --entry-file index.js --bundle-output ./main.jsbundle --platform ios
+        cd ios
         bundle install
         """
       if ( !fileExists("${env.HOME}/.cocoapods/repos/master/.git/index.lock") ) {
