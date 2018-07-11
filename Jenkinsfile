@@ -52,10 +52,15 @@ def buildIos() {
       string(credentialsId: 'match-keychain-name', variable: 'MATCH_KEYCHAIN_NAME')
     ]) {
       sh """
-        react-native bundle --dev false --entry-file index.js --bundle-output ios/main.jsbundle --platform ios
+        react-native bundle --dev false --entry-file index.js --bundle-output ./main.jsbundle --platform ios
         cd ios
         bundle install
-        bundle exec pod repo update
+        """
+      if ( !fileExists("${env.HOME}/.cocoapods/repos/master/.git/index.lock") ) {
+        sh "cd ios && bundle exec pod repo update"
+      }
+      sh """
+        cd ios
         bundle exec pod install
         bundle exec fastlane build
         """
@@ -73,6 +78,8 @@ pipeline {
       }
     }
     stage('Build') {
+      when { anyOf { changeRequest(); branch 'master' } }
+
       failFast true
       parallel {
         stage('Build Android') {
