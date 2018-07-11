@@ -70,6 +70,7 @@ def buildIos() {
 
 pipeline {
   agent any
+  options { buildDiscarder(logRotator(numToKeepStr: '1')) }
 
   stages {
     stage('Test') {
