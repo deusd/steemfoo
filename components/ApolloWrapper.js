@@ -1,19 +1,12 @@
 import ApolloClient from 'apollo-boost'
 import React from 'react'
-import { Platform } from 'react-native'
 import { ApolloProvider } from 'react-apollo'
 
-const android = 'http://10.0.2.2:8080'
-const ios = 'http:localhost:8080'
-const demo = 'https://wevybe.herokuapp.com'
-const localUrl = Platform.select({
-  android,
-  ios,
-})
+const demo = 'https://us-central1-vybe-209906.cloudfunctions.net/api'
 
 export const getClient = () =>
   new ApolloClient({
-    uri: `${__DEV__ ? localUrl : demo}/graphql`,
+    uri: `${demo}/graphql`,
   })
 
 const ApolloWrapper = WrappedComponent =>
