@@ -3,20 +3,84 @@
   "version": "0.0.1",
   "private": true,
   "scripts": {
+    "lint": "eslint .",
+    "lint:fix": "eslint . --fix",
     "start": "node node_modules/react-native/local-cli/cli.js start",
-    "test": "jest"
+    "pretest": "npm run lint",
+    "test": "jest",
+    "test:only": "jest",
+    "test:watch": "jest --watch",
+    "ios": "react-native run-ios",
+    "android": "react-native run-android",
+    "build-android": "cd android && ./gradlew assembleRelease && cd ..",
+    "rnlink": "react-native link",
+    "upgrade-rn": "react-native-git-upgrade",
+    "pods": "cd ios && pod install"
   },
   "dependencies": {
+    "apollo-boost": "0.1.16",
+    "axios": "0.18.0",
+    "firebase": "5.5.2",
+    "graphql": "14.0.2",
+    "graphql-tag": "2.10.0",
+    "lodash": "4.17.11",
+    "moment": "2.22.2",
+    "native-base": "2.8.0",
+    "numeral": "2.0.6",
     "react": "16.5.0",
-    "react-native": "0.57.1"
+    "react-apollo": "2.2.4",
+    "react-native": "0.57.1",
+    "react-native-app-auth": "3.1.0",
+    "react-native-config": "0.11.5",
+    "react-native-image-progress": "1.1.1",
+    "react-native-splash-screen": "3.1.1",
+    "react-navigation": "2.17.0",
+    "react-redux": "5.0.7",
+    "realm": "2.17.0",
+    "redux": "4.0.0",
+    "redux-action": "1.2.2",
+    "redux-devtools-extension": "2.13.5",
+    "redux-logger": "3.0.6",
+    "redux-promise-middleware": "5.1.1",
+    "redux-thunk": "2.3.0",
+    "rn-fetch-blob": "0.10.13",
+    "timeago.js": "4.0.0-beta.1"
   },
   "devDependencies": {
+    "@babel/preset-env": "7.1.0",
+    "@babel/runtime": "7.1.2",
+    "babel-eslint": "10.0.1",
     "babel-jest": "23.6.0",
+    "enzyme": "3.6.0",
+    "enzyme-adapter-react-16": "1.5.0",
+    "eslint": "5.6.1",
+    "eslint-config-prettier": "3.1.0",
+    "eslint-plugin-class-property": "1.1.0",
+    "eslint-plugin-jest": "21.24.1",
+    "eslint-plugin-prettier": "3.0.0",
+    "eslint-plugin-react": "7.11.1",
+    "flow-bin": "0.82.0",
     "jest": "23.6.0",
+    "jest-enzyme": "6.1.2",
     "metro-react-native-babel-preset": "0.47.0",
-    "react-test-renderer": "16.5.0"
+    "prettier": "1.14.3",
+    "react-dom": "16.5.2",
+    "react-test-renderer": "16.5.0",
+    "redux-mock-store": "1.5.3"
   },
   "jest": {
-    "preset": "react-native"
+    "preset": "react-native",
+    "transform": {
+      "^.+\\.js$": "<rootDir>/node_modules/react-native/jest/preprocessor.js"
+    },
+    "transformIgnorePatterns": [
+      "node_modules/(?!react-native|native-base|native-base-shoutem-theme|@shoutem/animation|@shoutem/ui|tcomb-form-native|react-navigation|rn-fetch-blob)"
+    ],
+    "setupTestFrameworkScriptFile": "./jest/setup.js"
+  },
+  "rnpm": {
+    "assets": [
+      "./assets/fonts"
+    ]
   }
 }

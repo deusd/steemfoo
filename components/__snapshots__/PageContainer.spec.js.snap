@@ -1,0 +1,15 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`PageContainer component should render 1`] = `
+<Styled(Container)>
+  <Styled(Content) />
+</Styled(Container)>
+`;
+
+exports[`PageContainer component should render with children 1`] = `
+<Styled(Container)>
+  <Styled(Content)>
+    <ForwardRef(View) />
+  </Styled(Content)>
+</Styled(Container)>
+`;

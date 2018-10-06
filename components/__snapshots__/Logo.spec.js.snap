@@ -1,0 +1,18 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Logo component should render with no styles 1`] = `
+<ForwardRef(Text)
+  style={
+    Array [
+      Object {
+        "color": "white",
+        "fontFamily": "MarckScript-Regular",
+        "fontSize": 72,
+      },
+      undefined,
+    ]
+  }
+>
+  Vybe
+</ForwardRef(Text)>
+`;

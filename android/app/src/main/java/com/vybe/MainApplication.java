@@ -3,6 +3,11 @@ package com.vybe;
 import android.app.Application;
 
 import com.facebook.react.ReactApplication;
+import com.RNFetchBlob.RNFetchBlobPackage;
+import org.devio.rn.splashscreen.SplashScreenReactPackage;
+import io.realm.react.RealmReactPackage;
+import com.lugg.ReactNativeConfig.ReactNativeConfigPackage;
+import com.reactlibrary.RNAppAuthPackage;
 import com.facebook.react.ReactNativeHost;
 import com.facebook.react.ReactPackage;
 import com.facebook.react.shell.MainReactPackage;
@@ -22,7 +27,12 @@ public class MainApplication extends Application implements ReactApplication {
     @Override
     protected List<ReactPackage> getPackages() {
       return Arrays.<ReactPackage>asList(
-          new MainReactPackage()
+          new MainReactPackage(),
+            new RNFetchBlobPackage(),
+            new SplashScreenReactPackage(),
+            new RealmReactPackage(),
+            new ReactNativeConfigPackage(),
+            new RNAppAuthPackage()
       );
     }
 

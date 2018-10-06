@@ -1,0 +1,22 @@
+PODS:
+  - AppAuth (0.95.0)
+  - HockeySDK (5.1.4):
+    - HockeySDK/DefaultLib (= 5.1.4)
+  - HockeySDK/DefaultLib (5.1.4)
+
+DEPENDENCIES:
+  - AppAuth (>= 0.94)
+  - HockeySDK (~> 5.1.4)
+
+SPEC REPOS:
+  https://github.com/cocoapods/specs.git:
+    - AppAuth
+    - HockeySDK
+
+SPEC CHECKSUMS:
+  AppAuth: 137f6bb6fc9dfbaf2cf9f6fcff1d336ff0163bc6
+  HockeySDK: 15afe6bc0a5bfe3a531fd73dbf082095f37dac3b
+
+PODFILE CHECKSUM: 8ce3d5aa3ce7a2834b55f616e3fdf76dd2606486
+
+COCOAPODS: 1.5.3

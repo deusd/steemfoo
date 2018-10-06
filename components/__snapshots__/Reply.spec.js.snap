@@ -1,0 +1,142 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[` 1`] = `undefined`;
+
+exports[`Reply component should show the placeholder image if no author profile image 1`] = `
+<Columns
+  style={
+    Object {
+      "borderBottomColor": "#7D7D7D",
+      "borderBottomWidth": 0.5,
+      "marginTop": 10,
+      "padding": 10,
+    }
+  }
+>
+  <Row
+    style={
+      Object {
+        "width": "100%",
+      }
+    }
+  >
+    <ProfileImageThumb
+      profileImage={null}
+      style={
+        Object {
+          "marginRight": 10,
+        }
+      }
+    />
+    <ForwardRef(View)
+      style={
+        Object {
+          "flex": 1,
+        }
+      }
+    >
+      <ForwardRef(Text)
+        style={
+          Object {
+            "fontWeight": "bold",
+          }
+        }
+        testID="authorText"
+      >
+        jahangirwifii
+         
+      </ForwardRef(Text)>
+      <ForwardRef(Text)
+        style={
+          Object {
+            "fontWeight": "normal",
+          }
+        }
+        testID="replyMessageText"
+      >
+        @tipu need again 2.5...
+      </ForwardRef(Text)>
+    </ForwardRef(View)>
+    <Icon
+      allowFontScaling={false}
+      color="#4F4F4F"
+      name="heart-o"
+      size={24}
+      style={
+        Object {
+          "marginLeft": 10,
+        }
+      }
+    />
+  </Row>
+  <Row
+    style={
+      Object {
+        "marginTop": 10,
+      }
+    }
+  >
+    <ForwardRef(View)
+      style={
+        Object {
+          "flex": 1,
+        }
+      }
+    >
+      <ForwardRef(Text)>
+        2 weeks ago
+      </ForwardRef(Text)>
+    </ForwardRef(View)>
+    <ForwardRef(View)
+      style={
+        Array [
+          Object {
+            "flex": 1,
+          },
+          Object {
+            "alignItems": "center",
+          },
+        ]
+      }
+    >
+      <ForwardRef(Text)
+        testID="replyValueText"
+      >
+        $123.45
+      </ForwardRef(Text)>
+    </ForwardRef(View)>
+    <ForwardRef(View)
+      style={
+        Array [
+          Object {
+            "flex": 1,
+          },
+          Object {
+            "alignItems": "flex-end",
+          },
+        ]
+      }
+    >
+      <Row>
+        <ForwardRef(Text)
+          testID="replyVoteCount"
+        >
+          0
+           likes
+        </ForwardRef(Text)>
+        <Icon
+          allowFontScaling={false}
+          color="#4F4F4F"
+          name="reply"
+          size={24}
+          style={
+            Object {
+              "marginLeft": 10,
+            }
+          }
+        />
+      </Row>
+    </ForwardRef(View)>
+  </Row>
+</Columns>
+`;

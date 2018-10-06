@@ -1,0 +1,19 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Query component should render 1`] = `
+<ContextConsumer>
+  <Component />
+</ContextConsumer>
+`;
+
+exports[`Query component when loading should show the loading component 1`] = `<Loading />`;
+
+exports[`Query component when not loading should not show the loading component 1`] = `
+<ForwardRef(View)>
+  <ForwardRef(View)
+    testID="TestComponent"
+  />
+</ForwardRef(View)>
+`;
+
+exports[`Query component when refetching should show the loading component 1`] = `<Loading />`;
