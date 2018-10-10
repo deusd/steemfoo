@@ -1,4 +1,4 @@
-import reducer, { uploadImage } from './firebase'
+import reducer, { uploadImage } from './'
 
 // TODO: add mocks to finish testing image upload
 // https://facebook.github.io/jest/docs/en/tutorial-async.html

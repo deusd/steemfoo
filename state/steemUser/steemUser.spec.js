@@ -1,8 +1,6 @@
 import * as RNA from 'react-native-app-auth'
-import moment from 'moment'
 import reducer, { login } from './index'
 import { pending as going, resolve, reject } from '../../utilities/reducer'
-import database from '../../utilities/database'
 import * as types from '../types'
 import { mockStore } from '../test/utilites'
 
@@ -20,7 +18,7 @@ const filledState = {
 
 jest.mock('react-native-app-auth')
 
-describe('steem', () => {
+describe('steemUser', () => {
   beforeEach(() => {
     jest.spyOn(RNA, 'authorize')
   })
@@ -28,28 +26,6 @@ describe('steem', () => {
   describe('reducer', () => {
     it('should return the default state', () => {
       expect(reducer(undefined, {})).toEqual(initialState)
-    })
-
-    it('should have the current user in the default state if available', () => {
-      const userSettings = {
-        accessTokenExpirationDate: moment()
-          .add(8, 'days')
-          .format(),
-        idToken: 'id token',
-        userName: 'my name',
-        accessToken: 'access token',
-        tokenType: 'token type',
-        refreshToken: 'refresh token',
-      }
-      database.setUser(userSettings)
-
-      expect(reducer(undefined, {})).toEqual({
-        ...initialState,
-        user: {
-          id: 1,
-          ...userSettings,
-        },
-      })
     })
 
     it('should handle pending login', () => {
@@ -115,7 +91,7 @@ describe('steem', () => {
 
         RNA.authorize.mockResolvedValueOnce(payload)
 
-        const store = mockStore({ steem: initialState })
+        const store = mockStore({ steemUser: initialState })
         const expectedActions = [
           {
             type: going(types.SIGN_IN),
@@ -136,7 +112,7 @@ describe('steem', () => {
       it('should return an action with promise on reject', () => {
         RNA.authorize.mockRejectedValueOnce(new Error('Oopsy'))
 
-        const store = mockStore({ steem: initialState })
+        const store = mockStore({ steemUser: initialState })
         const expectedActions = [
           {
             type: going(types.SIGN_IN),

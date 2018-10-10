@@ -5,7 +5,6 @@
 	};
 	objectVersion = 46;
 	objects = {
-
 /* Begin PBXBuildFile section */
 		00C302E51ABCBA2D00DB3ED1 /* libRCTActionSheet.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 00C302AC1ABCB8CE00DB3ED1 /* libRCTActionSheet.a */; };
 		00C302E71ABCBA2D00DB3ED1 /* libRCTGeolocation.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 00C302BA1ABCB90400DB3ED1 /* libRCTGeolocation.a */; };
@@ -49,14 +48,11 @@
 		5EE6B59839F744A4BBCC1C0B /* Entypo.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 6BA215E4BF4D4EE0ADCAA1E7 /* Entypo.ttf */; };
 		7C9BE9D0216889B2004E2529 /* libRNFetchBlob.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 7C9BE9CE21688999004E2529 /* libRNFetchBlob.a */; };
 		832341BD1AAA6AB300B99B32 /* libRCTText.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 832341B51AAA6A8300B99B32 /* libRCTText.a */; };
-		894A59A89A8A43DBA4A32C21 /* libRealmReact.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 3408EDEECCE94ACBA0D0C963 /* libRealmReact.a */; };
 		8D358F17690B44C3AB185E41 /* libSplashScreen.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 7DD3B7E73A3E47BA96488D86 /* libSplashScreen.a */; };
 		8EB6DA944877462693F35D67 /* Roboto-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = D3AEA86595EB4376A0FEA27B /* Roboto-Bold.ttf */; };
 		9758C7D62DD146459DB5BD98 /* Foundation.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 58E882FAD4774368B575AF53 /* Foundation.ttf */; };
 		9A63F961D96E4DA395A72FD0 /* FontAwesome.ttf in Resources */ = {isa = PBXBuildFile; fileRef = F43F5BA35F344C0999BFE3E1 /* FontAwesome.ttf */; };
-		9AC16D5170CA46BAA186CFF0 /* libc++.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = C8E9CD65E45943B180537DB2 /* libc++.tbd */; };
 		ADBDB9381DFEBF1600ED6528 /* libRCTBlob.a in Frameworks */ = {isa = PBXBuildFile; fileRef = ADBDB9271DFEBF0700ED6528 /* libRCTBlob.a */; };
-		C7635E4756F74ABC8CC2F56D /* libz.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 0D6C1DDD183D40B2BD433869 /* libz.tbd */; };
 		CCC3DB5D16BB4D8E9D3184F3 /* Roboto.ttf in Resources */ = {isa = PBXBuildFile; fileRef = E857B18F6C6042ECB4D0668C /* Roboto.ttf */; };
 		CFB397EA0AA04B019235D741 /* MarckScript.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 0BE796A7FD5E4B088CA22C14 /* MarckScript.ttf */; };
 		E32935F77D974FAF8E05943D /* Zocial.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 37CF02A52F31430692037AD0 /* Zocial.ttf */; };
@@ -332,13 +328,6 @@
 			remoteGlobalIDString = EB2648DF1C7BE17A00B8F155;
 			remoteInfo = ReactNativeConfig;
 		};
-		7C9BE8AC21686341004E2529 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = EC4AFD5BE741455DBB6C792A /* RealmReact.xcodeproj */;
-			proxyType = 2;
-			remoteGlobalIDString = F60690131CA2766F0003FB26;
-			remoteInfo = RealmReact;
-		};
 		7C9BE8AF21686341004E2529 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = 27C0005596C44F16A649BF6C /* RNAppAuth.xcodeproj */;
@@ -387,7 +376,6 @@
 		00E356F11AD99517003FC87E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		00E356F21AD99517003FC87E /* vybeTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = vybeTests.m; sourceTree = "<group>"; };
 		0BE796A7FD5E4B088CA22C14 /* MarckScript.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = MarckScript.ttf; path = ../assets/fonts/MarckScript.ttf; sourceTree = "<group>"; };
-		0D6C1DDD183D40B2BD433869 /* libz.tbd */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libz.tbd; path = usr/lib/libz.tbd; sourceTree = SDKROOT; };
 		10E801766510E5407FD27713 /* Pods-vybe.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-vybe.release.xcconfig"; path = "Pods/Target Support Files/Pods-vybe/Pods-vybe.release.xcconfig"; sourceTree = "<group>"; };
 		139105B61AF99BAD00B5F7CC /* RCTSettings.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = RCTSettings.xcodeproj; path = "../node_modules/react-native/Libraries/Settings/RCTSettings.xcodeproj"; sourceTree = "<group>"; };
 		139FDEE61B06529A00C62182 /* RCTWebSocket.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = RCTWebSocket.xcodeproj; path = "../node_modules/react-native/Libraries/WebSocket/RCTWebSocket.xcodeproj"; sourceTree = "<group>"; };
@@ -403,7 +391,6 @@
 		2D02E47B1E0B4A5D006451C7 /* vybe-tvOS.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "vybe-tvOS.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		2D02E4901E0B4A5D006451C7 /* vybe-tvOSTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "vybe-tvOSTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		2D16E6891FA4F8E400B85C8A /* libReact.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; path = libReact.a; sourceTree = BUILT_PRODUCTS_DIR; };
-		3408EDEECCE94ACBA0D0C963 /* libRealmReact.a */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = archive.ar; path = libRealmReact.a; sourceTree = "<group>"; };
 		37CF02A52F31430692037AD0 /* Zocial.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = Zocial.ttf; path = "../node_modules/native-base/Fonts/Zocial.ttf"; sourceTree = "<group>"; };
 		3E0EBBE46F6C43D480BF7916 /* libRNAppAuth.a */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = archive.ar; path = libRNAppAuth.a; sourceTree = "<group>"; };
 		41FF63AC072D4D8991EE0EEB /* rubicon-icon-font.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = "rubicon-icon-font.ttf"; path = "../node_modules/native-base/Fonts/rubicon-icon-font.ttf"; sourceTree = "<group>"; };
@@ -423,13 +410,11 @@
 		8D597895C3D59926814DC72C /* libPods-vybe.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-vybe.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		ADBDB91F1DFEBF0600ED6528 /* RCTBlob.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = RCTBlob.xcodeproj; path = "../node_modules/react-native/Libraries/Blob/RCTBlob.xcodeproj"; sourceTree = "<group>"; };
 		C59FBCA672E44511912115F9 /* MaterialCommunityIcons.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = MaterialCommunityIcons.ttf; path = "../node_modules/native-base/Fonts/MaterialCommunityIcons.ttf"; sourceTree = "<group>"; };
-		C8E9CD65E45943B180537DB2 /* libc++.tbd */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = "libc++.tbd"; path = "usr/lib/libc++.tbd"; sourceTree = SDKROOT; };
 		CC5840B96ED84DCD8862C184 /* libReactNativeConfig.a */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = archive.ar; path = libReactNativeConfig.a; sourceTree = "<group>"; };
 		D194853A1DFE48C1B640599A /* SplashScreen.xcodeproj */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = "wrapper.pb-project"; name = SplashScreen.xcodeproj; path = "../node_modules/react-native-splash-screen/ios/SplashScreen.xcodeproj"; sourceTree = "<group>"; };
 		D3AEA86595EB4376A0FEA27B /* Roboto-Bold.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = "Roboto-Bold.ttf"; path = "../assets/fonts/Roboto-Bold.ttf"; sourceTree = "<group>"; };
 		E6973681AB4C4EC7808444F1 /* MaterialIcons.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = MaterialIcons.ttf; path = "../node_modules/native-base/Fonts/MaterialIcons.ttf"; sourceTree = "<group>"; };
 		E857B18F6C6042ECB4D0668C /* Roboto.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = Roboto.ttf; path = "../node_modules/native-base/Fonts/Roboto.ttf"; sourceTree = "<group>"; };
-		EC4AFD5BE741455DBB6C792A /* RealmReact.xcodeproj */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = "wrapper.pb-project"; name = RealmReact.xcodeproj; path = "../node_modules/realm/react-native/ios/RealmReact.xcodeproj"; sourceTree = "<group>"; };
 		F3F8BCB7DF1B4D4B91069612 /* Octicons.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = Octicons.ttf; path = "../node_modules/native-base/Fonts/Octicons.ttf"; sourceTree = "<group>"; };
 		F43F5BA35F344C0999BFE3E1 /* FontAwesome.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = FontAwesome.ttf; path = "../node_modules/native-base/Fonts/FontAwesome.ttf"; sourceTree = "<group>"; };
 		F4D9A9C75A4F4E89B09E12FD /* Feather.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = Feather.ttf; path = "../node_modules/native-base/Fonts/Feather.ttf"; sourceTree = "<group>"; };
@@ -464,9 +449,6 @@
 				7C9BE9D0216889B2004E2529 /* libRNFetchBlob.a in Frameworks */,
 				2B1439305F954A0D8E0589D7 /* libRNAppAuth.a in Frameworks */,
 				0E5266C9FDA64268893EF743 /* libReactNativeConfig.a in Frameworks */,
-				894A59A89A8A43DBA4A32C21 /* libRealmReact.a in Frameworks */,
-				9AC16D5170CA46BAA186CFF0 /* libc++.tbd in Frameworks */,
-				C7635E4756F74ABC8CC2F56D /* libz.tbd in Frameworks */,
 				8D358F17690B44C3AB185E41 /* libSplashScreen.a in Frameworks */,
 				172BDF121E5F813F514365FC /* libPods-vybe.a in Frameworks */,
 			);
@@ -627,8 +609,6 @@
 			isa = PBXGroup;
 			children = (
 				2D16E6891FA4F8E400B85C8A /* libReact.a */,
-				C8E9CD65E45943B180537DB2 /* libc++.tbd */,
-				0D6C1DDD183D40B2BD433869 /* libz.tbd */,
 				8D597895C3D59926814DC72C /* libPods-vybe.a */,
 			);
 			name = Frameworks;
@@ -661,14 +641,6 @@
 				7DD3B7E73A3E47BA96488D86 /* libSplashScreen.a */,
 			);
 			name = "Recovered References";
-			sourceTree = "<group>";
-		};
-		7C9BE8A021686340004E2529 /* Products */ = {
-			isa = PBXGroup;
-			children = (
-				7C9BE8AD21686341004E2529 /* libRealmReact.a */,
-			);
-			name = Products;
 			sourceTree = "<group>";
 		};
 		7C9BE8A221686340004E2529 /* Products */ = {
@@ -721,7 +693,6 @@
 				139FDEE61B06529A00C62182 /* RCTWebSocket.xcodeproj */,
 				27C0005596C44F16A649BF6C /* RNAppAuth.xcodeproj */,
 				8BFC5E2C295A4B8C8D4F66E9 /* ReactNativeConfig.xcodeproj */,
-				EC4AFD5BE741455DBB6C792A /* RealmReact.xcodeproj */,
 				D194853A1DFE48C1B640599A /* SplashScreen.xcodeproj */,
 			);
 			name = Libraries;
@@ -965,10 +936,6 @@
 				{
 					ProductGroup = 7C9BE8A421686340004E2529 /* Products */;
 					ProjectRef = 8BFC5E2C295A4B8C8D4F66E9 /* ReactNativeConfig.xcodeproj */;
-				},
-				{
-					ProductGroup = 7C9BE8A021686340004E2529 /* Products */;
-					ProjectRef = EC4AFD5BE741455DBB6C792A /* RealmReact.xcodeproj */;
 				},
 				{
 					ProductGroup = 7C9BE8A621686340004E2529 /* Products */;
@@ -1246,13 +1213,6 @@
 			remoteRef = 7C9BE8A921686341004E2529 /* PBXContainerItemProxy */;
 			sourceTree = BUILT_PRODUCTS_DIR;
 		};
-		7C9BE8AD21686341004E2529 /* libRealmReact.a */ = {
-			isa = PBXReferenceProxy;
-			fileType = archive.ar;
-			path = libRealmReact.a;
-			remoteRef = 7C9BE8AC21686341004E2529 /* PBXContainerItemProxy */;
-			sourceTree = BUILT_PRODUCTS_DIR;
-		};
 		7C9BE8B021686341004E2529 /* libRNAppAuth.a */ = {
 			isa = PBXReferenceProxy;
 			fileType = archive.ar;
@@ -1496,7 +1456,6 @@
 					"$(inherited)",
 					"$(SRCROOT)/../node_modules/react-native-app-auth/ios",
 					"$(SRCROOT)/../node_modules/react-native-config/ios/ReactNativeConfig",
-					"$(SRCROOT)/../node_modules/realm/src/**",
 					"$(SRCROOT)/../node_modules/react-native-splash-screen/ios",
 				);
 				INFOPLIST_FILE = vybeTests/Info.plist;
@@ -1504,10 +1463,6 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
-					"\"$(SRCROOT)/$(TARGET_NAME)\"",
-					"\"$(SRCROOT)/$(TARGET_NAME)\"",
-					"\"$(SRCROOT)/$(TARGET_NAME)\"",
-					"\"$(SRCROOT)/$(TARGET_NAME)\"",
 				);
 				OTHER_LDFLAGS = (
 					"-ObjC",
@@ -1528,7 +1483,6 @@
 					"$(inherited)",
 					"$(SRCROOT)/../node_modules/react-native-app-auth/ios",
 					"$(SRCROOT)/../node_modules/react-native-config/ios/ReactNativeConfig",
-					"$(SRCROOT)/../node_modules/realm/src/**",
 					"$(SRCROOT)/../node_modules/react-native-splash-screen/ios",
 				);
 				INFOPLIST_FILE = vybeTests/Info.plist;
@@ -1536,10 +1490,6 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
-					"\"$(SRCROOT)/$(TARGET_NAME)\"",
-					"\"$(SRCROOT)/$(TARGET_NAME)\"",
-					"\"$(SRCROOT)/$(TARGET_NAME)\"",
-					"\"$(SRCROOT)/$(TARGET_NAME)\"",
 				);
 				OTHER_LDFLAGS = (
 					"-ObjC",
@@ -1563,7 +1513,6 @@
 					"$(inherited)",
 					"$(SRCROOT)/../node_modules/react-native-app-auth/ios",
 					"$(SRCROOT)/../node_modules/react-native-config/ios/ReactNativeConfig",
-					"$(SRCROOT)/../node_modules/realm/src/**",
 					"$(SRCROOT)/../node_modules/react-native-splash-screen/ios",
 				);
 				INFOPLIST_FILE = vybe/Info.plist;
@@ -1591,7 +1540,6 @@
 					"$(inherited)",
 					"$(SRCROOT)/../node_modules/react-native-app-auth/ios",
 					"$(SRCROOT)/../node_modules/react-native-config/ios/ReactNativeConfig",
-					"$(SRCROOT)/../node_modules/realm/src/**",
 					"$(SRCROOT)/../node_modules/react-native-splash-screen/ios",
 				);
 				INFOPLIST_FILE = vybe/Info.plist;
@@ -1624,17 +1572,12 @@
 					"$(inherited)",
 					"$(SRCROOT)/../node_modules/react-native-app-auth/ios",
 					"$(SRCROOT)/../node_modules/react-native-config/ios/ReactNativeConfig",
-					"$(SRCROOT)/../node_modules/realm/src/**",
 					"$(SRCROOT)/../node_modules/react-native-splash-screen/ios",
 				);
 				INFOPLIST_FILE = "vybe-tvOS/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
-					"\"$(SRCROOT)/$(TARGET_NAME)\"",
-					"\"$(SRCROOT)/$(TARGET_NAME)\"",
-					"\"$(SRCROOT)/$(TARGET_NAME)\"",
-					"\"$(SRCROOT)/$(TARGET_NAME)\"",
 				);
 				OTHER_LDFLAGS = (
 					"-ObjC",
@@ -1664,17 +1607,12 @@
 					"$(inherited)",
 					"$(SRCROOT)/../node_modules/react-native-app-auth/ios",
 					"$(SRCROOT)/../node_modules/react-native-config/ios/ReactNativeConfig",
-					"$(SRCROOT)/../node_modules/realm/src/**",
 					"$(SRCROOT)/../node_modules/react-native-splash-screen/ios",
 				);
 				INFOPLIST_FILE = "vybe-tvOS/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
-					"\"$(SRCROOT)/$(TARGET_NAME)\"",
-					"\"$(SRCROOT)/$(TARGET_NAME)\"",
-					"\"$(SRCROOT)/$(TARGET_NAME)\"",
-					"\"$(SRCROOT)/$(TARGET_NAME)\"",
 				);
 				OTHER_LDFLAGS = (
 					"-ObjC",
@@ -1703,17 +1641,12 @@
 					"$(inherited)",
 					"$(SRCROOT)/../node_modules/react-native-app-auth/ios",
 					"$(SRCROOT)/../node_modules/react-native-config/ios/ReactNativeConfig",
-					"$(SRCROOT)/../node_modules/realm/src/**",
 					"$(SRCROOT)/../node_modules/react-native-splash-screen/ios",
 				);
 				INFOPLIST_FILE = "vybe-tvOSTests/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
-					"\"$(SRCROOT)/$(TARGET_NAME)\"",
-					"\"$(SRCROOT)/$(TARGET_NAME)\"",
-					"\"$(SRCROOT)/$(TARGET_NAME)\"",
-					"\"$(SRCROOT)/$(TARGET_NAME)\"",
 				);
 				OTHER_LDFLAGS = (
 					"-ObjC",
@@ -1742,17 +1675,12 @@
 					"$(inherited)",
 					"$(SRCROOT)/../node_modules/react-native-app-auth/ios",
 					"$(SRCROOT)/../node_modules/react-native-config/ios/ReactNativeConfig",
-					"$(SRCROOT)/../node_modules/realm/src/**",
 					"$(SRCROOT)/../node_modules/react-native-splash-screen/ios",
 				);
 				INFOPLIST_FILE = "vybe-tvOSTests/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
-					"\"$(SRCROOT)/$(TARGET_NAME)\"",
-					"\"$(SRCROOT)/$(TARGET_NAME)\"",
-					"\"$(SRCROOT)/$(TARGET_NAME)\"",
-					"\"$(SRCROOT)/$(TARGET_NAME)\"",
 				);
 				OTHER_LDFLAGS = (
 					"-ObjC",

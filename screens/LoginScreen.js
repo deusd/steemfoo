@@ -4,7 +4,7 @@ import PropTypes from 'prop-types'
 import { connect } from 'react-redux'
 import PageContainer from '../components/PageContainer'
 import Logo from '../components/Logo'
-import { login } from '../state/steem'
+import { login } from '../state/steemUser'
 
 export class LoginScreen extends React.Component {
   static propTypes = {
@@ -75,9 +75,9 @@ const styles = StyleSheet.create({
 })
 
 export default connect(
-  ({ steem }) => ({
-    user: steem.user,
-    error: steem.signinError,
+  ({ steemUser }) => ({
+    user: steemUser.user,
+    error: steemUser.signinError,
   }),
   { login }
 )(LoginScreen)

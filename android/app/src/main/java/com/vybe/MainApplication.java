@@ -5,7 +5,6 @@ import android.app.Application;
 import com.facebook.react.ReactApplication;
 import com.RNFetchBlob.RNFetchBlobPackage;
 import org.devio.rn.splashscreen.SplashScreenReactPackage;
-import io.realm.react.RealmReactPackage;
 import com.lugg.ReactNativeConfig.ReactNativeConfigPackage;
 import com.reactlibrary.RNAppAuthPackage;
 import com.facebook.react.ReactNativeHost;
@@ -30,7 +29,6 @@ public class MainApplication extends Application implements ReactApplication {
           new MainReactPackage(),
             new RNFetchBlobPackage(),
             new SplashScreenReactPackage(),
-            new RealmReactPackage(),
             new ReactNativeConfigPackage(),
             new RNAppAuthPackage()
       );
