@@ -1,4 +1,4 @@
-import * as constants from '../'
+import * as constants from './'
 
 describe('constants', () => {
   it('should be available', () => {

@@ -43,7 +43,6 @@
     "redux-persist": "^5.10.0",
     "redux-promise-middleware": "5.1.1",
     "redux-thunk": "2.3.0",
-    "rn-fetch-blob": "0.10.13",
     "timeago.js": "4.0.0-beta.1"
   },
   "devDependencies": {

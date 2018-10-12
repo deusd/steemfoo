@@ -5,6 +5,7 @@
 	};
 	objectVersion = 46;
 	objects = {
+
 /* Begin PBXBuildFile section */
 		00C302E51ABCBA2D00DB3ED1 /* libRCTActionSheet.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 00C302AC1ABCB8CE00DB3ED1 /* libRCTActionSheet.a */; };
 		00C302E71ABCBA2D00DB3ED1 /* libRCTGeolocation.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 00C302BA1ABCB90400DB3ED1 /* libRCTGeolocation.a */; };
@@ -46,7 +47,6 @@
 		4FFFD34452654CC29EF2AA0F /* SimpleLineIcons.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 6D7056E5625742C8A9656EAD /* SimpleLineIcons.ttf */; };
 		52436E04865E46D8ADC2D4A2 /* Roboto-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 5D3D580DEF2F4927B3E6C040 /* Roboto-Regular.ttf */; };
 		5EE6B59839F744A4BBCC1C0B /* Entypo.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 6BA215E4BF4D4EE0ADCAA1E7 /* Entypo.ttf */; };
-		7C9BE9D0216889B2004E2529 /* libRNFetchBlob.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 7C9BE9CE21688999004E2529 /* libRNFetchBlob.a */; };
 		832341BD1AAA6AB300B99B32 /* libRCTText.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 832341B51AAA6A8300B99B32 /* libRCTText.a */; };
 		8D358F17690B44C3AB185E41 /* libSplashScreen.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 7DD3B7E73A3E47BA96488D86 /* libSplashScreen.a */; };
 		8EB6DA944877462693F35D67 /* Roboto-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = D3AEA86595EB4376A0FEA27B /* Roboto-Bold.ttf */; };
@@ -446,7 +446,6 @@
 				832341BD1AAA6AB300B99B32 /* libRCTText.a in Frameworks */,
 				00C302EA1ABCBA2D00DB3ED1 /* libRCTVibration.a in Frameworks */,
 				139FDEF61B0652A700C62182 /* libRCTWebSocket.a in Frameworks */,
-				7C9BE9D0216889B2004E2529 /* libRNFetchBlob.a in Frameworks */,
 				2B1439305F954A0D8E0589D7 /* libRNAppAuth.a in Frameworks */,
 				0E5266C9FDA64268893EF743 /* libReactNativeConfig.a in Frameworks */,
 				8D358F17690B44C3AB185E41 /* libSplashScreen.a in Frameworks */,
@@ -637,7 +636,6 @@
 			children = (
 				3E0EBBE46F6C43D480BF7916 /* libRNAppAuth.a */,
 				CC5840B96ED84DCD8862C184 /* libReactNativeConfig.a */,
-				3408EDEECCE94ACBA0D0C963 /* libRealmReact.a */,
 				7DD3B7E73A3E47BA96488D86 /* libSplashScreen.a */,
 			);
 			name = "Recovered References";
@@ -861,6 +859,7 @@
 					};
 					13B07F861A680F5B00A75B9A = {
 						DevelopmentTeam = LXPCC5U83M;
+						ProvisioningStyle = Automatic;
 					};
 					2D02E47A1E0B4A5D006451C7 = {
 						CreatedOnToolsVersion = 8.2.1;
@@ -1461,9 +1460,7 @@
 				INFOPLIST_FILE = vybeTests/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				LIBRARY_SEARCH_PATHS = (
-					"$(inherited)",
-				);
+				LIBRARY_SEARCH_PATHS = "$(inherited)";
 				OTHER_LDFLAGS = (
 					"-ObjC",
 					"-lc++",
@@ -1488,9 +1485,7 @@
 				INFOPLIST_FILE = vybeTests/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				LIBRARY_SEARCH_PATHS = (
-					"$(inherited)",
-				);
+				LIBRARY_SEARCH_PATHS = "$(inherited)";
 				OTHER_LDFLAGS = (
 					"-ObjC",
 					"-lc++",
@@ -1506,6 +1501,8 @@
 			baseConfigurationReference = 48DAA12924A6E616EE6F2444 /* Pods-vybe.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEAD_CODE_STRIPPING = NO;
 				DEVELOPMENT_TEAM = LXPCC5U83M;
@@ -1523,8 +1520,9 @@
 					"-ObjC",
 					"-lc++",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = app.wevybe.io;
+				PRODUCT_BUNDLE_IDENTIFIER = io.wevybe.app;
 				PRODUCT_NAME = vybe;
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				VERSIONING_SYSTEM = "apple-generic";
 			};
 			name = Debug;
@@ -1534,6 +1532,8 @@
 			baseConfigurationReference = 10E801766510E5407FD27713 /* Pods-vybe.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = LXPCC5U83M;
 				HEADER_SEARCH_PATHS = (
@@ -1550,8 +1550,9 @@
 					"-ObjC",
 					"-lc++",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = app.wevybe.io;
+				PRODUCT_BUNDLE_IDENTIFIER = io.wevybe.app;
 				PRODUCT_NAME = vybe;
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				VERSIONING_SYSTEM = "apple-generic";
 			};
 			name = Release;
@@ -1576,9 +1577,7 @@
 				);
 				INFOPLIST_FILE = "vybe-tvOS/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				LIBRARY_SEARCH_PATHS = (
-					"$(inherited)",
-				);
+				LIBRARY_SEARCH_PATHS = "$(inherited)";
 				OTHER_LDFLAGS = (
 					"-ObjC",
 					"-lc++",
@@ -1611,9 +1610,7 @@
 				);
 				INFOPLIST_FILE = "vybe-tvOS/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				LIBRARY_SEARCH_PATHS = (
-					"$(inherited)",
-				);
+				LIBRARY_SEARCH_PATHS = "$(inherited)";
 				OTHER_LDFLAGS = (
 					"-ObjC",
 					"-lc++",
@@ -1645,9 +1642,7 @@
 				);
 				INFOPLIST_FILE = "vybe-tvOSTests/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				LIBRARY_SEARCH_PATHS = (
-					"$(inherited)",
-				);
+				LIBRARY_SEARCH_PATHS = "$(inherited)";
 				OTHER_LDFLAGS = (
 					"-ObjC",
 					"-lc++",
@@ -1679,9 +1674,7 @@
 				);
 				INFOPLIST_FILE = "vybe-tvOSTests/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				LIBRARY_SEARCH_PATHS = (
-					"$(inherited)",
-				);
+				LIBRARY_SEARCH_PATHS = "$(inherited)";
 				OTHER_LDFLAGS = (
 					"-ObjC",
 					"-lc++",

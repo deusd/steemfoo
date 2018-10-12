@@ -1,8 +1,9 @@
-import { cloneDeep } from 'lodash'
+import _, { cloneDeep } from 'lodash'
 import { createAction } from 'redux-action'
 import { authorize } from 'react-native-app-auth'
 import { pending, resolve, reject } from '../../utilities/reducer'
 import { SIGN_IN, SIGN_OUT } from '../types'
+import { REHYDRATE } from 'redux-persist'
 
 const config = {
   issuer: 'https://steemconnect.com/oauth2/',
@@ -24,10 +25,10 @@ export const login = createAction(SIGN_IN, () => {
           const formattedUser = {
             accessTokenExpirationDate: remoteUser.accessTokenExpirationDate,
             idToken: remoteUser.idToken,
-            userName: (remoteUser.additionalParameters || {}).username,
-            accessToken: 'string',
-            tokenType: 'string',
-            refreshToken: 'string',
+            userName: _.get(remoteUser, 'additionalParameters.username'),
+            accessToken: remoteUser.accessToken,
+            tokenType: remoteUser.tokenType,
+            refreshToken: remoteUser.refreshToken,
           }
           resolve(formattedUser)
         })
@@ -36,26 +37,29 @@ export const login = createAction(SIGN_IN, () => {
   }
 })
 
-export const logout = createAction(SIGN_OUT, () => null)
+export const logout = createAction(SIGN_OUT, () => undefined)
 
 const initialState = () => ({
-  user: null,
   signingIn: false,
-  signinError: null,
 })
 
 export default (state = initialState(), action) => {
   let newState = cloneDeep(state)
   switch (action.type) {
     case pending(SIGN_IN): // eslint-disable-line
-      newState = { ...newState, signingIn: true, signinError: null, user: null }
+      newState = {
+        ...newState,
+        signingIn: true,
+        signinError: undefined,
+        user: undefined,
+      }
       break
     case resolve(SIGN_IN): {
       newState = {
         ...newState,
         signingIn: false,
         user: action.payload,
-        signinError: null,
+        signinError: undefined,
       }
       break
     }
@@ -64,8 +68,13 @@ export default (state = initialState(), action) => {
         ...newState,
         signingIn: false,
         signinError: action.payload,
-        user: null,
+        user: undefined,
       }
+      break
+    case REHYDRATE:
+      newState = cloneDeep(action.payload.steemUser)
+      newState.signingIn = false
+      newState.signinError = undefined
       break
     default:
       break

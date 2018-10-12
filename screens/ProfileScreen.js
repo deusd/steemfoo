@@ -1,3 +1,6 @@
+// @flow
+// @format
+
 import React from 'react'
 import { Alert, Text, StyleSheet, TouchableOpacity } from 'react-native'
 import PropTypes from 'prop-types'
@@ -6,9 +9,14 @@ import PageContainer from '../components/PageContainer'
 import Logo from '../components/Logo'
 import LoginScreen from '../screens/LoginScreen'
 
-export class ProfileScreen extends React.Component {
+type Props = {
+  login: Function,
+  error: Object,
+  user: Object,
+}
+
+export class ProfileScreen extends React.Component<Props> {
   static propTypes = {
-    login: PropTypes.func.isRequired,
     error: PropTypes.any,
     user: PropTypes.any,
   }
@@ -86,6 +94,6 @@ const styles = StyleSheet.create({
   },
 })
 
-export default connect(({ steem }) => ({
-  user: steem.user,
+export default connect(({ steemUser }) => ({
+  user: steemUser.user,
 }))(ProfileScreen)

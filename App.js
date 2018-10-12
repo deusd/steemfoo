@@ -9,18 +9,25 @@ import React from 'react'
 import SplashScreen from 'react-native-splash-screen'
 import { Provider } from 'react-redux'
 import RootStack from './components/RootStack'
-import store from './state/store'
+import store, { persistor } from './state/store'
+import { PersistGate } from 'redux-persist/es/integration/react'
+import { YellowBox } from 'react-native'
 
 type Props = {}
+
+YellowBox.ignoreWarnings(['Remote debugger'])
+
 class App extends React.Component<Props> {
-  componentDidMount() {
+  onStateRestored() {
     SplashScreen.hide()
   }
 
   render() {
     return (
       <Provider store={store}>
-        <RootStack />
+        <PersistGate persistor={persistor} onBeforeLift={this.onStateRestored}>
+          <RootStack />
+        </PersistGate>
       </Provider>
     )
   }
