@@ -2,12 +2,17 @@
 // @format
 
 import React from 'react'
-import { Alert, Text, StyleSheet, TouchableOpacity } from 'react-native'
+import { Alert, Text, StyleSheet, TouchableOpacity, View } from 'react-native'
+import Image from 'react-native-image-progress'
 import PropTypes from 'prop-types'
 import { connect } from 'react-redux'
 import PageContainer from '../components/PageContainer'
 import Logo from '../components/Logo'
 import LoginScreen from '../screens/LoginScreen'
+
+type ProfileProps = {
+  user: Object,
+}
 
 type Props = {
   login: Function,
@@ -15,7 +20,86 @@ type Props = {
   user: Object,
 }
 
-export class ProfileScreen extends React.Component<Props> {
+class Profile extends React.Component<ProfileProps> {
+  render() {
+    return (
+      <PageContainer style={styles.profilePage}>
+        <Image
+          style={styles.profileBackgroundImage}
+          resizeMode={'cover'}
+          source={{
+            uri:
+              'https://ak8.picdn.net/shutterstock/videos/32852968/thumb/1.jpg',
+          }}
+        />
+        <View style={styles.userInfoRow}>
+          <View style={styles.innerPageContainer}>
+            <Image
+              style={styles.profileImage}
+              resizeMode={'cover'}
+              borderRadius={6}
+              source={{
+                uri:
+                  'https://pickaface.net/gallery/avatar/20160616_021428_4100_Nerd.png',
+              }}
+            />
+            <Text style={styles.priceText}>$1,809.25</Text>
+          </View>
+          <View style={{ flex: 1 }}>
+            <Text style={styles.userName}>@cryptobills</Text>
+            <Text style={styles.userDescription}>
+              Bay area resider looking to learn more about crypto and build
+              awesome apps on the steem blockchain!
+            </Text>
+          </View>
+        </View>
+        <View
+          style={{
+            flexDirection: 'row',
+            justifyContent: 'space-between',
+            padding: 10,
+          }}
+        >
+          <Text>2093 followers</Text>
+          <Text>202 following</Text>
+          <Text>298 posts</Text>
+        </View>
+        <View
+          style={{
+            flexDirection: 'row',
+            alignContent: 'center',
+            justifyContent: 'space-between',
+            padding: 10,
+          }}
+        >
+          <Text>Joined May 27</Text>
+          <Text>#pixelartweekly #hotsorshots</Text>
+          <Text>steem.shop</Text>
+        </View>
+        <View
+          style={{
+            flexDirection: 'row',
+          }}
+        >
+          <TouchableOpacity style={styles.viewButton}>
+            <Text style={styles.viewButtonText}>Blog</Text>
+          </TouchableOpacity>
+          <TouchableOpacity style={styles.viewButton}>
+            <Text style={styles.viewButtonText}>Comments</Text>
+          </TouchableOpacity>
+          <TouchableOpacity style={styles.viewButton}>
+            <Text style={styles.viewButtonText}>Replies</Text>
+          </TouchableOpacity>
+          <TouchableOpacity style={styles.viewButton}>
+            <Text style={styles.viewButtonText}>Wallet</Text>
+          </TouchableOpacity>
+        </View>
+      </PageContainer>
+    )
+  }
+}
+
+export class ProfileTab extends React.Component<Props> {
   static propTypes = {
     error: PropTypes.any,
     user: PropTypes.any,
@@ -26,23 +110,7 @@ export class ProfileScreen extends React.Component<Props> {
   }
 
   renderProfile() {
-    return (
-      <PageContainer style={styles.page}>
-        <Logo style={styles.logo} />
-        <Text style={styles.text}>Logged in as {this.props.user.userName}</Text>
-        <TouchableOpacity
-          style={styles.button}
-          onPress={() =>
-            Alert.alert(
-              'Dang',
-              'Logout not implemented yet, but your are definitely logged in!!!'
-            )
-          }
-        >
-          <Text style={styles.buttonText}>Logout</Text>
-        </TouchableOpacity>
-      </PageContainer>
-    )
+    return <Profile user={this.props.user} />
   }
 
   render() {
@@ -55,6 +123,46 @@ export class ProfileScreen extends React.Component<Props> {
 }
 
 const styles = StyleSheet.create({
+  viewButton: {
+    padding: 10,
+  },
+  viewButtonText: {
+    textAlign: 'center',
+    backgroundColor: '#89D4FF',
+    color: 'white',
+    padding: 10,
+  },
+  priceText: {
+    fontWeight: 'bold',
+    fontSize: 18,
+    textAlign: 'center',
+  },
+  userName: {
+    fontWeight: 'bold',
+  },
+  userDescription: {
+    fontSize: 14,
+    lineHeight: 18,
+  },
+  userInfoRow: {
+    flexDirection: 'row',
+    flex: 1,
+  },
+  innerPageContainer: {
+    padding: 20,
+    marginTop: -80,
+  },
+  profileBackgroundImage: {
+    width: '100%',
+    aspectRatio: 3.25,
+  },
+  profileImage: {
+    width: 120,
+    height: 132,
+  },
+  profilePage: {
+    paddingTop: 80,
+  },
   page: {
     backgroundColor: '#3BB8FF',
     padding: 20,
@@ -96,4 +204,4 @@ const styles = StyleSheet.create({
 
 export default connect(({ steemUser }) => ({
   user: steemUser.user,
-}))(ProfileScreen)
+}))(ProfileTab)

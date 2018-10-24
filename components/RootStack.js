@@ -25,8 +25,8 @@ const RootStack = createStackNavigator(
 
 export default createBottomTabNavigator(
   {
-    Home: RootStack,
     Profile: ProfileScreen,
+    Home: RootStack,
   },
   {
     navigationOptions: ({ navigation }) => ({
