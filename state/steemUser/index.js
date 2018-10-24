@@ -4,6 +4,7 @@ import { authorize } from 'react-native-app-auth'
 import { pending, resolve, reject } from '../../utilities/reducer'
 import { SIGN_IN, SIGN_OUT } from '../types'
 import { REHYDRATE } from 'redux-persist'
+import moment from 'moment'
 
 const config = {
   issuer: 'https://steemconnect.com/oauth2/',
@@ -80,5 +81,11 @@ export default (state = initialState(), action) => {
       break
   }
 
+  // check if user is expired after each action
+  if (newState.user) {
+    if (moment().isAfter(newState.user.accessTokenExpirationDate)) {
+      newState.user = undefined
+    }
+  }
   return newState
 }

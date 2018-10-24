@@ -1,31 +1,48 @@
 import * as RNA from 'react-native-app-auth'
+import { REHYDRATE } from 'redux-persist'
 import reducer, { login } from './index'
 import { pending as going, resolve, reject } from '../../utilities/reducer'
 import * as types from '../types'
 import { mockStore } from '../test/utilites'
-
-const initialState = {
-  user: null,
-  signingIn: false,
-  signinError: null,
-}
-
-const filledState = {
-  user: {},
-  signingIn: false,
-  signinError: {},
-}
+import moment from 'moment'
 
 jest.mock('react-native-app-auth')
+let initialState
+let filledState
 
 describe('steemUser', () => {
   beforeEach(() => {
     jest.spyOn(RNA, 'authorize')
+    initialState = {
+      user: undefined,
+      signingIn: false,
+      signinError: undefined,
+    }
+
+    filledState = {
+      user: {},
+      signingIn: false,
+      signinError: {},
+    }
   })
 
   describe('reducer', () => {
     it('should return the default state', () => {
       expect(reducer(undefined, {})).toEqual(initialState)
+    })
+
+    it('should remove the stored user if the user token has expired', () => {
+      filledState.user.accessTokenExpirationDate = moment().subtract(
+        '5',
+        'days'
+      )
+      const newState = reducer(undefined, {
+        type: REHYDRATE,
+        payload: {
+          steemUser: filledState,
+        },
+      })
+      expect(newState.user).toBe(undefined)
     })
 
     it('should handle pending login', () => {
@@ -36,8 +53,8 @@ describe('steemUser', () => {
       ).toEqual({
         ...filledState,
         signingIn: true,
-        user: null,
-        signinError: null,
+        user: undefined,
+        signinError: undefined,
       })
     })
 
@@ -54,7 +71,7 @@ describe('steemUser', () => {
         })
       ).toEqual({
         ...filledState,
-        signinError: null,
+        signinError: undefined,
         signingIn: false,
         user: payload,
       })
@@ -76,7 +93,7 @@ describe('steemUser', () => {
         ...filledState,
         signingIn: false,
         signinError: payload,
-        user: null,
+        user: undefined,
       })
     })
   })
