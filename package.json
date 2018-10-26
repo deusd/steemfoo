@@ -35,7 +35,7 @@
     "react-native-image-progress": "1.1.1",
     "react-native-splash-screen": "3.1.1",
     "react-navigation": "2.18.1",
-    "react-redux": "5.0.7",
+    "react-redux": "5.1.0",
     "realm": "2.18.0",
     "redux": "4.0.1",
     "redux-action": "1.2.2",
