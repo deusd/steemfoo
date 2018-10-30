@@ -14,10 +14,25 @@ import { ICON_BUTTON_SIZE } from '../constants'
 type PostProps = {
   post: PostType,
   onViewAllReplies: Function,
+  repost: boolean,
 }
 
-const Post = ({ post, onViewAllReplies }: PostProps) => (
+const Post = ({ post, onViewAllReplies, repost }: PostProps) => (
   <View key={post.id}>
+    {repost && (
+      <View
+        style={{
+          paddingHorizontal: 10,
+          flexDirection: 'row',
+          alignItems: 'center',
+          opacity: 0.5,
+        }}
+      >
+        <Icon name="retweet" size={ICON_BUTTON_SIZE} />
+        <Text style={{ marginLeft: 5 }}>repost</Text>
+      </View>
+    )}
+
     <Row style={[styles.container, styles.header]}>
       <ProfileImageThumb profileImage={post.authorAccount.profileImage} />
       <Column style={{ flex: 1, paddingLeft: 6 }}>
@@ -45,8 +60,9 @@ const Post = ({ post, onViewAllReplies }: PostProps) => (
       style={{
         width: '100%',
         aspectRatio: 1,
+        backgroundColor: '#efefef',
       }}
-      resizeMode={'cover'}
+      resizeMode={'contain'}
       source={{
         uri:
           post.imageUrl ||
