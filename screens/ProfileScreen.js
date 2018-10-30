@@ -1,14 +1,15 @@
 // @flow
 // @format
 
-import React from 'react'
-import { Alert, Text, StyleSheet, TouchableOpacity, View } from 'react-native'
-import Image from 'react-native-image-progress'
 import PropTypes from 'prop-types'
+import React from 'react'
+import { StyleSheet, Text, TouchableOpacity, View } from 'react-native'
+import Image from 'react-native-image-progress'
 import { connect } from 'react-redux'
 import PageContainer from '../components/PageContainer'
-import Logo from '../components/Logo'
+import PostsContent from '../components/PostsContent'
 import LoginScreen from '../screens/LoginScreen'
+import ApolloWrapper from '../components/ApolloWrapper'
 
 type ProfileProps = {
   user: Object,
@@ -79,6 +80,7 @@ class Profile extends React.Component<ProfileProps> {
         <View
           style={{
             flexDirection: 'row',
+            justifyContent: 'center',
           }}
         >
           <TouchableOpacity style={styles.viewButton}>
@@ -94,6 +96,7 @@ class Profile extends React.Component<ProfileProps> {
             <Text style={styles.viewButtonText}>Wallet</Text>
           </TouchableOpacity>
         </View>
+        <PostsContent postType="BLOG" tag="cryptobills" author="cryptobills" />
       </PageContainer>
     )
   }
@@ -124,13 +127,14 @@ export class ProfileTab extends React.Component<Props> {
 
 const styles = StyleSheet.create({
   viewButton: {
-    padding: 10,
+    padding: 5,
   },
   viewButtonText: {
     textAlign: 'center',
     backgroundColor: '#89D4FF',
     color: 'white',
     padding: 10,
+    paddingHorizontal: 15,
   },
   priceText: {
     fontWeight: 'bold',
@@ -204,4 +208,4 @@ const styles = StyleSheet.create({
 
 export default connect(({ steemUser }) => ({
   user: steemUser.user,
-}))(ProfileTab)
+}))(ApolloWrapper(ProfileTab))
