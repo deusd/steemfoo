@@ -23,9 +23,23 @@ const RootStack = createStackNavigator(
   }
 )
 
+const ProfileStack = createStackNavigator(
+  {
+    Profile: {
+      screen: ProfileScreen,
+    },
+    Replies: {
+      screen: RepliesScreen,
+    },
+  },
+  {
+    initialRouteName: 'Profile',
+  }
+)
+
 export default createBottomTabNavigator(
   {
-    Profile: ProfileScreen,
+    Profile: ProfileStack,
     Home: RootStack,
   },
   {

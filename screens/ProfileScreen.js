@@ -1,27 +1,53 @@
 // @flow
 // @format
 
-import PropTypes from 'prop-types'
 import React from 'react'
-import { StyleSheet, Text, TouchableOpacity, View } from 'react-native'
+import { StyleSheet, Text, View } from 'react-native'
 import Image from 'react-native-image-progress'
 import { connect } from 'react-redux'
 import PageContainer from '../components/PageContainer'
 import PostsContent from '../components/PostsContent'
 import LoginScreen from '../screens/LoginScreen'
 import ApolloWrapper from '../components/ApolloWrapper'
+import ProfileTabs from '../components/ProfileTabs'
 
 type ProfileProps = {
   user: Object,
+  navigation: Object,
 }
 
 type Props = {
   login: Function,
   error: Object,
   user: Object,
+  navigation: Object,
 }
 
 class Profile extends React.Component<ProfileProps> {
+  state = { currentTab: 'Blog' }
+
+  renderTab() {
+    switch (this.state.currentTab) {
+      case 'Blog':
+        return (
+          <PostsContent
+            navigation={this.props.navigation}
+            postType="BLOG"
+            tag="cryptobills"
+            author="cryptobills"
+          />
+        )
+      case 'Comments':
+        return null
+      case 'Replies':
+        return null
+      case 'Wallet':
+        return null
+      default:
+        return null
+    }
+  }
+
   render() {
     return (
       <PageContainer style={styles.profilePage}>
@@ -77,43 +103,25 @@ class Profile extends React.Component<ProfileProps> {
           <Text>#pixelartweekly #hotsorshots</Text>
           <Text>steem.shop</Text>
         </View>
-        <View
-          style={{
-            flexDirection: 'row',
-            justifyContent: 'center',
+        <ProfileTabs
+          onTabSelected={currentTab => {
+            this.setState({ currentTab })
           }}
-        >
-          <TouchableOpacity style={styles.viewButton}>
-            <Text style={styles.viewButtonText}>Blog</Text>
-          </TouchableOpacity>
-          <TouchableOpacity style={styles.viewButton}>
-            <Text style={styles.viewButtonText}>Comments</Text>
-          </TouchableOpacity>
-          <TouchableOpacity style={styles.viewButton}>
-            <Text style={styles.viewButtonText}>Replies</Text>
-          </TouchableOpacity>
-          <TouchableOpacity style={styles.viewButton}>
-            <Text style={styles.viewButtonText}>Wallet</Text>
-          </TouchableOpacity>
-        </View>
-        <PostsContent postType="BLOG" tag="cryptobills" author="cryptobills" />
+        />
+
+        {this.renderTab()}
       </PageContainer>
     )
   }
 }
 
-export class ProfileTab extends React.Component<Props> {
-  static propTypes = {
-    error: PropTypes.any,
-    user: PropTypes.any,
-  }
-
+export class ProfileScreen extends React.Component<Props> {
   renderLogin() {
     return <LoginScreen />
   }
 
   renderProfile() {
-    return <Profile user={this.props.user} />
+    return <Profile navigation={this.props.navigation} user={this.props.user} />
   }
 
   render() {
@@ -126,16 +134,6 @@ export class ProfileTab extends React.Component<Props> {
 }
 
 const styles = StyleSheet.create({
-  viewButton: {
-    padding: 5,
-  },
-  viewButtonText: {
-    textAlign: 'center',
-    backgroundColor: '#89D4FF',
-    color: 'white',
-    padding: 10,
-    paddingHorizontal: 15,
-  },
   priceText: {
     fontWeight: 'bold',
     fontSize: 18,
@@ -164,9 +162,7 @@ const styles = StyleSheet.create({
     width: 120,
     height: 132,
   },
-  profilePage: {
-    paddingTop: 80,
-  },
+  profilePage: {},
   page: {
     backgroundColor: '#3BB8FF',
     padding: 20,
@@ -208,4 +204,4 @@ const styles = StyleSheet.create({
 
 export default connect(({ steemUser }) => ({
   user: steemUser.user,
-}))(ApolloWrapper(ProfileTab))
+}))(ApolloWrapper(ProfileScreen))
