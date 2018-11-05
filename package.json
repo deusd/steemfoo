@@ -61,7 +61,7 @@
     "eslint-plugin-react": "7.11.1",
     "flow-bin": "0.82.0",
     "jest": "23.6.0",
-    "jest-enzyme": "7.0.0",
+    "jest-enzyme": "7.0.1",
     "metro-react-native-babel-preset": "0.47.0",
     "prettier": "1.14.3",
     "react-dom": "16.6.0",
