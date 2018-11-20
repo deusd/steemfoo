@@ -6055,9 +6055,9 @@ react-native-app-auth@3.1.0:
   version "3.1.0"
   resolved "https://registry.yarnpkg.com/react-native-app-auth/-/react-native-app-auth-3.1.0.tgz#642d920e10888c21412ddf844661363e58071ef5"
 
-react-native-config@0.11.5:
-  version "0.11.5"
-  resolved "https://registry.yarnpkg.com/react-native-config/-/react-native-config-0.11.5.tgz#516cb7b6ec437c7739236ca075971db3aabdcb95"
+react-native-config@0.11.6:
+  version "0.11.6"
+  resolved "https://registry.yarnpkg.com/react-native-config/-/react-native-config-0.11.6.tgz#efe9027be534629a41a4561de50f76f40dabb78a"
 
 react-native-dismiss-keyboard@1.0.0:
   version "1.0.0"
