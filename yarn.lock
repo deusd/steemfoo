@@ -2741,9 +2741,9 @@ eslint-plugin-class-property@1.1.0:
   dependencies:
     eslint "^3.19.0"
 
-eslint-plugin-jest@21.27.1:
-  version "21.27.1"
-  resolved "https://registry.yarnpkg.com/eslint-plugin-jest/-/eslint-plugin-jest-21.27.1.tgz#b64c2d6a7f0751cecc14580d7f4d9a5520424448"
+eslint-plugin-jest@22.3.2:
+  version "22.3.2"
+  resolved "https://registry.yarnpkg.com/eslint-plugin-jest/-/eslint-plugin-jest-22.3.2.tgz#702ac04b06223c9241d92b986165318db474ca81"
 
 eslint-plugin-prettier@3.0.0:
   version "3.0.0"
